@@ -29,49 +29,41 @@ class BerkasPerkaraController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'tanggal' => 'required|date',
-        'nomor'   => 'required|string',
-        'panitera'=> 'required|string',
-        'tanda_tangan' => 'nullable|string'
-    ]);
+    {
+        // dd($request->all);
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nomor'   => 'required|string',
+            'panitera'=> 'required|string',
+            'tanda_tangan' => 'nullable|string'
+        ]);
 
-    $path = null;
+        // BerkasPerkara::create($request->all());
+         $path = null;
 
     if ($request->tanda_tangan) {
-        // Ambil data base64
+        // ambil data base64
         $image = $request->tanda_tangan;
         $image = str_replace('data:image/png;base64,', '', $image);
         $image = str_replace(' ', '+', $image);
-
         $imageName = 'ttd_' . time() . '.png';
 
-        // SIMPAN ke public/ttd (bukan storage!)
-        $publicPath = public_path('ttd');
+        // simpan ke storage/app/public/ttd
+        \Storage::disk('public')->put('ttd/' . $imageName, base64_decode($image));
 
-        if (!file_exists($publicPath)) {
-            mkdir($publicPath, 0775, true); // buat folder jika belum ada
-        }
-
-        // Simpan file
-        file_put_contents($publicPath . '/' . $imageName, base64_decode($image));
-
-        // path untuk database
-        $path = 'ttd/' . $imageName;
+        // simpan path untuk database
+        $path = 'storage/ttd/' . $imageName;
     }
 
-    // Simpan data
     BerkasPerkara::create([
         'tanggal' => $request->tanggal,
         'nomor'   => $request->nomor,
         'panitera'=> $request->panitera,
-        'tanda_tangan' => $path,
+        'tanda_tangan' => $path, // simpan path file
     ]);
 
-    return redirect()->route('berkas.index')->with('success', 'Data berhasil disimpan.');
-}
-
+        return redirect()->route('berkas.index')->with('success', 'Data berhasil disimpan.');
+    }
 
     /**
      * Display the specified resource.
