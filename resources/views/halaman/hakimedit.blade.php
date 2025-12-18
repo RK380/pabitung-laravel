@@ -136,10 +136,10 @@
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <label for="jadwal">Penetapan Hari Sidang <i style="color: red">*</i></label>
+                                    <label for="jadwal">Penetapan Tanggal Sidang <i style="color: red">*</i></label>
                                     <input type="date" class="form-control"
                                     value="{{ old('jadwal', $data->jadwal) }}" name="jadwal" required="">
-                                    <p style="font-size:12px;color:red;padding-top:5px;">* Penetapan Hari Sidang Wajib Di Isi</p>
+                                    <p style="font-size:12px;color:red;padding-top:5px;">* Penetapan Tanggal Sidang Wajib Di Isi</p>
                                 </div>
 
                                 <div class="col-12 text-center">
