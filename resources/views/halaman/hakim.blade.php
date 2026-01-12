@@ -62,10 +62,19 @@
                                     @foreach ($data as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
-                                                <!-- <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
-                                                    <i class="bi bi-pencil-square" width="20"></i>
-                                                </a> -->
+                                                <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
                                                 @if (
+                                                    !empty($row->jenisHakim) &&
+                                                    (
+                                                        ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
+                                                        ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
+                                                    )
+                                                )
+                                                    <span class="badge bg-success">Sudah Di Tetapkan</span>
+                                                @endif
+                                                <!-- @if (
                                                     (empty($row->jenisHakim)) || 
                                                     ($row->jenisHakim == 1 && empty($row->majelisHakim)) || 
                                                     ($row->jenisHakim == 2 && empty($row->hakimTunggal))
@@ -73,9 +82,9 @@
                                                     <a href="{{ route('perkara.edit', $row->id) }}" class="btn btn-warning icon">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
-                                                @else
+                                                @else   
                                                     <span class="badge bg-success">Sudah Di Tetapkan</span>
-                                                @endif
+                                                @endif -->
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>

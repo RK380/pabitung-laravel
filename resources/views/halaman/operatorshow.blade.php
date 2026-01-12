@@ -58,7 +58,8 @@
                                     <option value="Permohonan Dispensasi Kawin">Permohonan Dispensasi Kawin</option>
                                     <option value="Permohonan Asal Usul Anak">Permohonan Asal Usul Anak</option>
                                     <option value="Kewarisan">Kewarisan</option>
-                                    <option value="Kewarisan">Harta Bersama</option>
+                                    <option value="Harta Bersama">Harta Bersama</option>
+                                    <option value="Permohonan Perwalian">Permohonan Perwalian</option>
                                 </select>
                             </div>
                             <div class="col">
