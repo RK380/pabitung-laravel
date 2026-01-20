@@ -77,6 +77,14 @@
             </div>
           </div><!-- End Service Item -->
 
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-red position-relative">
+              <i class="bi bi-person-plus icon"></i>
+              <h3>MAJELIS HAKIM/HAKIM TUNGGAL</h3>
+              <a href="/hakim2" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-broadcast icon"></i>
