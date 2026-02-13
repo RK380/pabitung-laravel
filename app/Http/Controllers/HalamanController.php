@@ -22,6 +22,10 @@ class HalamanController extends Controller
         return view('halaman.hakim', compact('data', 'nomor'));
     }
 
+    public function hakim2(Request $request){
+        return view('halaman.hakim2');
+    }
+
     public function panitera(){
         $nomor = $request->nomor ?? null;
         $data = Perkara::when($nomor, function($query, $nomor) {
