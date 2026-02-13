@@ -55,7 +55,7 @@ class DaftarHadirController extends Controller
             Storage::disk('public')->put('ttd/'.$imageName, base64_decode($image));
 
             // simpan path untuk database
-            $path = "storage/ttd/{$imageName}";
+            $path = "ttd/{$imageName}";
         }
 
         DaftarHadir::create([
