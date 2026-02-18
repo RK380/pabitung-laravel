@@ -149,15 +149,6 @@
     <div class="container footer-top">
           <div class="row gy-4">
             <div class="col-lg-4 col-md-4 footer-about">
-              <a href="index.html" class="d-flex align-items-center">
-                <span class="sitename">PPID</span>
-              </a>
-              <div class="footer-contact pt-3">
-                <p><strong>PPID Bakamla RI</strong></p>
-                <p><strong>Bakamla Gedung Perintis Kemerdekaan</strong></p>
-                <p class="mt-3"><strong>Phone:</strong> <span>+62 8212 5189 898</span></p>
-                <p><strong>Email:</strong> <span>contactcenter@bakamla.go.id</span></p>
-              </div>
               <div class="row">
                 <h4 class="title" style="margin-bottom: 5px;padding-top:1rem;">Total Pengunjung</h4>
                 <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-between visitor">
