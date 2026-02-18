@@ -142,17 +142,12 @@
   </main>
 
   <footer id="footer" class="footer">
-    <div class="container copyright text-center mt-4">
-      <p>© 2025 <span>Muhammad Rizky</span> <strong class="px-1 sitename">Pengadilan Agama Bitung</strong>| Mahkamah Agung Republik Indonesia</p>
-    </div>
-
-    <div class="container footer-top">
           <div class="row gy-4">
             <div class="col-lg-4 col-md-4 footer-about">
               <div class="row">
                 <h4 class="title" style="margin-bottom: 5px;padding-top:1rem;">Total Pengunjung</h4>
                 <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-between visitor">
-							<div class="p-2 visitor-online" style="color:white;width:100%;background: #0F3D6C;border-top-left-radius: 7px;">
+							<div class="p-2 visitor-online" style="color:white;width:100%;background: #056e4f;border-top-left-radius: 7px;">
 								<strong class="d-block">Hari Ini</strong>
 								{{ $today }}
 							</div>
@@ -179,7 +174,9 @@
             </div>
             </div>
           </div>
-        </div>
+    <div class="container copyright text-center mt-4">
+      <p>© 2025 <span>Muhammad Rizky</span> <strong class="px-1 sitename">Pengadilan Agama Bitung</strong>| Mahkamah Agung Republik Indonesia</p>
+    </div>
   </footer>
 
   <!-- Scroll Top -->
