@@ -58,7 +58,7 @@ class HalamanController extends Controller
         $total = Visitor::count();
 
         $nomor = $request->nomor ?? null;
-        $data = Perkara::when($nomor, function($query, $nomor) {
+        $datas = Perkara::when($nomor, function($query, $nomor) {
             $query->where('noperkara', $nomor);
         })->latest()->get();
 

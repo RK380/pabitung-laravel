@@ -59,7 +59,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $index => $row)
+                                    @foreach ($datas as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
                                                 <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
