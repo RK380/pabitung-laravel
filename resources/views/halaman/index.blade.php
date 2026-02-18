@@ -142,6 +142,7 @@
   </main>
 
   <footer id="footer" class="footer">
+    <div class="container copyright text-center mt-4">
           <div class="row gy-4">
             <div class="col-lg-4 col-md-4 footer-about">
               <div class="row">
@@ -174,7 +175,7 @@
             </div>
             </div>
           </div>
-    <div class="container copyright text-center mt-4">
+    
       <p>© 2025 <span>Muhammad Rizky</span> <strong class="px-1 sitename">Pengadilan Agama Bitung</strong>| Mahkamah Agung Republik Indonesia</p>
     </div>
   </footer>
