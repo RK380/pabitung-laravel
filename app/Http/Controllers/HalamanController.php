@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perkara;
 use Illuminate\Support\Facades\DB;
 use App\Models\Visitor;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
