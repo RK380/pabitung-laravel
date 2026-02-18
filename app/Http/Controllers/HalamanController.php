@@ -57,6 +57,11 @@ class HalamanController extends Controller
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
 
+        $nomor = $request->nomor ?? null;
+        $data = Perkara::when($nomor, function($query, $nomor) {
+            $query->where('noperkara', $nomor);
+        })->latest()->get();
+
         return view('halaman.hakim2', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total'));
     }
 
