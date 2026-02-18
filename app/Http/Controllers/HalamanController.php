@@ -62,7 +62,7 @@ class HalamanController extends Controller
             $query->where('noperkara', $nomor);
         })->latest()->get();
 
-        return view('halaman.hakim2', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total'));
+        return view('halaman.hakim2', compact('datas','nomor','today', 'thisWeek', 'thisMonth', 'thisYear', 'total'));
     }
 
     public function panitera(){
