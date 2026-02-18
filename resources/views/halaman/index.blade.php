@@ -145,6 +145,50 @@
     <div class="container copyright text-center mt-4">
       <p>© 2025 <span>Muhammad Rizky</span> <strong class="px-1 sitename">Pengadilan Agama Bitung</strong>| Mahkamah Agung Republik Indonesia</p>
     </div>
+
+    <div class="container footer-top">
+          <div class="row gy-4">
+            <div class="col-lg-4 col-md-4 footer-about">
+              <a href="index.html" class="d-flex align-items-center">
+                <span class="sitename">PPID</span>
+              </a>
+              <div class="footer-contact pt-3">
+                <p><strong>PPID Bakamla RI</strong></p>
+                <p><strong>Bakamla Gedung Perintis Kemerdekaan</strong></p>
+                <p class="mt-3"><strong>Phone:</strong> <span>+62 8212 5189 898</span></p>
+                <p><strong>Email:</strong> <span>contactcenter@bakamla.go.id</span></p>
+              </div>
+              <div class="row">
+                <h4 class="title" style="margin-bottom: 5px;padding-top:1rem;">Total Pengunjung</h4>
+                <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-between visitor">
+							<div class="p-2 visitor-online" style="color:white;width:100%;background: #0F3D6C;border-top-left-radius: 7px;">
+								<strong class="d-block">Hari Ini</strong>
+								{{ $today }}
+							</div>
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-week" style="color:black;width:100%;background-color: #a5a5a5;">
+								<strong class="d-block" style="color:black;">Minggu Ini</strong>
+								{{ $thisWeek }}
+							</div>
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-monthly" style="color:black;width:100%;background-color: #a5a5a5;border-top-right-radius: 7px;">
+								<strong class="d-block" style="color:black;">Bulan Ini</strong>
+								{{ $thisMonth }}
+							</div>
+							
+						</div>
+						<div class="d-flex flex-row mt-1 flex-wrap flex-md-nowrap visitor">
+							<div class="p-2 visitor-year" style="color:black;width:100%;background-color: #a5a5a5;border-bottom-left-radius: 7px;">
+								<strong class="d-block" style="color:black">Tahun Ini</strong>
+								{{ $thisYear }}
+							</div>
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-all" style="color:black;width:100%;background-color: #a5a5a5;border-bottom-right-radius: 7px;">
+								<strong class="d-block" style="color:black;">Total Kunjungan</strong>
+								{{ $total }}
+							</div>
+						</div>
+            </div>
+            </div>
+          </div>
+        </div>
   </footer>
 
   <!-- Scroll Top -->

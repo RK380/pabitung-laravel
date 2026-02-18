@@ -32,3 +32,5 @@ Route::delete('/operatorshow/{id}', [PerkaraController::class, 'destroy'])->name
 
 Route::get('/pendistribusian/download-pdf', [PerkaraController::class, 'downloadPdfPen'])->name('pendistribusian.download.pdf');
 Route::get('/daftarhadir/download-pdf', [DaftarHadirController::class, 'downloadPdfHad'])->name('daftarhadir.laporan.pdf');
+
+Route::get('/statistik-pengunjung', [VisitorController::class, 'index'])->name('visitors.index');
