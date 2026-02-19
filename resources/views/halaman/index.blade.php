@@ -148,31 +148,48 @@
               <div class="row">
                 <h4 class="title" style="margin-bottom: 5px;padding-top:1rem;">Total Pengunjung</h4>
                 <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-between visitor">
-							<div class="p-2 visitor-online" style="color:white;width:100%;background: #056e4f;border-top-left-radius: 7px;">
-								<strong class="d-block">Hari Ini</strong>
-								{{ $today }}
-							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-week" style="color:black;width:100%;background-color: #BD9E01;">
-								<strong class="d-block" style="color:black;">Minggu Ini</strong>
-								{{ $thisWeek }}
-							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-monthly" style="color:black;width:100%;background-color: #BD9E01;border-top-right-radius: 7px;">
-								<strong class="d-block" style="color:black;">Bulan Ini</strong>
-								{{ $thisMonth }}
-							</div>
-							
-						</div>
-						<div class="d-flex flex-row mt-1 flex-wrap flex-md-nowrap visitor">
-							<div class="p-2 visitor-year" style="color:black;width:100%;background-color: #BD9E01;border-bottom-left-radius: 7px;">
-								<strong class="d-block" style="color:black">Tahun Ini</strong>
-								{{ $thisYear }}
-							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-all" style="color:black;width:100%;background-color: #BD9E01;border-bottom-right-radius: 7px;">
-								<strong class="d-block" style="color:black;">Total Kunjungan</strong>
-								{{ $total }}
-							</div>
-						</div>
+                  <div class="p-2 visitor-online" style="color:white;width:100%;background: #056e4f;border-top-left-radius: 7px;">
+                    <strong class="d-block">Hari Ini</strong>
+                    {{ $today }}
+                  </div>
+                  <div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-week" style="color:black;width:100%;background-color: #BD9E01;">
+                    <strong class="d-block" style="color:black;">Minggu Ini</strong>
+                    {{ $thisWeek }}
+                  </div>
+                  <div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-monthly" style="color:black;width:100%;background-color: #BD9E01;border-top-right-radius: 7px;">
+                    <strong class="d-block" style="color:black;">Bulan Ini</strong>
+                    {{ $thisMonth }}
+                  </div>
+						    </div>
+                <div class="d-flex flex-row mt-1 flex-wrap flex-md-nowrap visitor">
+                  <div class="p-2 visitor-year" style="color:black;width:100%;background-color: #BD9E01;border-bottom-left-radius: 7px;">
+                    <strong class="d-block" style="color:black">Tahun Ini</strong>
+                    {{ $thisYear }}
+                  </div>
+                  <div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-all" style="color:black;width:100%;background-color: #BD9E01;border-bottom-right-radius: 7px;">
+                    <strong class="d-block" style="color:black;">Total Kunjungan</strong>
+                    {{ $total }}
+                  </div>
+						    </div>
+              </div>
             </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <h5>Mahkamah Agung Republik Indonesia</h5>
+              <p>Pelayanan Internal</p>
+              <p>Pengadilan Agama Bitung</p>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+              <h5>Kontak Kami</h5>
+              <div class="address">
+                <p>Jl. Stadion Dua Saudara Kel. Manembo-nembo Kec. Matuari Kota Bitung-Sulawesi Utara 95545</p>
+                <p>Phone: (0438) 35566</p>
+                <p><span>E-Mail:</span><a href="#"> pengadilanagamabitung@yahoo.co.id</a></p>
+                <ul class="social">
+                  <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                  <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                </ul>
+              </div>
             </div>
           </div>
     </div>
