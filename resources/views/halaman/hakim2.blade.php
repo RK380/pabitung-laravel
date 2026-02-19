@@ -62,7 +62,7 @@
                                     @foreach ($datas as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
-                                                <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
+                                                <a href={{ route('perkara.edit2', $row->id) }} class="btn btn-warning icon">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
                                                 @if (
