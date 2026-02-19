@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <form action="{{ route('perkara.update', $data->id) }}" method="POST" data-aos="fade-up"
+                        <form action="{{ route('perkara.update2', $data->id) }}" method="POST" data-aos="fade-up"
                             data-aos-delay="200">
                             @csrf
                             @method('PUT')

@@ -126,7 +126,7 @@
                                 </div>
 
                                 <!-- Form untuk Hakim Tunggal -->
-                                <div class="col-md-12 mt-3" id="formTunggal" style="display:none;">
+                                <div class="col-md-6 mt-3" id="formTunggal" style="display:none;">
                                     <label for="hakimTunggal">Pilih Hakim Tunggal <i style="color: red">*</i></label>
                                     <select class="form-select" id="hakimTunggal" name="hakimTunggal">
                                         <option value="1">Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)</option>

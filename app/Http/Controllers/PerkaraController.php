@@ -80,6 +80,13 @@ class PerkaraController extends Controller
         return view('halaman.hakimedit', compact('data'));
     }
 
+    public function edit2(string $id)
+    {
+        $data = Perkara::findorfail($id);
+
+        return view('halaman.hakimedit2', compact('data'));
+    }
+    
     public function editpanitera(string $id)
     {
         $data = Perkara::findorfail($id);
@@ -119,6 +126,40 @@ class PerkaraController extends Controller
 
         // Redirect dengan pesan sukses
         return redirect()->route('hakim')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function update2(Request $request, $id)
+    {
+        // dd($request->all());
+        // Validasi input
+        $request->validate([
+            'jenisHakim' => 'required',
+            'hakimTunggal' => 'required_if:jenisHakim,2|string|max:255',
+            'jadwal' => 'required|date',
+        ], [
+            'jenisHakim.required' => 'Penunjukkan Majelis Hakim wajib diisi.',
+            'hakimTunggal.required_if' => 'Nama Hakim Tunggal wajib diisi jika memilih Hakim Tunggal.',
+            'jadwal.required' => 'Jadwal sidang wajib diisi.',
+            'jadwal.date' => 'Format jadwal sidang tidak valid.',
+        ]);
+
+        // Ambil data berdasarkan ID
+        // $perkara = Perkara::findOrFail($id);
+        $perkara = Perkara::find($id);
+        if (! $perkara) {
+            return redirect()->back()->withErrors('Data tidak ditemukan');
+        }
+
+        // Update data
+        $perkara->update([
+            'jenisHakim' => $request->jenisHakim,
+            'majelisHakim' => $request->jenisHakim == 1 ? '1,2,3' : null,
+            'hakimTunggal' => $request->jenisHakim == 2 ? $request->hakimTunggal : null,
+            'jadwal' => date('Y-m-d', strtotime($request->jadwal)),
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('hakim2')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function updatepanitera(Request $request, $id)

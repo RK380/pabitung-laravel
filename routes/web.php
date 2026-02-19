@@ -23,7 +23,9 @@ Route::post('/daftarhadir/store', [DaftarHadirController::class, 'store'])->name
 Route::post('/operator/store', [PerkaraController::class, 'store'])->name('perkara.store');
 Route::get('/operatorshow/show', [PerkaraController::class, 'show'])->name('perkara.show');
 Route::get('/hakim/edit/{id}', [PerkaraController::class, 'edit'])->name('perkara.edit');
+Route::get('/hakim2/edit2/{id}', [PerkaraController::class, 'edit2'])->name('perkara.edit2');
 Route::put('/hakim/update/{id}', [PerkaraController::class, 'update'])->name('perkara.update');
+Route::put('/hakim2/update2/{id}', [PerkaraController::class, 'update2'])->name('perkara.update2');
 Route::get('/panitera/edit/{id}', [PerkaraController::class, 'editpanitera'])->name('perkara.editpanitera');
 Route::put('/panitera/update/{id}', [PerkaraController::class, 'updatepanitera'])->name('perkara.updatepanitera');
 // routes/web.php
