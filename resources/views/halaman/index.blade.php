@@ -152,22 +152,22 @@
 								<strong class="d-block">Hari Ini</strong>
 								{{ $today }}
 							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-week" style="color:black;width:100%;background-color: #a5a5a5;">
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-week" style="color:black;width:100%;background-color: #BD9E01;">
 								<strong class="d-block" style="color:black;">Minggu Ini</strong>
 								{{ $thisWeek }}
 							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-monthly" style="color:black;width:100%;background-color: #a5a5a5;border-top-right-radius: 7px;">
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-monthly" style="color:black;width:100%;background-color: #BD9E01;border-top-right-radius: 7px;">
 								<strong class="d-block" style="color:black;">Bulan Ini</strong>
 								{{ $thisMonth }}
 							</div>
 							
 						</div>
 						<div class="d-flex flex-row mt-1 flex-wrap flex-md-nowrap visitor">
-							<div class="p-2 visitor-year" style="color:black;width:100%;background-color: #a5a5a5;border-bottom-left-radius: 7px;">
+							<div class="p-2 visitor-year" style="color:black;width:100%;background-color: #BD9E01;border-bottom-left-radius: 7px;">
 								<strong class="d-block" style="color:black">Tahun Ini</strong>
 								{{ $thisYear }}
 							</div>
-							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-all" style="color:black;width:100%;background-color: #a5a5a5;border-bottom-right-radius: 7px;">
+							<div class="p-2 ms-0 ms-md-1 mt-1 mt-md-0 visitor-all" style="color:black;width:100%;background-color: #BD9E01;border-bottom-right-radius: 7px;">
 								<strong class="d-block" style="color:black;">Total Kunjungan</strong>
 								{{ $total }}
 							</div>
