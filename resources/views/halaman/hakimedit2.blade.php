@@ -7,8 +7,8 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Ketua Majelis/Ketua Pengadilan</h2>
-                <p>Ketua Majelis/Ketua Pengadilan Pengadilan Agama Bitung</p>
+                <h2>Majelis Hakim/Hakim Tunggal</h2>
+                <p>Majelis Hakim/Hakim Tunggal Pengadilan Agama Bitung</p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -135,12 +135,12 @@
                                     </select>
                                 </div>
 
-                                <!-- <div class="col-md-6 ">
+                                <div class="col-md-6 ">
                                     <label for="jadwal">Penetapan Tanggal Sidang <i style="color: red">*</i></label>
                                     <input type="date" class="form-control"
                                     value="{{ old('jadwal', $data->jadwal) }}" name="jadwal" required="">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Penetapan Tanggal Sidang Wajib Di Isi</p>
-                                </div> -->
+                                </div>
 
                                 <div class="col-12 text-center">
                                     <a href="/hakim" type="button" class="btn btn-secondary"><i
