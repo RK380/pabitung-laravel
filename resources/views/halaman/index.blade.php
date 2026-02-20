@@ -173,12 +173,12 @@
 						    </div>
               </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+            <div class="col-lg-3 footer-about">
               <h5>Mahkamah Agung Republik Indonesia</h5>
               <p>Pelayanan Internal</p>
               <p>Pengadilan Agama Bitung</p>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="col-lg-4 footer-about">
               <h5>Kontak Kami</h5>
               <div class="address">
                 <p>Jl. Stadion Dua Saudara Kel. Manembo-nembo Kec. Matuari Kota Bitung-Sulawesi Utara 95545</p>
