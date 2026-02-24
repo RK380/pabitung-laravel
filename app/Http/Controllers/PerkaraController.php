@@ -101,12 +101,12 @@ class PerkaraController extends Controller
         $request->validate([
             'jenisHakim' => 'required',
             'hakimTunggal' => 'required_if:jenisHakim,2|string|max:255',
-            'jadwal' => 'required|date',
+            //'jadwal' => 'required|date',
         ], [
             'jenisHakim.required' => 'Penunjukkan Majelis Hakim wajib diisi.',
             'hakimTunggal.required_if' => 'Nama Hakim Tunggal wajib diisi jika memilih Hakim Tunggal.',
-            'jadwal.required' => 'Jadwal sidang wajib diisi.',
-            'jadwal.date' => 'Format jadwal sidang tidak valid.',
+            //'jadwal.required' => 'Jadwal sidang wajib diisi.',
+            //'jadwal.date' => 'Format jadwal sidang tidak valid.',
         ]);
 
         // Ambil data berdasarkan ID
@@ -121,7 +121,7 @@ class PerkaraController extends Controller
             'jenisHakim' => $request->jenisHakim,
             'majelisHakim' => $request->jenisHakim == 1 ? '1,2,3' : null,
             'hakimTunggal' => $request->jenisHakim == 2 ? $request->hakimTunggal : null,
-            'jadwal' => date('Y-m-d', strtotime($request->jadwal)),
+            //'jadwal' => date('Y-m-d', strtotime($request->jadwal)),
         ]);
 
         // Redirect dengan pesan sukses
