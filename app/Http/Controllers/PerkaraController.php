@@ -217,7 +217,10 @@ class PerkaraController extends Controller
 
         $tahun = $request->tahun;
 
-        $judul = "LAPORAN MONITORING DATA PERKARA PENGADILAN AGAMA BITUNG BULAN {$namaBulan} {$tahun}";
+        $judul = mb_strtoupper(
+            "Laporan Monitoring Data Perkara Pengadilan Agama Bitung Bulan {$namaBulan} {$tahun}",
+            'UTF-8'
+        );
         $total = $data->count();
 
         $namaFile = 'laporan-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
