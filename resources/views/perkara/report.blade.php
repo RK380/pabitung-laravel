@@ -57,7 +57,7 @@
         <table class="kop-table">
             <tr>
                 <td style="width: 100px;">
-                    <img src="{{ public_path('assets/img/pa.png') }}" class="logo">
+                    <img src="{{ base_path('public/assets/img/pa.png') }}" class="logo">
                 </td>
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>

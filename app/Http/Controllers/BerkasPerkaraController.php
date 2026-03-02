@@ -29,48 +29,48 @@ class BerkasPerkaraController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'tanggal' => 'required|date',
-        'nomor'   => 'required|string',
-        'panitera'=> 'required|string',
-        'tanda_tangan' => 'nullable|string'
-    ]);
+    {
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nomor'   => 'required|string',
+            'panitera'=> 'required|string',
+            'tanda_tangan' => 'nullable|string'
+        ]);
 
-    $path = null;
+        $path = null;
 
-    if ($request->tanda_tangan) {
-        // Ambil data base64
-        $image = $request->tanda_tangan;
-        $image = str_replace('data:image/png;base64,', '', $image);
-        $image = str_replace(' ', '+', $image);
+        if ($request->tanda_tangan) {
+            // Ambil data base64
+            $image = $request->tanda_tangan;
+            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
 
-        $imageName = 'ttd_' . time() . '.png';
+            $imageName = 'ttd_' . time() . '.png';
 
-        // SIMPAN ke public/ttd (bukan storage!)
-        $publicPath = public_path('ttd');
+            // SIMPAN ke public/ttd (bukan storage!)
+            $publicPath = public_path('ttd');
 
-        if (!file_exists($publicPath)) {
-            mkdir($publicPath, 0775, true); // buat folder jika belum ada
+            if (!file_exists($publicPath)) {
+                mkdir($publicPath, 0775, true); // buat folder jika belum ada
+            }
+
+            // Simpan file
+            file_put_contents($publicPath . '/' . $imageName, base64_decode($image));
+
+            // path untuk database
+            $path = 'ttd/' . $imageName;
         }
 
-        // Simpan file
-        file_put_contents($publicPath . '/' . $imageName, base64_decode($image));
+        // Simpan data
+        BerkasPerkara::create([
+            'tanggal' => $request->tanggal,
+            'nomor'   => $request->nomor,
+            'panitera'=> $request->panitera,
+            'tanda_tangan' => $path,
+        ]);
 
-        // path untuk database
-        $path = 'ttd/' . $imageName;
+        return redirect()->route('berkas.index')->with('success', 'Data berhasil disimpan.');
     }
-
-    // Simpan data
-    BerkasPerkara::create([
-        'tanggal' => $request->tanggal,
-        'nomor'   => $request->nomor,
-        'panitera'=> $request->panitera,
-        'tanda_tangan' => $path,
-    ]);
-
-    return redirect()->route('berkas.index')->with('success', 'Data berhasil disimpan.');
-}
 
 
     /**

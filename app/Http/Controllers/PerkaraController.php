@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class PerkaraController extends Controller
 {
@@ -65,6 +66,7 @@ class PerkaraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
     public function show()
     {
         $data = Perkara::all();
@@ -191,76 +193,38 @@ class PerkaraController extends Controller
 
     public function downloadPdf(Request $request)
     {
-        $query = Perkara::query();
-
-        // Filter tahunan
-        if ($request->filled('tahun')) {
-            $query->whereYear('jadwal', $request->tahun);
-        }
-
-        // Filter bulanan
-        if ($request->filled('bulan')) {
-            $query->whereMonth('jadwal', $request->bulan);
-        }
-
-        // Filter jenis perkara
-        if ($request->filled('jenis')) {
-            $query->where('jenis', $request->jenis);
-        }
-
-        // Filter kuasa hukum
-        if ($request->filled('kuasa_hukum')) {
-            $query->where('kuasa_hukum', 'LIKE', "%{$request->kuasa_hukum}%");
-        }
-
-        // Filter hakim
-        if ($request->filled('hakimTunggal')) {
-            $query->where('hakimTunggal', $request->hakimTunggal);
-        }
-
-        if ($request->filled('jenisHakim')) {
-            $query->where('jenisHakim', $request->jenisHakim);
-        }
-
-        // Filter panitera
-        if ($request->filled('paniteraPengganti')) {
-            $query->where('paniteraPengganti', $request->paniteraPengganti);
-        }
-
-        // Filter jurusita
-        if ($request->filled('juruSita')) {
-            $query->where('juruSita', $request->juruSita);
-        }
-
-        $data = $query->get([
-            'jenis',
-            'noperkara',
-            'pemohon',
-            'pemohoni',
-            'pemohoniii',
-            'pemohoniv',
-            'tergugat',
-            'kuasa_hukum',
-            'lokasi_pemohon',
-            'lokasi_tergugat',
-            'email_pemohon',
-            'email_pemohonii',
-            'email_pemohoniii',
-            'email_pemohoniv',
-            'email_tergugat',
-            'keterangan',
-            'tanggal_pendaftaran',
-            'jenisHakim',
-            'hakimTunggal',
-            'jadwal',
-            'paniteraPengganti',
-            'juruSita',
+        $request->validate([
+        'bulan' => 'required|numeric|min:1|max:12',
+        'tahun' => 'required|numeric'
         ]);
 
-        $pdf = Pdf::loadView('perkara.report', compact('data'))
+        $query = Perkara::query();
+
+        // Filter berdasarkan tanggal_pendaftaran (range bulanan)
+        $start = Carbon::create($request->tahun, $request->bulan, 1)->startOfMonth();
+        $end   = Carbon::create($request->tahun, $request->bulan, 1)->endOfMonth();
+
+        $query->whereBetween('tanggal_pendaftaran', [$start, $end]);
+
+        $data = $query->get();
+
+        // Nama bulan Indonesia
+        $namaBulan = Carbon::create()
+            ->month($request->bulan)
+            ->locale('id')
+            ->translatedFormat('F');
+
+        $tahun = $request->tahun;
+
+        $judul = "Laporan Perkara Bulan {$namaBulan} {$tahun}";
+        $total = $data->count();
+
+        $namaFile = 'laporan-perkara-' . strtolower($namaBulan) . '-' . $tahun . '.pdf';
+
+        $pdf = Pdf::loadView('perkara.report', compact('data', 'judul', 'total'))
             ->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan-perkara.pdf');
+        return $pdf->download($namaFile);
     }
 
     public function downloadPdfPen(Request $request)
