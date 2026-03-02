@@ -18,8 +18,8 @@
         top: -120px;
         left: 0;
         right: 0;
-        height: 100px;
-        border-bottom: 2px solid #000;
+        height: 110px;
+        border-bottom: 4px solid #000;
     }
 
     .kop-table { width: 100%; }
