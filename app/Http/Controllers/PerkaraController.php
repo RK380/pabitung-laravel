@@ -217,10 +217,10 @@ class PerkaraController extends Controller
 
         $tahun = $request->tahun;
 
-        $judul = "LAPORAN MONITORING DATA PERKARA PENGADILAN AGAMA BITUNG, BULAN {$namaBulan} {$tahun}";
+        $judul = "LAPORAN MONITORING DATA PERKARA PENGADILAN AGAMA BITUNG BULAN {$namaBulan} {$tahun}";
         $total = $data->count();
 
-        $namaFile = 'laporan-perkara-' . strtolower($namaBulan) . '-' . $tahun . '.pdf';
+        $namaFile = 'laporan-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
 
         $pdf = Pdf::loadView('perkara.report', compact('data', 'judul', 'total'))
             ->setPaper('a4', 'landscape')
