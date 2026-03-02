@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Laporan Data Perkara</title>
+    <title>{{ $judul }}</title>
     <style>
         body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
 
@@ -57,7 +57,11 @@
         <table class="kop-table">
             <tr>
                 <td style="width: 100px;">
-                    <img src="{{ base_path('public/assets/img/pa.png') }}" class="logo">
+                    @php
+                    $logoPath = public_path('assets/img/pa.png');
+                    @endphp
+                    <!-- <img src="{{ base_path('public/assets/img/pa.png') }}" class="logo"> -->
+                    <img src="{{ $logoPath }}" class="logo">
                 </td>
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
@@ -71,7 +75,7 @@
     </div>
 
     <!-- JUDUL -->
-    <h2>Laporan Monitoring Data Perkara Pengadilan Agama Bitung</h2>
+    <h2>{{ $judul }}</h2>
 
     <table>
         <thead>
@@ -90,7 +94,7 @@
                 <th>Keterangan</th>
                 <th>Jenis Hakim</th>
                 <th>Hakim Tunggal</th>
-                <th>Jadwal</th>
+                <th>Jadwal Sidang</th>
                 <th>Panitera</th>
                 <th>Juru Sita</th>
             </tr>
@@ -119,6 +123,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="footer">
+        Total Data: {{ $total }} Perkara
+    </div>
 
     @php
     $printedAt = "Dicetak pada: " . date("d-m-Y H:i") . " | Pengadilan Agama Bitung";
