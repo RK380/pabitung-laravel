@@ -19,7 +19,7 @@
         left: 0;
         right: 0;
         height: 100px;
-        border-bottom: 3px solid #000;
+        border-bottom: 4px solid #000;
     }
 
     .kop-table { width: 100%; }
