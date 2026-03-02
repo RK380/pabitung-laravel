@@ -209,6 +209,8 @@ class PerkaraController extends Controller
 
         $query->whereBetween('tanggal_pendaftaran', [$start, $end]);
 
+        $data = $query->get();
+
         $namaBulan = Carbon::createFromDate($tahun, $bulan, 1)
         ->locale('id')
         ->translatedFormat('F');
