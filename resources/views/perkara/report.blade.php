@@ -36,7 +36,7 @@
     }
 
     th, td {
-        border: 1px solid #000;
+        /* border: 1px solid #000; */
         padding: 4px;
         vertical-align: top;
         word-break: break-word;

@@ -223,7 +223,8 @@ class PerkaraController extends Controller
         $namaFile = 'laporan-perkara-' . strtolower($namaBulan) . '-' . $tahun . '.pdf';
 
         $pdf = Pdf::loadView('perkara.report', compact('data', 'judul', 'total'))
-            ->setPaper('a4', 'landscape');
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['isPhpEnabled' => true]);
 
         return $pdf->download($namaFile);
     }
