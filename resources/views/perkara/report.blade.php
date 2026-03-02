@@ -163,7 +163,11 @@
     </div>
 
     @php
-    $printedAt = "Dicetak pada: " . date("d-m-Y H:i") . " | Pengadilan Agama Bitung";
+    $printedAt = "Dicetak pada: " . 
+        \Carbon\Carbon::now('Asia/Makassar')
+        ->locale('id')
+        ->translatedFormat('d F Y H:i') . 
+        " WITA | Pengadilan Agama Bitung";
     @endphp
 
     <script type="text/php">
