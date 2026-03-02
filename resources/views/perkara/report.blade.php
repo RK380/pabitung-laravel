@@ -112,7 +112,7 @@
             @foreach($data as $i => $row)
             <tr>
                 <td>{{ $i+1 }}</td>
-                <td>{{ $row->tanggal_pendaftaran }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('d-m-Y') }}</td>
                 <td>{{ $row->noperkara }}</td>
                 <td>{{ $row->jenis }}</td>
                 <td>{{ $row->pemohon }}</td>
@@ -121,7 +121,7 @@
                 <td>{{ $row->lokasi_pemohon }}</td>
                 <td>{{ $row->lokasi_tergugat }}</td>
                 <td>{{ $row->email_pemohon }}</td>
-                <td>{{ $row->email_tergugat }}</td>
+                <td>{{ $row->email_tergugat ?? '-' }}</td>
                 <td>{{ $row->keterangan }}</td>
                 <td>{{ $row->jenis_hakim_text }}</td>
                 <td>{{ $row->hakim_tunggal_name }}</td>
@@ -141,21 +141,16 @@
     @endphp
 
     <script type="text/php">
-        if ( isset($pdf) ) {
-            $pdf->page_script('
-                $font = $fontMetrics->get_font("DejaVu Sans", "normal");
-                $size = 10;
+    if (isset($pdf)) {
+        $font = $fontMetrics->get_font("DejaVu Sans", "normal");
+        $size = 9;
 
-                // Tanggal cetak & instansi (kiri bawah)
-                $printedText = "'.$printedAt.'";
-                $y = 580;   // karena landscape, posisinya lebih rendah
-                $pdf->text(50, $y, $printedText, $font, $size);
+        $y = 570;
 
-                // Nomor halaman (kanan bawah)
-                $pageText = "Halaman " . $PAGE_NUM . " dari " . $PAGE_COUNT;
-                $pdf->text(750, $y, $pageText, $font, $size);
-            ');
-        }
+        $pdf->page_text(40, $y, "{{ $printedAt }}", $font, $size);
+
+        $pdf->page_text(760, $y, "Halaman {PAGE_NUM} dari {PAGE_COUNT}", $font, $size);
+    }
     </script>
 </body>
 </html>
