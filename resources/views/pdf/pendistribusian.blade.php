@@ -2,23 +2,42 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Laporan Pendistribusian Berkas</title>
+    <title>{{ $judul }}</title>
     <style>
-        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
+        @page {
+            margin: 140px 30px 80px 30px;
+        }
+
+        body { 
+            font-family: DejaVu Sans, sans-serif; 
+            font-size: 11px; 
+        }
+
+        header {
+            position: fixed;
+            top: -120px;
+            left: 0;
+            right: 0;
+            height: 110px;
+            border-bottom: 4px solid #000;
+        }
+
+        .kop-table { width: 100%; }
+        .kop-table td { vertical-align: middle; }
+        .logo { width: 80px; }
+
+        .instansi { text-align: center; }
+        .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            table-layout: fixed;
-            word-wrap: break-word;
-            page-break-inside: auto;
-            font-size: 10px;
+            font-size: 9px;
         }
 
         th, td {
+            /* border: 1px solid #000; */
             padding: 4px;
-            text-align: left;
             vertical-align: top;
             word-break: break-word;
         }
@@ -27,48 +46,68 @@
             background: #f2f2f2;
         }
 
-        h2 { text-align: center; margin-top: 5px; }
-
-        .kop { border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
-        .kop-table { width: 100%; }
-        .kop-table td { vertical-align: middle; }
-        .logo { width: 80px; }
-        .instansi { text-align: center; }
-        .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
-
-        /* Lebar kolom tertentu */
-        th:nth-child(2), td:nth-child(2) { width: 80px; }   /* Tanggal */
-        th:nth-child(6), td:nth-child(6) { width: 120px; }  /* Nomor */
-        th:nth-child(7), td:nth-child(7) { width: 120px; }  /* Panitera */
-        th:nth-child(8), td:nth-child(8) { width: 120px; }  /* Tanda Tangan */
-
-
-        /* Agar tabel lanjut ke halaman baru */
         thead { display: table-header-group; }
-        tfoot { display: table-row-group; }
         tr { page-break-inside: avoid; }
+
+        /* WATERMARK */
+        .watermark {
+            position: fixed;
+            top: 35%;
+            left: 10%;
+            width: 80%;
+            text-align: center;
+            opacity: 0.08;
+            font-size: 80px;
+            transform: rotate(-30deg);
+            z-index: -1000;
+            color: #000;
+        }
     </style>
 </head>
 <body>
     <!-- KOP SURAT -->
-    <div class="kop">
+    <div class="watermark">
+        DOKUMEN RESMI
+    </div>
+
+    <header>
         <table class="kop-table">
             <tr>
-                <td style="width: 100px;">
-                    <img src="{{ public_path('assets/img/pa.png') }}" class="logo">
+                <td style="width:100px;">
+                    @php
+                        $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/pa.png';
+                        $base64 = null;
+
+                        if (file_exists($path)) {
+                            $type = pathinfo($path, PATHINFO_EXTENSION);
+                            $dataImg = file_get_contents($path);
+                            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($dataImg);
+                        }
+                    @endphp
+
+                    @if($base64)
+                        <img src="{{ $base64 }}" class="logo">
+                    @endif
                 </td>
+
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
                     <h4>PENGADILAN AGAMA BITUNG</h4>
-                    <p> Jl. Stadion 2 Saudara No.Kel, Manembo-nembo Tengah, Kec. Matuari, Kota Bitung, Sulawesi Utara</p>
+                    <p>Jl. Stadion 2 Saudara No.Kel, Manembo-nembo Tengah</p>
+                    <p>Kota Bitung, Sulawesi Utara</p>
                     <p>Telp: (0438) 35566</p>
                 </td>
-                <td style="width: 100px;"></td>
+
+                <td style="width:100px;"></td>
             </tr>
         </table>
-    </div>
+    </header>
 
-    <h2 style="text-align:center;">Laporan Pendistribusian Berkas Perkara Pengadilan Agama Bitung</h2>
+    <!-- JUDUL -->
+    <h2 style="text-align:center">
+        {{ $judul }}
+    </h2>
+    
     <table>
         <thead>
             <tr>
@@ -83,12 +122,31 @@
             @foreach ($data as $index => $item)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->tanggal)
+                    ->locale('id')
+                    ->translatedFormat('d F Y') }}</td>
                 <td>{{ $item->nomor }}</td>
                 <td>{{ $item->panitera_pengganti_name }}</td>
                 <td>
                     @if($item->tanda_tangan)
-                        <img style="width:100px;height:50px;" src="{{ $item->tanda_tangan }}" class="signature">
+
+                        @php
+                            $pathTtd = public_path($item->tanda_tangan);
+                            $base64Ttd = null;
+
+                            if (file_exists($pathTtd)) {
+                                $type = pathinfo($pathTtd, PATHINFO_EXTENSION);
+                                $dataImg = file_get_contents($pathTtd);
+                                $base64Ttd = 'data:image/' . $type . ';base64,' . base64_encode($dataImg);
+                            }
+                        @endphp
+
+                        @if($base64Ttd)
+                            <img src="{{ $base64Ttd }}" style="width:100px;height:auto;">
+                        @else
+                            File tidak ditemukan
+                        @endif
+
                     @else
                         Tidak ada
                     @endif
@@ -97,5 +155,45 @@
             @endforeach
         </tbody>
     </table>
+    <div class="footer">
+        Total Data: {{ $total }} Berkas Perkara
+    </div>
+
+    @php
+    $printedAt = "Dicetak pada: " . 
+        \Carbon\Carbon::now('Asia/Makassar')
+        ->locale('id')
+        ->translatedFormat('d F Y H:i') . 
+        " WITA | Pengadilan Agama Bitung";
+    @endphp
+
+    <script type="text/php">
+    if (isset($pdf)) {
+
+        $font = $fontMetrics->get_font("DejaVu Sans", "normal");
+        $size = 9;
+
+        // Posisi bawah (landscape A4)
+        $y = 570;
+
+        // Kiri bawah (tanggal cetak)
+        $pdf->page_text(
+            40,
+            $y,
+            "Dicetak pada: {{ date('d-m-Y H:i') }} | Pengadilan Agama Bitung",
+            $font,
+            $size
+        );
+
+        // Kanan bawah (nomor halaman)
+        $pdf->page_text(
+            760,
+            $y,
+            "Halaman {PAGE_NUM} dari {PAGE_COUNT}",
+            $font,
+            $size
+        );
+    }
+    </script>
 </body>
 </html>

@@ -236,35 +236,43 @@ class PerkaraController extends Controller
     {
         // Ambil semua data pendistribusian
         // $data = BerkasPerkara::all();
-        $query = BerkasPerkara::query();
-
-        // Filter tahunan
-        if ($request->filled('tahun')) {
-            $query->whereYear('tanggal', $request->tahun);
-        }
-
-        // Filter bulanan
-        if ($request->filled('bulan')) {
-            $query->whereMonth('tanggal', $request->bulan);
-        }
-
-        // Filter panitera
-        if ($request->filled('panitera')) {
-            $query->where('panitera', $request->panitera);
-        }
-
-        $data = $query->get([
-            'tanggal',
-            'nomor',
-            'panitera',
-            'tanda_tangan',
+        $request->validate([
+        'bulan' => 'required|numeric|min:1|max:12',
+        'tahun' => 'required|numeric'
         ]);
 
-        // Generate PDF
-        $pdf = Pdf::loadView('pdf.pendistribusian', compact('data'))
-            ->setPaper('A4', 'portrait');
+        $query = BerkasPerkara::query();
 
-        return $pdf->download('pendistribusian-berkas.pdf');
+        // Filter berdasarkan tanggal
+        $bulan = (int) $request->bulan;
+        $tahun = (int) $request->tahun;
+
+        $start = Carbon::createFromDate($tahun, $bulan, 1)->startOfMonth();
+        $end   = Carbon::createFromDate($tahun, $bulan, 1)->endOfMonth();
+
+        $query->whereBetween('tanggal', [$start, $end]);
+
+        $data = $query->get();
+
+        $namaBulan = Carbon::createFromDate($tahun, $bulan, 1)
+        ->locale('id')
+        ->translatedFormat('F');
+
+        $tahun = $request->tahun;
+
+        $judul = mb_strtoupper(
+            "Laporan Pendistribusian Berkas Perkara Pengadilan Agama Bitung Bulan {$namaBulan} {$tahun}",
+            'UTF-8'
+        );
+        $total = $data->count();
+
+        $namaFile = 'laporan-pendistribusian-berkas-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
+
+        $pdf = Pdf::loadView('pdf.pendistribusian', compact('data', 'judul', 'total'))
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['isPhpEnabled' => true]);
+
+        return $pdf->download($namaFile);
     }
 
     public function destroy(string $id)

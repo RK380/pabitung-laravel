@@ -4,71 +4,71 @@
     <meta charset="utf-8">
     <title>{{ $judul }}</title>
     <style>
-    @page {
-        margin: 140px 30px 80px 30px;
-    }
+        @page {
+            margin: 140px 30px 80px 30px;
+        }
 
-    body { 
-        font-family: DejaVu Sans, sans-serif; 
-        font-size: 11px; 
-    }
+        body { 
+            font-family: DejaVu Sans, sans-serif; 
+            font-size: 11px; 
+        }
 
-    header {
-        position: fixed;
-        top: -120px;
-        left: 0;
-        right: 0;
-        height: 110px;
-        border-bottom: 4px solid #000;
-    }
+        header {
+            position: fixed;
+            top: -120px;
+            left: 0;
+            right: 0;
+            height: 110px;
+            border-bottom: 4px solid #000;
+        }
 
-    .kop-table { width: 100%; }
-    .kop-table td { vertical-align: middle; }
-    .logo { width: 80px; }
+        .kop-table { width: 100%; }
+        .kop-table td { vertical-align: middle; }
+        .logo { width: 80px; }
 
-    .instansi { text-align: center; }
-    .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
+        .instansi { text-align: center; }
+        .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 9px;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
 
-    th, td {
-        /* border: 1px solid #000; */
-        padding: 4px;
-        vertical-align: top;
-        word-break: break-word;
-    }
+        th, td {
+            /* border: 1px solid #000; */
+            padding: 4px;
+            vertical-align: top;
+            word-break: break-word;
+        }
 
-    th {
-        background: #f2f2f2;
-    }
+        th {
+            background: #f2f2f2;
+        }
 
-    thead { display: table-header-group; }
-    tr { page-break-inside: avoid; }
+        thead { display: table-header-group; }
+        tr { page-break-inside: avoid; }
 
-    /* WATERMARK */
-    .watermark {
-        position: fixed;
-        top: 35%;
-        left: 10%;
-        width: 80%;
-        text-align: center;
-        opacity: 0.08;
-        font-size: 80px;
-        transform: rotate(-30deg);
-        z-index: -1000;
-        color: #000;
-    }
-</style>
+        /* WATERMARK */
+        .watermark {
+            position: fixed;
+            top: 35%;
+            left: 10%;
+            width: 80%;
+            text-align: center;
+            opacity: 0.08;
+            font-size: 80px;
+            transform: rotate(-30deg);
+            z-index: -1000;
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <!-- KOP SURAT -->
     <div class="watermark">
     DOKUMEN RESMI
-</div>
+    </div>
 
     <header>
         <table class="kop-table">
@@ -104,7 +104,7 @@
     </header>
 
     <!-- JUDUL -->
-    <h2 style="text-align:center; margin-bottom:15px;">
+    <h2 style="text-align:center">
         {{ $judul }}
     </h2>
 
