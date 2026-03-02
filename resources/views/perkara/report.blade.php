@@ -4,87 +4,109 @@
     <meta charset="utf-8">
     <title>{{ $judul }}</title>
     <style>
-        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
+    @page {
+        margin: 140px 30px 80px 30px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            table-layout: fixed;
-            word-wrap: break-word;
-            page-break-inside: auto;
-            font-size: 10px;
-        }
+    body { 
+        font-family: DejaVu Sans, sans-serif; 
+        font-size: 11px; 
+    }
 
-        th, td {
-            padding: 4px;
-            text-align: left;
-            vertical-align: top;
-            word-break: break-word;
-        }
+    header {
+        position: fixed;
+        top: -120px;
+        left: 0;
+        right: 0;
+        height: 100px;
+        border-bottom: 3px solid #000;
+    }
 
-        th {
-            background: #f2f2f2;
-        }
+    .kop-table { width: 100%; }
+    .kop-table td { vertical-align: middle; }
+    .logo { width: 80px; }
 
-        h2 { text-align: center; margin-top: 5px; }
+    .instansi { text-align: center; }
+    .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
 
-        .kop { border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
-        .kop-table { width: 100%; }
-        .kop-table td { vertical-align: middle; }
-        .logo { width: 80px; }
-        .instansi { text-align: center; }
-        .instansi h3, .instansi h4, .instansi p { margin: 2px 0; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9px;
+    }
 
-        /* Lebar kolom tertentu */
-        th:nth-child(2), td:nth-child(2) { width: 80px; }   /* No. Perkara */
-        th:nth-child(6), td:nth-child(6) { width: 120px; }  /* Kuasa Hukum */
-        th:nth-child(7), td:nth-child(7) { width: 120px; }  /* Lokasi Pemohon */
-        th:nth-child(8), td:nth-child(8) { width: 120px; }  /* Lokasi Tergugat */
-        th:nth-child(9), td:nth-child(9) { width: 120px; }  /* Email Pemohon */
-        th:nth-child(10), td:nth-child(10) { width: 120px; }/* Email Tergugat */
-        th:nth-child(11), td:nth-child(11) { width: 150px; }/* Keterangan */
+    th, td {
+        border: 1px solid #000;
+        padding: 4px;
+        vertical-align: top;
+        word-break: break-word;
+    }
 
-        /* Agar tabel lanjut ke halaman baru */
-        thead { display: table-header-group; }
-        tfoot { display: table-row-group; }
-        tr { page-break-inside: avoid; }
-    </style>
+    th {
+        background: #f2f2f2;
+    }
+
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+
+    /* WATERMARK */
+    .watermark {
+        position: fixed;
+        top: 35%;
+        left: 10%;
+        width: 80%;
+        text-align: center;
+        opacity: 0.08;
+        font-size: 80px;
+        transform: rotate(-30deg);
+        z-index: -1000;
+        color: #000;
+    }
+</style>
 </head>
 <body>
     <!-- KOP SURAT -->
-    <div class="kop">
+    <div class="watermark">
+    DOKUMEN RESMI
+</div>
+
+    <header>
         <table class="kop-table">
             <tr>
-                <td style="width: 100px;">
+                <td style="width:100px;">
                     @php
-                    $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/pa.png';
-                    $base64 = null;
+                        $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/pa.png';
+                        $base64 = null;
 
-                    if (file_exists($path)) {
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $imageData = file_get_contents($path);
-                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imageData);
-                    }
+                        if (file_exists($path)) {
+                            $type = pathinfo($path, PATHINFO_EXTENSION);
+                            $dataImg = file_get_contents($path);
+                            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($dataImg);
+                        }
                     @endphp
 
                     @if($base64)
                         <img src="{{ $base64 }}" class="logo">
                     @endif
                 </td>
+
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
                     <h4>PENGADILAN AGAMA BITUNG</h4>
-                    <p> Jl. Stadion 2 Saudara No.Kel, Manembo-nembo Tengah, Kec. Matuari, Kota Bitung, Sulawesi Utara</p>
+                    <p>Jl. Stadion 2 Saudara No.Kel, Manembo-nembo Tengah</p>
+                    <p>Kota Bitung, Sulawesi Utara</p>
                     <p>Telp: (0438) 35566</p>
                 </td>
-                <td style="width: 100px;"></td>
+
+                <td style="width:100px;"></td>
             </tr>
         </table>
-    </div>
+    </header>
 
     <!-- JUDUL -->
-    <h2>{{ $judul }}</h2>
+    <h2 style="text-align:center; margin-bottom:15px;">
+        {{ $judul }}
+    </h2>
 
     <table>
         <thead>
@@ -112,7 +134,9 @@
             @foreach($data as $i => $row)
             <tr>
                 <td>{{ $i+1 }}</td>
-                <td>{{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('d-m-Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)
+                    ->locale('id')
+                    ->translatedFormat('d F Y') }}</td>
                 <td>{{ $row->noperkara }}</td>
                 <td>{{ $row->jenis }}</td>
                 <td>{{ $row->pemohon }}</td>
@@ -125,7 +149,9 @@
                 <td>{{ $row->keterangan }}</td>
                 <td>{{ $row->jenis_hakim_text }}</td>
                 <td>{{ $row->hakim_tunggal_name }}</td>
-                <td>{{ $row->jadwal }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->jadwal)
+                    ->locale('id')
+                    ->translatedFormat('d F Y') }}</td>
                 <td>{{ $row->panitera_pengganti_name }}</td>
                 <td>{{ $row->juru_sita_name }}</td>
             </tr>
@@ -142,14 +168,30 @@
 
     <script type="text/php">
     if (isset($pdf)) {
+
         $font = $fontMetrics->get_font("DejaVu Sans", "normal");
         $size = 9;
 
+        // Posisi bawah (landscape A4)
         $y = 570;
 
-        $pdf->page_text(40, $y, "{{ $printedAt }}", $font, $size);
+        // Kiri bawah (tanggal cetak)
+        $pdf->page_text(
+            40,
+            $y,
+            "Dicetak pada: {{ date('d-m-Y H:i') }} | Pengadilan Agama Bitung",
+            $font,
+            $size
+        );
 
-        $pdf->page_text(760, $y, "Halaman {PAGE_NUM} dari {PAGE_COUNT}", $font, $size);
+        // Kanan bawah (nomor halaman)
+        $pdf->page_text(
+            760,
+            $y,
+            "Halaman {PAGE_NUM} dari {PAGE_COUNT}",
+            $font,
+            $size
+        );
     }
     </script>
 </body>
