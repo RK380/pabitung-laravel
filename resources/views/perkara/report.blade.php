@@ -58,10 +58,13 @@
             <tr>
                 <td style="width: 100px;">
                     @php
-                    $logoPath = public_path('assets/img/pa.png');
+                    $path = public_path('assets/img/pa.png');
+                    $type = pathinfo($path, PATHINFO_EXTENSION);
+                    $data = file_get_contents($path);
+                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                     @endphp
                     <!-- <img src="{{ base_path('public/assets/img/pa.png') }}" class="logo"> -->
-                    <img src="{{ $logoPath }}" class="logo">
+                    <img src="{{ $base64 }}" class="logo">
                 </td>
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
