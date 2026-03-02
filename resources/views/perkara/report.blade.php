@@ -63,8 +63,8 @@
 
                     if (file_exists($path)) {
                         $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        $imageData = file_get_contents($path);
+                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imageData);
                     }
                     @endphp
 
