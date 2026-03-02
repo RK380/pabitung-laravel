@@ -58,13 +58,19 @@
             <tr>
                 <td style="width: 100px;">
                     @php
-                    $path = public_path('assets/img/pa.png');
-                    $type = pathinfo($path, PATHINFO_EXTENSION);
-                    $data = file_get_contents($path);
-                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                    $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/pa.png';
+                    $base64 = null;
+
+                    if (file_exists($path)) {
+                        $type = pathinfo($path, PATHINFO_EXTENSION);
+                        $data = file_get_contents($path);
+                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                    }
                     @endphp
-                    <!-- <img src="{{ base_path('public/assets/img/pa.png') }}" class="logo"> -->
-                    <img src="{{ $base64 }}" class="logo">
+
+                    @if($base64)
+                        <img src="{{ $base64 }}" class="logo">
+                    @endif
                 </td>
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
