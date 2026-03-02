@@ -217,7 +217,7 @@ class PerkaraController extends Controller
 
         $tahun = $request->tahun;
 
-        $judul = "Laporan Monitoring Data Perkara Pengadilan Agama Bitung Bulan {$namaBulan} {$tahun}";
+        $judul = "LAPORAN MONITORING DATA PERKARA PENGADILAN AGAMA BITUNG, BULAN {$namaBulan} {$tahun}";
         $total = $data->count();
 
         $namaFile = 'laporan-perkara-' . strtolower($namaBulan) . '-' . $tahun . '.pdf';
