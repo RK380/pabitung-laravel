@@ -201,18 +201,17 @@ class PerkaraController extends Controller
         $query = Perkara::query();
 
         // Filter berdasarkan tanggal_pendaftaran (range bulanan)
-        $start = Carbon::create($request->tahun, $request->bulan, 1)->startOfMonth();
-        $end   = Carbon::create($request->tahun, $request->bulan, 1)->endOfMonth();
+        $bulan = (int) $request->bulan;
+        $tahun = (int) $request->tahun;
+
+        $start = Carbon::createFromDate($tahun, $bulan, 1)->startOfMonth();
+        $end   = Carbon::createFromDate($tahun, $bulan, 1)->endOfMonth();
 
         $query->whereBetween('tanggal_pendaftaran', [$start, $end]);
 
-        $data = $query->get();
-
-        // Nama bulan Indonesia
-        $namaBulan = Carbon::create()
-            ->month($request->bulan)
-            ->locale('id')
-            ->translatedFormat('F');
+        $namaBulan = Carbon::createFromDate($tahun, $bulan, 1)
+        ->locale('id')
+        ->translatedFormat('F');
 
         $tahun = $request->tahun;
 
