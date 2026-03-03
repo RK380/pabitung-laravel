@@ -99,16 +99,16 @@
                 </td>
 
                 <td style="width:100px;"></td>
-            </tr>
-            <tr>
-                <p><strong>Filter Digunakan:</strong></p>
-                @if($request->kuasa_hukum)
-                    <p>Kuasa Hukum : {{ $request->kuasa_hukum }}</p>
-                @endif
-    
-                @if($request->jenis)
-                    <p>Jenis Perkara : {{ $request->jenis }}</p>
-                @endif
+                <td>
+                    <p><strong>Filter Digunakan:</strong></p>
+                    @if($request->kuasa_hukum)
+                        <p>Kuasa Hukum : {{ $request->kuasa_hukum }}</p>
+                    @endif
+        
+                    @if($request->jenis)
+                        <p>Jenis Perkara : {{ $request->jenis }}</p>
+                    @endif
+                </td>
             </tr>
         </table>
     </header>
