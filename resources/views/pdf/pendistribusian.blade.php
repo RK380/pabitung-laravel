@@ -98,7 +98,12 @@
                     <p>Telp: (0438) 35566</p>
                 </td>
 
-                <td style="width:100px;"></td>
+                <td style="width:100px;">
+                    <p><strong>Filter Digunakan:</strong></p>
+                    @if($request->paniteraPengganti)
+                        <p>Nama Panitera : {{ $request->paniteraPengganti }}</p>
+                    @endif
+                </td>
             </tr>
         </table>
     </header>

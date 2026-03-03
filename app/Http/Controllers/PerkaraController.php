@@ -255,7 +255,8 @@ class PerkaraController extends Controller
         // $data = BerkasPerkara::all();
         $request->validate([
         'bulan' => 'required|numeric|min:1|max:12',
-        'tahun' => 'required|numeric'
+        'tahun' => 'required|numeric',
+        'paniteraPengganti' => 'nullable|string',
         ]);
 
         $query = BerkasPerkara::query();
@@ -268,6 +269,11 @@ class PerkaraController extends Controller
         $end   = Carbon::createFromDate($tahun, $bulan, 1)->endOfMonth();
 
         $query->whereBetween('tanggal', [$start, $end]);
+
+        // 🔹 FILTER NAMA PANITERA/PANITERA MUDA/PANITERA PENGGANTI
+        if ($request->filled('paniteraPengganti')) {
+            $query->where('paniteraPengganti', $request->paniteraPengganti);
+        }
 
         $data = $query->get();
 
@@ -285,7 +291,12 @@ class PerkaraController extends Controller
 
         $namaFile = 'laporan-pendistribusian-berkas-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
 
-        $pdf = Pdf::loadView('pdf.pendistribusian', compact('data', 'judul', 'total'))
+        $pdf = Pdf::loadView('pdf.pendistribusian', compact(
+        'data',
+        'judul',
+        'total',
+        'request' // kirim request ke view agar filter tampil
+        ))
             ->setPaper('a4', 'landscape')
             ->setOptions(['isPhpEnabled' => true]);
 
