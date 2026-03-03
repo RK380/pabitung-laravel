@@ -271,8 +271,8 @@ class PerkaraController extends Controller
         $query->whereBetween('tanggal', [$start, $end]);
 
         // 🔹 FILTER NAMA PANITERA/PANITERA MUDA/PANITERA PENGGANTI
-        if ($request->filled('paniteraPengganti')) {
-            $query->where('paniteraPengganti', $request->paniteraPengganti);
+        if ($request->filled('panitera')) {
+            $query->where('panitera', $request->panitera);
         }
 
         $data = $query->get();

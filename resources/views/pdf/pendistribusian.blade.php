@@ -100,8 +100,8 @@
 
                 <td style="width:100px;">
                     <p><strong>Filter Digunakan:</strong></p>
-                    @if($request->paniteraPengganti)
-                        <p>Nama Panitera : {{ $request->paniteraPengganti }}</p>
+                    @if($request->panitera)
+                        <p>Nama Panitera : {{ $request->panitera }}</p>
                     @endif
                 </td>
             </tr>
