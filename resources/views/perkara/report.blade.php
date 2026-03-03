@@ -104,8 +104,8 @@
                     <p>Kuasa Hukum : {{ $request->kuasa_hukum }}</p>
                 @endif
 
-                @if($request->jenis_perkara)
-                    <p>Jenis Perkara : {{ $request->jenis_perkara }}</p>
+                @if($request->jenis)
+                    <p>Jenis Perkara : {{ $request->jenis }}</p>
                 @endif
             </tr>
         </table>
