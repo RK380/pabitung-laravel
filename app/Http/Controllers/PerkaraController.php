@@ -195,7 +195,9 @@ class PerkaraController extends Controller
     {
         $request->validate([
         'bulan' => 'required|numeric|min:1|max:12',
-        'tahun' => 'required|numeric'
+        'tahun' => 'required|numeric',
+        'kuasa_hukum' => 'nullable|string',
+        'jenis' => 'nullable|string',
         ]);
 
         $query = Perkara::query();
@@ -208,6 +210,16 @@ class PerkaraController extends Controller
         $end   = Carbon::createFromDate($tahun, $bulan, 1)->endOfMonth();
 
         $query->whereBetween('tanggal_pendaftaran', [$start, $end]);
+
+        // 🔹 FILTER NAMA KUASA HUKUM
+        if ($request->filled('kuasa_hukum')) {
+            $query->where('kuasa_hukum', 'like', '%' . $request->kuasa_hukum . '%');
+        }
+
+        // 🔹 FILTER JENIS PERKARA
+        if ($request->filled('jenis')) {
+            $query->where('jenis', $request->jenis);
+        }
 
         $data = $query->get();
 
@@ -225,7 +237,12 @@ class PerkaraController extends Controller
 
         $namaFile = 'laporan-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
 
-        $pdf = Pdf::loadView('perkara.report', compact('data', 'judul', 'total'))
+        $pdf = Pdf::loadView('perkara.report', compact(
+        'data',
+        'judul',
+        'total',
+        'request' // kirim request ke view agar filter tampil
+        ))
             ->setPaper('a4', 'landscape')
             ->setOptions(['isPhpEnabled' => true]);
 
