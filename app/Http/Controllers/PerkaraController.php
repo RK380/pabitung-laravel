@@ -256,7 +256,7 @@ class PerkaraController extends Controller
         $request->validate([
         'bulan' => 'required|numeric|min:1|max:12',
         'tahun' => 'required|numeric',
-        'paniteraPengganti' => 'nullable|string',
+        'panitera' => 'nullable|string',
         ]);
 
         $query = BerkasPerkara::query();
