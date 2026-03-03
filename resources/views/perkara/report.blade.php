@@ -98,7 +98,7 @@
                     <p>Telp: (0438) 35566</p>
                 </td>
 
-                <td style="width:100px;">
+                <td style="width:150px;">
                     <p><strong>Filter Digunakan:</strong></p>
                     @if($request->kuasa_hukum)
                         <p>Kuasa Hukum : {{ $request->kuasa_hukum }}</p>
