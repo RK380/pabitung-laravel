@@ -93,13 +93,12 @@
                 <td class="instansi">
                     <h3>PENGADILAN TINGGI AGAMA MANADO</h3>
                     <h4>PENGADILAN AGAMA BITUNG</h4>
-                    <p>Jl. Stadion 2 Saudara No.Kel, Manembo-nembo Tengah</p>
-                    <p>Kota Bitung, Sulawesi Utara</p>
+                    <p>Jl. Stadion Dua Saudara, Kel. Manembo-nembo, Kec. Matuari</p>
+                    <p>Kota Bitung, Sulawesi Utara, 95545</p>
                     <p>Telp: (0438) 35566</p>
                 </td>
 
-                <td style="width:100px;"></td>
-                <td>
+                <td style="width:100px;">
                     <p><strong>Filter Digunakan:</strong></p>
                     @if($request->kuasa_hukum)
                         <p>Kuasa Hukum : {{ $request->kuasa_hukum }}</p>
