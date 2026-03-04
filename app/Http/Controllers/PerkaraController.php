@@ -274,6 +274,11 @@ class PerkaraController extends Controller
         $namaPanitera = null;
 
         if ($request->filled('panitera')) {
+
+            // FILTER DATABASE
+            $query->where('panitera', $request->panitera);
+
+            // Untuk ditampilkan di PDF
             $temp = new \App\Models\BerkasPerkara();
             $temp->panitera = $request->panitera;
             $namaPanitera = $temp->panitera_pengganti_name;
