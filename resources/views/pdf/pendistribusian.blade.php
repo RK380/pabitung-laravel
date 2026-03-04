@@ -86,7 +86,7 @@
                     @endphp
 
                     @if($base64)
-                        <img src="{{ base_path('assets/img/pa.png') }}" class="logo">
+                        <img src="{{ $base64 }}" class="logo">
                     @endif
                 </td>
 
