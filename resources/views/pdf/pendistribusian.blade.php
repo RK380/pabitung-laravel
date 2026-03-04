@@ -74,7 +74,20 @@
         <table class="kop-table">
             <tr>
                 <td style="width:100px;">
-                        <img src="assets/img/pa.png" class="logo">
+                    @php
+                        $base64 = null;
+                        $path = public_path('assets/img/pa.png');
+
+                        if (file_exists($path)) {
+                            $type = pathinfo($path, PATHINFO_EXTENSION);
+                            $data = file_get_contents($path);
+                            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        }
+                    @endphp
+
+                    @if($base64)
+                        <img src="{{ $base64 }}" class="logo">
+                    @endif
                 </td>
 
                 <td class="instansi">
