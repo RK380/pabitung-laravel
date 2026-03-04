@@ -79,7 +79,7 @@
                     @endphp
 
                     @if(file_exists($path))
-                        <img src="file://{{ str_replace('\\', '/', $path) }}" class="logo" width="80">
+                        <img src="file://{{ str_replace('\\', '/', $path) }}" class="logo">
                     @endif
                 </td>
 

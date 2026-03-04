@@ -301,13 +301,16 @@ class PerkaraController extends Controller
         $namaFile = 'laporan-pendistribusian-berkas-perkara-' . strtoupper($namaBulan) . '-' . $tahun . '.pdf';
 
         $pdf = Pdf::loadView('pdf.pendistribusian', compact(
-        'data',
-        'judul',
-        'total',
-        'namaPanitera' // kirim accesor/request ke view agar filter tampil
+            'data',
+            'judul',
+            'total',
+            'namaPanitera'
         ))
-            ->setPaper('a4', 'landscape')
-            ->setOptions(['isPhpEnabled' => true]);
+        ->setPaper('a4', 'landscape')
+        ->setOptions([
+            'isPhpEnabled' => true,
+            'isRemoteEnabled' => true,   // 🔥 WAJIB TAMBAHKAN INI
+        ]);
 
         return $pdf->download($namaFile);
     }
