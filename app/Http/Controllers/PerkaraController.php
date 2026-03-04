@@ -271,8 +271,12 @@ class PerkaraController extends Controller
         $query->whereBetween('tanggal', [$start, $end]);
 
         // 🔹 FILTER NAMA PANITERA/PANITERA MUDA/PANITERA PENGGANTI
+        $namaPanitera = null;
+
         if ($request->filled('panitera')) {
-            $query->where('panitera', $request->panitera);
+            $temp = new \App\Models\Perkara();
+            $temp->panitera = $request->panitera;
+            $namaPanitera = $temp->panitera_pengganti_name;
         }
 
         $data = $query->get();
@@ -295,7 +299,7 @@ class PerkaraController extends Controller
         'data',
         'judul',
         'total',
-        'request' // kirim request ke view agar filter tampil
+        'namaPanitera' // kirim accesor/request ke view agar filter tampil
         ))
             ->setPaper('a4', 'landscape')
             ->setOptions(['isPhpEnabled' => true]);
