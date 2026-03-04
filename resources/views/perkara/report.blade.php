@@ -75,14 +75,18 @@
             <tr>
                 <td style="width:100px;">
                     @php
-                        $path = base_path('assets/img/pa.png');
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        $base64 = null;
+                        $path = public_path('assets/img/pa.png');
+
+                        if (file_exists($path)) {
+                            $type = pathinfo($path, PATHINFO_EXTENSION);
+                            $imageData = file_get_contents($path);
+                            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imageData);
+                        }
                     @endphp
 
                     @if($base64)
-                        <img src="{{ $base64 }}" class="logo">
+                        <img src="{{ $base64 }}" width="80">
                     @endif
                 </td>
 
