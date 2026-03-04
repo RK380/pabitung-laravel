@@ -136,25 +136,25 @@
                     @if($item->tanda_tangan)
 
                         @php
-                            $base64Ttd = null;
-                            $pathTtd = base_path($item->tanda_tangan);
+                        $base64Ttd = null;
+
+                        if (!empty($item->tanda_tangan)) {
+
+                            $pathTtd = public_path('storage/' . $item->tanda_tangan);
 
                             if (file_exists($pathTtd)) {
                                 $type = pathinfo($pathTtd, PATHINFO_EXTENSION);
-                                $dataImg = file_get_contents($pathTtd);
-                                $base64Ttd = 'data:image/' . $type . ';base64,' . base64_encode($dataImg);
+                                $imageData = file_get_contents($pathTtd);
+                                $base64Ttd = 'data:image/' . $type . ';base64,' . base64_encode($imageData);
                             }
+                        }
                         @endphp
 
                         @if($base64Ttd)
                             <img src="{{ $base64Ttd }}" style="width:100px;height:auto;">
                         @else
-                            File tidak ditemukan
+                            Tidak ada / File tidak ditemukan
                         @endif
-
-                    @else
-                        Tidak ada
-                    @endif
                 </td>
             </tr>
             @endforeach
