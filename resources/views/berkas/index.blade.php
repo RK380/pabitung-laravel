@@ -106,7 +106,7 @@
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
                                             <td class="text-nowrap">
                                                 @if ($row->tanda_tangan)
-                                                    <img src="{{ Storage::url($data->tanda_tangan) }}" width="120">
+                                                    <img src="{{ asset('storage/'.$row->tanda_tangan) }}" width="120">
                                                 @endif
                                         </tr>
                                     @endforeach
