@@ -75,7 +75,7 @@
             <tr>
                 <td style="width:100px;">
                     @php
-                        $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/pa.png';
+                        $path = public_path('assets/img/pa.png');
                         $base64 = null;
 
                         if (file_exists($path)) {
