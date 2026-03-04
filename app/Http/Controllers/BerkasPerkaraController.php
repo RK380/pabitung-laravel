@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BerkasPerkara;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class BerkasPerkaraController extends Controller
 {
@@ -40,28 +41,22 @@ class BerkasPerkaraController extends Controller
         $path = null;
 
         if ($request->tanda_tangan) {
-            // Ambil data base64
+
             $image = $request->tanda_tangan;
             $image = str_replace('data:image/png;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
 
             $imageName = 'ttd_' . time() . '.png';
 
-            // SIMPAN ke public/ttd (bukan storage!)
-            $publicPath = public_path('ttd');
+            // ✅ Simpan ke storage/app/public/ttd
+            Storage::disk('public')->put(
+                'ttd/' . $imageName,
+                base64_decode($image)
+            );
 
-            if (!file_exists($publicPath)) {
-                mkdir($publicPath, 0775, true); // buat folder jika belum ada
-            }
-
-            // Simpan file
-            file_put_contents($publicPath . '/' . $imageName, base64_decode($image));
-
-            // path untuk database
             $path = 'ttd/' . $imageName;
         }
 
-        // Simpan data
         BerkasPerkara::create([
             'tanggal' => $request->tanggal,
             'nomor'   => $request->nomor,
