@@ -155,6 +155,9 @@
                         @else
                             Tidak ada / File tidak ditemukan
                         @endif
+                    @else
+                        Tidak ada
+                    @endif
                 </td>
             </tr>
             @endforeach
