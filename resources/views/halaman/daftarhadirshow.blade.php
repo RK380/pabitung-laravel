@@ -92,8 +92,7 @@
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->kuasa_hukum_tergugat }}</td>
                                             <td class="text-nowrap">
                                                 @if ($row->tanda_tangan)
-                                                    <img src="{{ asset($row->tanda_tangan) }}" alt="TTD"
-                                                        style="width:100px;">
+                                                    <img src="{{ asset('storage/'.$row->tanda_tangan) }}" width="120">
                                                 @endif
                                             </td>
                                         </tr>
