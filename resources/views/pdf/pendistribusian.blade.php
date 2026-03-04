@@ -136,8 +136,8 @@
                     @if($item->tanda_tangan)
 
                         @php
-                            $pathTtd = public_path($item->tanda_tangan);
                             $base64Ttd = null;
+                            $pathTtd = base_path($item->tanda_tangan);
 
                             if (file_exists($pathTtd)) {
                                 $type = pathinfo($pathTtd, PATHINFO_EXTENSION);
