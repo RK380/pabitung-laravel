@@ -274,7 +274,7 @@ class PerkaraController extends Controller
         $namaPanitera = null;
 
         if ($request->filled('panitera')) {
-            $temp = new \App\Models\Perkara();
+            $temp = new \App\Models\BerkasPerkara();
             $temp->panitera = $request->panitera;
             $namaPanitera = $temp->panitera_pengganti_name;
         }
