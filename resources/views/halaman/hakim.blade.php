@@ -121,9 +121,9 @@
 
                                                 <span class="badge {{ $badge }}">{{ $status }}
                                                     @if(!empty($keterangan))
-                                                            <h6 style="font-color:#FFFFFF;padding-top:5px;">
+                                                            <p style="font-color:#FFFFFF;font-size:12px;padding-top:5px;">
                                                                 ⏳ {{ $keterangan }}
-                                                            </h6>
+                                                            </p>
                                                     @endif
                                                 </span>
 
