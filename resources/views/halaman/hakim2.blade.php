@@ -72,7 +72,7 @@
                                                         ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
                                                     )
                                                 )
-                                                    <span class="badge bg-success">Sudah Di Tetapkan</span>
+                                                    <span class="badge bg-success">Hakim Sudah Di Tetapkan, Menunggu Penetapan Tanggal Sidang</span>
                                                 @endif
                                                 <!-- @if (
                                                     (empty($row->jenisHakim)) || 
