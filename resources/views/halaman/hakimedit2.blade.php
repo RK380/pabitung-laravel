@@ -104,7 +104,7 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="jenisHakim">Penetapan Majelis Hakim <i style="color: red">*</i></label>
+                                                <label for="jenisHakim">Penetapan Majelis Hakim</label>
                                                 <select class="form-select" id="jenisHakim" name="jenisHakim" disabled>
                                                     <option value="" selected>-Pilih-</option>
                                                     <option value="1">Majelis Hakim</option>
