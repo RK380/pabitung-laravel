@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <a href="/hakim" type="button" class="btn btn-secondary"><i
+                                    <a href="/hakim2" type="button" class="btn btn-secondary"><i
                                             class="bi bi-arrow-left"></i> Kembali</a>
                                     <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i>
                                         Simpan</button>
