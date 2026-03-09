@@ -75,7 +75,7 @@
 
                                                     if(empty($row->jenisHakim)){
                                                         $status = "Menunggu Penetapan Hakim";
-                                                        $badge = "bg-warning";
+                                                        $badge = "bg-secondary";
                                                     }
                                                     elseif($hakimAda && empty($row->jadwal)){
                                                         $status = "Menunggu Penetapan Tanggal Sidang";
@@ -86,20 +86,35 @@
                                                         $tanggalSidang = \Carbon\Carbon::parse($row->jadwal);
                                                         $hariIni = \Carbon\Carbon::now();
 
-                                                        if($tanggalSidang->isToday()){
-                                                            $status = "Sedang Sidang";
-                                                            $badge = "bg-warning";
-                                                        }
-                                                        elseif($tanggalSidang->isFuture()){
-                                                            $hari = $hariIni->diffInDays($tanggalSidang);
-
-                                                            $status = "Menunggu Sidang";
-                                                            $badge = "bg-primary";
-                                                            $keterangan = "Sidang $hari hari lagi";
-                                                        }
-                                                        elseif($tanggalSidang->isPast()){
+                                                        if($tanggalSidang->isPast()){
                                                             $status = "Sudah Selesai Sidang";
                                                             $badge = "bg-success";
+                                                        }
+                                                        else{
+
+                                                            $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
+
+                                                            if($tanggalSidang->isToday()){
+                                                                $status = "Sedang Sidang";
+                                                                $badge = "bg-warning";
+                                                                $keterangan = "Sidang hari ini";
+                                                            }
+                                                            elseif($hari <= 1){
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-danger";
+                                                                $keterangan = "Sidang besok";
+                                                            }
+                                                            elseif($hari <= 3){
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-warning";
+                                                                $keterangan = "Sidang $hari hari lagi";
+                                                            }
+                                                            else{
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-primary";
+                                                                $keterangan = "Sidang $hari hari lagi";
+                                                            }
+
                                                         }
                                                     }
                                                 @endphp
@@ -107,7 +122,9 @@
                                                 <span class="badge {{ $badge }}">{{ $status }}</span>
 
                                                 @if(!empty($keterangan))
-                                                    <small class="text-muted d-block">{{ $keterangan }}</small>
+                                                    <small class="text-muted d-block">
+                                                        ⏳ {{ $keterangan }}
+                                                    </small>
                                                 @endif
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
