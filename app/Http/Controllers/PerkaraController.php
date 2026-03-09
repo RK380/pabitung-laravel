@@ -135,12 +135,8 @@ class PerkaraController extends Controller
         // dd($request->all());
         // Validasi input
         $request->validate([
-            'jenisHakim' => 'required',
-            'hakimTunggal' => 'required_if:jenisHakim,2|string|max:255',
             'jadwal' => 'required|date',
         ], [
-            'jenisHakim.required' => 'Penunjukkan Majelis Hakim wajib diisi.',
-            'hakimTunggal.required_if' => 'Nama Hakim Tunggal wajib diisi jika memilih Hakim Tunggal.',
             'jadwal.required' => 'Jadwal sidang wajib diisi.',
             'jadwal.date' => 'Format jadwal sidang tidak valid.',
         ]);
@@ -154,9 +150,6 @@ class PerkaraController extends Controller
 
         // Update data
         $perkara->update([
-            'jenisHakim' => $request->jenisHakim,
-            'majelisHakim' => $request->jenisHakim == 1 ? '1,2,3' : null,
-            'hakimTunggal' => $request->jenisHakim == 2 ? $request->hakimTunggal : null,
             'jadwal' => date('Y-m-d', strtotime($request->jadwal)),
         ]);
 
