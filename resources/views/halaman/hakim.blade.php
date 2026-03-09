@@ -96,22 +96,22 @@
 
                                                             if($tanggalSidang->isToday()){
                                                                 $status = "Sedang Sidang";
-                                                                $badge = "bg-warning";
+                                                                $badge = "bg-danger";
                                                                 $keterangan = "Sidang hari ini";
                                                             }
                                                             elseif($hari <= 1){
                                                                 $status = "Menunggu Sidang";
-                                                                $badge = "bg-danger";
+                                                                $badge = "bg-warning";
                                                                 $keterangan = "Sidang besok";
                                                             }
                                                             elseif($hari <= 3){
                                                                 $status = "Menunggu Sidang";
-                                                                $badge = "bg-secondary";
+                                                                $badge = "bg-primary";
                                                                 $keterangan = "$hari hari lagi";
                                                             }
                                                             else{
                                                                 $status = "Menunggu Sidang";
-                                                                $badge = "bg-primary";
+                                                                $badge = "bg-secondary";
                                                                 $keterangan = "$hari hari lagi";
                                                             }
 
