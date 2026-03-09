@@ -106,34 +106,34 @@
                                     </div>
                                 </div>
 
-                                <!-- <div class="col-md-6">
+                                <div class="col-md-6">
                                     <label for="jenisHakim">Penetapan Majelis Hakim <i style="color: red">*</i></label>
-                                    <select class="form-select" id="jenisHakim" name="jenisHakim">
+                                    <select class="form-select" id="jenisHakim" name="jenisHakim" disabled>
                                         <option value="" selected>-Pilih-</option>
                                         <option value="1">Majelis Hakim</option>
                                         <option value="2">Hakim Tunggal</option>
                                     </select>
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Penetapan Majelis Hakim Wajib Di Isi</p>
-                                </div> -->
+                                </div>
 
                                 <!-- Form untuk menampilkan semua nama hakim (Majelis Hakim) -->
-                                <!-- <div class="col-md-6 mt-3" id="formMajelis" style="display:none;">
+                                <div class="col-md-6 mt-3" id="formMajelis" style="display:none;" disabled>
                                     <ol>
                                         <li>Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)</li>
                                         <li>Jasni Manoso, S.H.I (Hakim Anggota 1)</li>
                                         <li>Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)</li>
                                     </ol>
-                                </div> -->
+                                </div>
 
                                 <!-- Form untuk Hakim Tunggal -->
-                                <!-- <div class="col-md-12 mt-3" id="formTunggal" style="display:none;">
+                                <div class="col-md-12 mt-3" id="formTunggal" style="display:none;" disabled>
                                     <label for="hakimTunggal">Pilih Hakim Tunggal <i style="color: red">*</i></label>
                                     <select class="form-select" id="hakimTunggal" name="hakimTunggal">
                                         <option value="1">Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)</option>
                                         <option value="2">Jasni Manoso, S.H.I (Hakim Anggota 1)</option>
                                         <option value="3">Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)</option>
                                     </select>
-                                </div> -->
+                                </div>
 
                                 <div class="col-md-6 ">
                                     <label for="jadwal">Penetapan Tanggal Sidang <i style="color: red">*</i></label>
@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <a href="/hakim2" type="button" class="btn btn-secondary"><i
+                                    <a href="/hakim" type="button" class="btn btn-secondary"><i
                                             class="bi bi-arrow-left"></i> Kembali</a>
                                     <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i>
                                         Simpan</button>

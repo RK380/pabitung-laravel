@@ -95,7 +95,7 @@
 
                                                             $status = "Menunggu Sidang";
                                                             $badge = "bg-primary";
-                                                            $keterangan = "Sidang $hari hari lagi";
+                                                            $keterangan = "$hari hari lagi";
                                                         }
                                                         elseif($tanggalSidang->isPast()){
                                                             $status = "Sudah Selesai Sidang";
