@@ -106,7 +106,7 @@
                                                             }
                                                             elseif($hari <= 3){
                                                                 $status = "Menunggu Sidang";
-                                                                $badge = "bg-warning";
+                                                                $badge = "bg-secondary";
                                                                 $keterangan = "$hari hari lagi";
                                                             }
                                                             else{
