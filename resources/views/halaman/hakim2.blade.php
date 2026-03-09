@@ -65,26 +65,27 @@
                                                 <a href={{ route('perkara.edit2', $row->id) }} class="btn btn-warning icon">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                <!-- @if (
-                                                    !empty($row->jenisHakim) &&
-                                                    (
-                                                        ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
-                                                        ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
-                                                    )
-                                                )
-                                                    <span class="badge bg-success">Hakim Sudah Di Tetapkan</span>
-                                                    <span class="badge bg-secondary">Menunggu Penetapan Tanggal Sidang</span>
-                                                @endif -->
-                                                @if(empty($row->jenisHakim))
-                                                    <span class="badge bg-warning">Menunggu Penetapan Hakim</span>
+                                                @php
+                                                    $status = '';
+                                                    $badge = '';
 
-                                                @elseif(
-                                                    ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
-                                                    ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
-                                                )
-                                                    <span class="badge bg-success">Hakim Sudah Di Tetapkan</span>
-                                                    <span class="badge bg-secondary">Menunggu Penetapan Tanggal Sidang</span>
-                                                @endif
+                                                    $hakimAda = ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
+                                                                ($row->jenisHakim == 2 && !empty($row->hakimTunggal));
+
+                                                    if(empty($row->jenisHakim)){
+                                                        $status = "Menunggu Penetapan Hakim";
+                                                        $badge = "bg-warning";
+                                                    }
+                                                    elseif($hakimAda && empty($row->jadwal)){
+                                                        $status = "Menunggu Penetapan Tanggal Sidang";
+                                                        $badge = "bg-secondary";
+                                                    }
+                                                    elseif($hakimAda && !empty($row->jadwal)){
+                                                        $status = "Menunggu Sidang";
+                                                        $badge = "bg-primary";
+                                                    }
+                                                @endphp
+                                                <span class="badge {{ $badge }}">{{ $status }}</span>
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
