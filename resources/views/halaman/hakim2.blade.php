@@ -66,6 +66,8 @@
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
                                                 @php
+                                                    use Carbon\Carbon;
+
                                                     $status = '';
                                                     $badge = '';
 
@@ -81,10 +83,25 @@
                                                         $badge = "bg-secondary";
                                                     }
                                                     elseif($hakimAda && !empty($row->jadwal)){
-                                                        $status = "Menunggu Sidang";
-                                                        $badge = "bg-primary";
+
+                                                        $tanggalSidang = Carbon::parse($row->jadwal)->format('Y-m-d');
+                                                        $hariIni = Carbon::now()->format('Y-m-d');
+
+                                                        if($tanggalSidang > $hariIni){
+                                                            $status = "Menunggu Sidang";
+                                                            $badge = "bg-primary";
+                                                        }
+                                                        elseif($tanggalSidang == $hariIni){
+                                                            $status = "Sedang Sidang";
+                                                            $badge = "bg-warning";
+                                                        }
+                                                        elseif($tanggalSidang < $hariIni){
+                                                            $status = "Sudah Selesai Sidang";
+                                                            $badge = "bg-success";
+                                                        }
                                                     }
                                                 @endphp
+
                                                 <span class="badge {{ $badge }}">{{ $status }}</span>
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
