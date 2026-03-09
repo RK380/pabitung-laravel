@@ -107,25 +107,26 @@
                                                             elseif($hari <= 3){
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-warning";
-                                                                $keterangan = "Sidang $hari hari lagi";
+                                                                $keterangan = "$hari hari lagi";
                                                             }
                                                             else{
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-primary";
-                                                                $keterangan = "Sidang $hari hari lagi";
+                                                                $keterangan = "$hari hari lagi";
                                                             }
 
                                                         }
                                                     }
                                                 @endphp
 
-                                                <span class="badge {{ $badge }}">{{ $status }}</span>
+                                                <span class="badge {{ $badge }}">{{ $status }}
+                                                    @if(!empty($keterangan))
+                                                        <small class="text-muted d-block">
+                                                            ⏳ {{ $keterangan }}
+                                                        </small>
+                                                    @endif
+                                                </span>
 
-                                                @if(!empty($keterangan))
-                                                    <small class="text-muted d-block">
-                                                        ⏳ {{ $keterangan }}
-                                                    </small>
-                                                @endif
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
