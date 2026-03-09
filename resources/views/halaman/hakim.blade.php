@@ -119,14 +119,13 @@
                                                     }
                                                 @endphp
 
-                                                <span class="badge {{ $badge }}">{{ $status }}</span>
-                                                @if(!empty($keterangan))
-                                                    <span class="bg-danger">
-                                                        <small class="text-muted d-block">
-                                                            ⏳ {{ $keterangan }}
-                                                        </small>
-                                                    </span>
-                                                @endif
+                                                <span class="badge {{ $badge }}">{{ $status }}
+                                                    @if(!empty($keterangan))
+                                                            <h3 class="text-muted d-block">
+                                                                ⏳ {{ $keterangan }}
+                                                            </h3>
+                                                    @endif
+                                                </span>
 
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
