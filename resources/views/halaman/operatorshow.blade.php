@@ -99,13 +99,13 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $index => $row)
-                                        @php
+                                        <!-- @php
                                             // Ambil nilai jadwal dari $row (aman untuk array atau object)
                                             $jadwalVal = data_get($row, 'jadwal');
 
                                             // jika kosong -> null, jika ada -> Carbon instance
                                             $jadwal = $jadwalVal ? \Carbon\Carbon::parse($jadwalVal) : null;
-                                        @endphp
+                                        @endphp -->
                                         <tr>
                                             <td class="text-nowrap">
                                                 <form action="{{ route('perkara.destroy', $row->id) }}" method="POST"
@@ -115,13 +115,59 @@
                                                         onclick="return confirm('Yakin hapus?')"><i
                                                             class="bi bi-trash"></i></button>
                                                 </form>
-                                                @if (is_null($jadwal))
+                                                <!-- @if (is_null($jadwal))
                                                     <span class="badge bg-secondary">Belum Dijadwalkan</span>
                                                 @elseif ($jadwal->isPast())
                                                     <span class="badge bg-success">Selesai Sidang</span>
                                                 @else
                                                     <span class="badge bg-warning text-dark">Menunggu Waktu Sidang</span>
-                                                @endif
+                                                @endif -->
+                                                @php
+                                                    $status = '';
+                                                    $badge = '';
+                                                    $keterangan = '';
+
+                                                    $tanggalSidang = \Carbon\Carbon::parse($row->jadwal);
+                                                    $hariIni = \Carbon\Carbon::now();
+
+                                                        if($tanggalSidang->isPast()){
+                                                            $status = "Sudah Selesai Sidang";
+                                                            $badge = "bg-success";
+                                                        }
+                                                        else{
+
+                                                            $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
+
+                                                            if($tanggalSidang->isToday()){
+                                                                $status = "Sedang Sidang";
+                                                                $badge = "bg-warning";
+                                                                $keterangan = "Sidang hari ini";
+                                                            }
+                                                            elseif($hari <= 1){
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-danger";
+                                                                $keterangan = "Sidang besok";
+                                                            }
+                                                            elseif($hari <= 3){
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-warning";
+                                                                $keterangan = "$hari hari lagi";
+                                                            }
+                                                            else{
+                                                                $status = "Menunggu Sidang";
+                                                                $badge = "bg-primary";
+                                                                $keterangan = "$hari hari lagi";
+                                                            }
+
+                                                        }
+                                                @endphp
+                                                <span class="badge {{ $badge }}">{{ $status }}
+                                                    @if(!empty($keterangan))
+                                                            <span style="font-color:#FFFFFF;font-size:12px;">
+                                                                ⏳ {{ $keterangan }}
+                                                            </span>
+                                                    @endif
+                                                </span>
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
