@@ -217,7 +217,13 @@
                                                     <span class="badge bg-light text-dark">-</span>
                                                 @endif
                                             </td>
-                                            <td class="text-nowrap" style="text-align:center;"><span class="badge bg-success">{{ $row->jadwal }}</span></td>
+                                            <td class="text-nowrap" style="text-align:center;"
+                                                data-order="{{ \Carbon\Carbon::parse($row->jadwal)->format('Y-m-d') }}">
+                                                
+                                                <span class="badge bg-warning text-dark">
+                                                    {{ \Carbon\Carbon::parse($row->jadwal)->format('d-m-Y') }}
+                                                </span>
+                                            </td>
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->juru_sita_name }}</span></td>
                                         </tr>
