@@ -188,7 +188,13 @@
                                                     {{ $row->keterangan }}
                                                 </div>
                                             </td>
-                                            <td class="text-nowrap" style="text-align:center;"><span class="badge bg-warning text-dark">{{ $row->tanggal_pendaftaran }}</td>
+                                            <td class="text-nowrap" style="text-align:center;"
+                                                data-order="{{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('Y-m-d') }}">
+                                                
+                                                <span class="badge bg-warning text-dark">
+                                                    {{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('d-m-Y') }}
+                                                </span>
+                                            </td>
                                             <td class="text-nowrap">
                                                 @if (empty($row->jenisHakim))
                                                     <span class="badge bg-danger">-</span>
