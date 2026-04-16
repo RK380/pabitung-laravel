@@ -69,8 +69,8 @@ class PerkaraController extends Controller
 
     public function show()
     {
-        // $data = Perkara::all();
-        $data = Perkara::orderBy('created_at', 'desc')->get();
+        $data = Perkara::latest();
+        // $data = Perkara::orderBy('created_at', 'desc')->get();
 
         // return dd($data);
         return view('halaman.operatorshow', compact('data'));
