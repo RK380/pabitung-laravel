@@ -238,6 +238,7 @@
                 scrollX: true,
                 responsive: false,
                 autoWidth: false,
+                order: [[0, desc]]
             });
         });
     </script>
