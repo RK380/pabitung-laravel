@@ -133,7 +133,7 @@
                 responsive: false,
                 autoWidth: false,
                 order: [
-                    [3, 'desc']
+                    [1, 'asc']
                 ], // Mengurutkan berdasarkan kolom kedua (indeks 1) secara ascending
                 columnDefs: [{
                         targets: 0,
