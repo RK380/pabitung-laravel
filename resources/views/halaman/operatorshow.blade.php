@@ -250,7 +250,7 @@
                 scrollX: true,
                 responsive: false,
                 autoWidth: false,
-                order: [[13, 'desc']]
+                order: [[1, 'asc']]
             });
         });
     </script>
