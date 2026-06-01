@@ -10,8 +10,10 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#">Pelayanan Internal Pengadilan Agama Bitung</a></li>
+                <li><a href="/">Pelayanan Internal Pengadilan Agama Bitung</a></li>
+                <li><a href="/login" class="btn-getstarted">Login</a></li>
             </ul>
+
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
     </div>
