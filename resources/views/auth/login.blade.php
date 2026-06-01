@@ -1,72 +1,114 @@
-<form method="POST" action="{{ route('login.authenticate') }}">
+<!DOCTYPE html>
+<html lang="en">
 
-    @csrf
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Layanan Internal | Pengadilan Agama Bitung</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <input type="email"
-           name="email"
-           placeholder="Email">
+  <!-- Favicons -->
+  <link href="assets/img/pa.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <input type="password"
-           name="password"
-           placeholder="Password">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <button type="submit">
-        Login
-    </button>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-</form>
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
-<section class="h-100 gradient-form" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
-        <div class="card rounded-3 text-black">
-          <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-                <div class="text-center">
-                  <img src="assets/img/pa.png" style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">Layanan Internal Pengadilan Agama Bitung</h4>
-                </div>
+<body class="index-page">
 
-                <form method="POST" action="{{ route('login.authenticate') }}">
-                  @csrf
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Masukkan Email Anda" />
-                    <label class="form-label" for="form2Example11">Email</label>
-                  </div>
+      <a href="/" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/ma.png" alt="">
+        <img src="assets/img/pa.png" alt="">
+        <h1 class="sitename">PA Bitung</h1>
+      </a>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" />
-                    <label class="form-label" for="form2Example22">Password</label>
-                  </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/">Pelayanan Internal Pengadilan Agama Bitung</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-                  <!-- <div class="text-center pt-1 mb-5 pb-1">
-                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Login</button>
-                    <a class="text-muted" href="#!">Forgot password?</a>
-                  </div> -->
+      <a class="btn-getstarted flex-md-shrink-0" href="/login">Login</a>
+      
+    </div>
+  </header>
 
-                  <!-- <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2">Don't have an account?</p>
-                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger">Create new</button>
-                  </div> -->
+  <main class="main">
 
-                </form>
+    <!-- Hero Section -->
 
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">Layanan Internal Pengadilan Agama Bitung</h4>
-                <p class="small mb-0">Silakan login untuk mengakses layanan internal</p>
-              </div>
-            </div>
-          </div>
+    <!-- Services Section -->
+    <section id="services" class="services section" style="margin-top: 100px;">
+      <div class="container">
+        <div class="row gy-4">
+
+            <form method="POST" action="{{ route('login.authenticate') }}">
+
+                @csrf
+
+                <input type="email"
+                    name="email"
+                    placeholder="Email">
+
+                <input type="password"
+                    name="password"
+                    placeholder="Password">
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+          
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section><!-- /Services Section -->
+
+  </main>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
