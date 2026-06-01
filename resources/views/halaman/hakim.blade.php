@@ -65,67 +65,130 @@
                                                 <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                @php
+                                                <!-- @php
+
                                                     $status = '';
                                                     $badge = '';
                                                     $keterangan = '';
 
+                                                    $hariIni = \Carbon\Carbon::now();
+                                                    $tanggalInput = \Carbon\Carbon::parse($row->created_at);
+
                                                     $hakimAda = ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
                                                                 ($row->jenisHakim == 2 && !empty($row->hakimTunggal));
 
-                                                    if(empty($row->jenisHakim)){
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | PERKARA BARU
+                                                    |--------------------------------------------------------------------------
+                                                    */
+
+                                                    if(empty($row->jenisHakim) && $tanggalInput->isToday()){
+
+                                                        $status = "Perkara Baru";
+                                                        $badge = "bg-info";
+                                                        $keterangan = "Menunggu penetapan hakim";
+
+                                                    }
+
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | MENUNGGU PENETAPAN HAKIM
+                                                    |--------------------------------------------------------------------------
+                                                    */
+
+                                                    elseif(empty($row->jenisHakim)){
+
                                                         $status = "Menunggu Penetapan Hakim";
                                                         $badge = "bg-secondary";
+
                                                     }
+
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | MENUNGGU PENETAPAN SIDANG
+                                                    |--------------------------------------------------------------------------
+                                                    */
+
                                                     elseif($hakimAda && empty($row->jadwal)){
+
                                                         $status = "Menunggu Penetapan Tanggal Sidang";
-                                                        $badge = "bg-secondary";
+                                                        $badge = "bg-warning";
+
                                                     }
+
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | STATUS SIDANG
+                                                    |--------------------------------------------------------------------------
+                                                    */
+
                                                     elseif($hakimAda && !empty($row->jadwal)){
 
                                                         $tanggalSidang = \Carbon\Carbon::parse($row->jadwal);
-                                                        $hariIni = \Carbon\Carbon::now();
 
                                                         if($tanggalSidang->isPast()){
+
                                                             $status = "Sudah Selesai Sidang";
                                                             $badge = "bg-success";
+
                                                         }
                                                         else{
 
                                                             $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
 
                                                             if($tanggalSidang->isToday()){
+
                                                                 $status = "Sedang Sidang";
                                                                 $badge = "bg-danger";
                                                                 $keterangan = "Sidang hari ini";
+
                                                             }
                                                             elseif($hari <= 1){
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-warning";
                                                                 $keterangan = "Sidang besok";
+
                                                             }
                                                             elseif($hari <= 3){
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-primary";
                                                                 $keterangan = "$hari hari lagi";
+
                                                             }
                                                             else{
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-secondary";
                                                                 $keterangan = "$hari hari lagi";
+
                                                             }
 
                                                         }
-                                                    }
-                                                @endphp
 
-                                                <span class="badge {{ $badge }}">{{ $status }}
+                                                    }
+
+                                                @endphp -->
+
+                                                <!-- <span class="badge {{ $badge }}">{{ $status }}
                                                     @if(!empty($keterangan))
                                                             <span style="font-color:#FFFFFF;font-size:12px;">
                                                                 ⏳ {{ $keterangan }}
                                                             </span>
                                                     @endif
+                                                </span> -->
+
+                                                <span class="badge {{ $row->status['badge'] }}">
+                                                    {{ $row->status['status'] }}
                                                 </span>
+
+                                                <br>
+
+                                                <small>
+                                                    {{ $row->status['keterangan'] }}
+                                                </small>
 
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
@@ -136,6 +199,9 @@
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniii }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniv }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugat }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatii }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatiii }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugativ }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->kuasa_hukum }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_pemohon }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_tergugat }}</td>

@@ -58,12 +58,15 @@ class PerkaraController extends Controller
         $pesan = "Silahkan kunjungi halaman {$link}";
         $pesan_encode = urlencode($pesan);
         $wa_hakim = config('app.wa_hakim');
+        $wa_hakim2 = config('app.wa_hakim2');
         $wa_ketua = config('app.wa_ketua');
         $link_wa_hakim = "https://wa.me/{$wa_hakim}?text={$pesan_encode}";
+        $link_wa_hakim2 = "https://wa.me/{$wa_hakim2}?text={$pesan_encode}";
         $link_wa_ketua = "https://wa.me/{$wa_ketua}?text={$pesan_encode}";
 
         return redirect()->route('operator', [
             'wa_link' => base64_encode($link_wa_hakim),
+            'wa_hakim2_link' => base64_encode($link_wa_hakim2),
             'wa_ketua_link' => base64_encode($link_wa_ketua),
         ])
             ->with('success', 'Data berhasil disimpan & link terkirim ke WA hakim dan ketua.');

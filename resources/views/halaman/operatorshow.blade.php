@@ -86,6 +86,9 @@
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon III</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon IV</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat II</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat III</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat IV</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Kuasa Hukum</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Pemohon</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Tergugat</th>
@@ -100,13 +103,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $index => $row)
-                                        <!-- @php
-                                            // Ambil nilai jadwal dari $row (aman untuk array atau object)
-                                            $jadwalVal = data_get($row, 'jadwal');
-
-                                            // jika kosong -> null, jika ada -> Carbon instance
-                                            $jadwal = $jadwalVal ? \Carbon\Carbon::parse($jadwalVal) : null;
-                                        @endphp -->
+                                        
                                         <tr>
                                             <td class="text-nowrap">
                                                 <form action="{{ route('perkara.destroy', $row->id) }}" method="POST"
@@ -116,14 +113,8 @@
                                                         onclick="return confirm('Yakin hapus?')"><i
                                                             class="bi bi-trash"></i></button>
                                                 </form>
-                                                <!-- @if (is_null($jadwal))
-                                                    <span class="badge bg-secondary">Belum Dijadwalkan</span>
-                                                @elseif ($jadwal->isPast())
-                                                    <span class="badge bg-success">Selesai Sidang</span>
-                                                @else
-                                                    <span class="badge bg-warning text-dark">Menunggu Waktu Sidang</span>
-                                                @endif -->
-                                                @php
+                                                
+                                                <!-- @php
 
                                                     $status = '';
                                                     $badge = '';
@@ -199,13 +190,28 @@
 
                                                     }
 
-                                                @endphp
-                                                <span class="badge {{ $badge }}">{{ $status }}
+                                                @endphp -->
+
+                                                <!-- <span class="badge {{ $badge }}">{{ $status }}
                                                     @if(!empty($keterangan))
                                                             <span style="font-color:#FFFFFF;font-size:12px;">
                                                                 ⏳ {{ $keterangan }}
                                                             </span>
                                                     @endif
+                                                </span> -->
+
+                                                <span class="badge {{ $row->status_operator['badge'] }}">
+
+                                                    {{ $row->status_operator['status'] }}
+
+                                                    @if(!empty($row->status_operator['keterangan']))
+
+                                                        <span style="color:#FFFFFF;font-size:12px;">
+                                                            ⏳ {{ $row->status_operator['keterangan'] }}
+                                                        </span>
+
+                                                    @endif
+
                                                 </span>
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
@@ -216,6 +222,9 @@
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniii }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniv }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugat }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatii }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatiii }}</td>
+                                            <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugativ }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->kuasa_hukum }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_pemohon }}</td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_tergugat }}</td>
