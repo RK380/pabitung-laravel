@@ -160,6 +160,7 @@
                             <table id="myDataTable" class="table table-striped table-sm">
                                 <thead>
                                     <tr>
+                                        <th class="text-nowrap text-center"><i class="fas fa-cog"></i></th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">No</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Jenis Perkara</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Nomor</th>
