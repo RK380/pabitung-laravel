@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class HalamanController extends Controller
 {
     public function index(){
+        $data = Perkara::latest()->get();
         $today = Visitor::whereDate('created_at', Carbon::today())->count();
         $thisWeek = Visitor::whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
@@ -22,7 +23,7 @@ class HalamanController extends Controller
                             ->count();
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
-        return view ('halaman.index', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total'));
+        return view ('halaman.index', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
     }
 
     public function hakim(Request $request){
