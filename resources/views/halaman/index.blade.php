@@ -153,49 +153,6 @@
                 <h3>Monitoring Perkara <i class="bi bi-eye" width="20"></i></h3>
 
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row gy-4 mb-5">
-                    <form action="{{ route('perkara.report.pdf') }}" method="GET" target="_blank">
-                        <div class="row">
-                            <div class="col">
-                                <select name="tahun" class="form-control">
-                                    <option value="">-- Pilih Tahun --</option>
-                                    @for ($i = date('Y'); $i >= 2020; $i--)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select name="bulan" class="form-control">
-                                    <option value="">-- Pilih Bulan --</option>
-                                    @for ($i = 1; $i <= 12; $i++)
-                                        <option value="{{ $i }}">{{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div class="col">
-                                <input type="text" name="kuasa_hukum" class="form-control" placeholder="Kuasa Hukum">
-                            </div>
-                            <div class="col">
-                                <select name="jenis" class="form-control">
-                                    <option value="">-- Jenis Perkara --</option>
-                                    <option value="Cerai Talak">Cerai Talak</option>
-                                    <option value="Cerai Gugat">Cerai Gugat</option>
-                                    <option value="Permohonan Isbat Nikah">Permohonan Isbat Nikah</option>
-                                    <option value="Permohonan Dispensasi Kawin">Permohonan Dispensasi Kawin</option>
-                                    <option value="Permohonan Asal Usul Anak">Permohonan Asal Usul Anak</option>
-                                    <option value="Kewarisan">Kewarisan</option>
-                                    <option value="Harta Bersama">Harta Bersama</option>
-                                    <option value="Permohonan Perwalian">Permohonan Perwalian</option>
-                                    <option value="Isbat Gugatan">Isbat Gugatan</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-success">Download PDF <i class="bi bi-download"
-                                        width="20"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="row gy-4">
                     <div class="col-lg-12">
                         <h4>Data Perkara Terkini Pengadilan Agama Bitung</h4>
@@ -203,7 +160,6 @@
                             <table id="myDataTable" class="table table-striped table-sm">
                                 <thead>
                                     <tr>
-                                        <th class="text-nowrap text-center"><i class="fas fa-cog"></i></th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">No</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Jenis Perkara</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Nomor</th>
@@ -232,13 +188,6 @@
                                         
                                         <tr>
                                             <td class="text-nowrap">
-                                                <form action="{{ route('perkara.destroy', $row->id) }}" method="POST"
-                                                    style="display:inline;">
-                                                    @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Yakin hapus?')"><i
-                                                            class="bi bi-trash"></i></button>
-                                                </form>
 
                                                 <span class="badge {{ $row->status_operator['badge'] }}">
 
