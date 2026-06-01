@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="{{ asset('assets/login/css/style.css') }}">
+	<link rel="stylesheet" href="assets/login/css/style.css">
 
 	</head>
 	<body>
@@ -56,10 +56,10 @@
 		</div>
 	</section>
 
-	<script src="{{ asset('assets/login/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/login/js/popper.js') }}"></script>
-  <script src="{{ asset('assets/login/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/login/js/main.js') }}"></script>
+	<script src="assets/login/js/jquery.min.js"></script>
+  <script src="assets/login/js/popper.js"></script>
+  <script src="assets/login/js/bootstrap.min.js"></script>
+  <script src="assets/login/js/main.js"></script>
 
 	</body>
 </html>
