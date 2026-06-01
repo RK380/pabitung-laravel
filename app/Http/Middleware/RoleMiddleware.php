@@ -12,7 +12,12 @@ class RoleMiddleware
      * Handle an incoming request.
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
-    {
+    {   
+        dd(
+        auth()->user()->role,
+        gettype(auth()->user()->role),
+        $roles
+        );
         // cek login
         if (!auth()->check()) {
 
