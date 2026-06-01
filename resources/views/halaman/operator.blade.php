@@ -123,22 +123,22 @@
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <label for="tergugat">Termohon/Tergugat <i style="color: red">*</i></label>
+                                    <label for="tergugat">Termohon/Tergugat <i style="color: red; display:none;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Termohon/Tergugat" id="tergugat" name="tergugat" required value="{{ old('tergugat') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Termohon/Tergugat Wajib Di Isi</p>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat II <i style="color: red">*</i></label>
+                                    <label for="tergugat">Tergugat II <i style="color: red; display:none;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat II" id="tergugatii" name="tergugatii" required value="{{ old('tergugatii') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat II Wajib Di Isi</p>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat III<i style="color: red">*</i></label>
+                                    <label for="tergugat">Tergugat III<i style="color: red; display:none;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat III" id="tergugatiii" name="tergugatiii" required value="{{ old('tergugatiii') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat III Wajib Di Isi</p>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat IV<i style="color: red">*</i></label>
+                                    <label for="tergugat">Tergugat IV<i style="color: red; display:none;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat IV" id="tergugativ" name="tergugativ" required value="{{ old('tergugativ') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat IV Wajib Di Isi</p>
                                 </div>
@@ -289,5 +289,41 @@
                 formTextarea.classList.add('col-md-6');
             }
         });
+    </script>
+    <script>
+    const jenisSelect = document.getElementById('jenis');
+    const extraFields = document.querySelectorAll('.extra-tergugat');
+
+    function toggleTergugat() {
+
+        if (jenisSelect.value === 'Isbat Gugatan') {
+
+            extraFields.forEach(field => {
+                field.style.display = 'block';
+
+                // aktifkan required
+                field.querySelector('input').required = true;
+            });
+
+        } else {
+
+            extraFields.forEach(field => {
+                field.style.display = 'none';
+
+                // hapus required
+                field.querySelector('input').required = false;
+
+                // kosongkan input
+                field.querySelector('input').value = '';
+            });
+
+        }
+    }
+
+    // jalankan saat select berubah
+    jenisSelect.addEventListener('change', toggleTergugat);
+
+    // jalankan saat halaman pertama kali load
+    window.addEventListener('load', toggleTergugat);
     </script>
 @endsection
