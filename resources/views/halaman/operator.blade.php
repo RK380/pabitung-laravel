@@ -128,19 +128,19 @@
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Termohon/Tergugat Wajib Di Isi</p>
                                 </div>
                                 <div class="col-md-6 extra-tergugat" style="display:none;">
-                                    <label for="tergugat">Tergugat II <i style="color: red;">*</i></label>
+                                    <label for="tergugat">Tergugat II</label>
                                     <input type="text" class="form-control" placeholder="Tergugat II" id="tergugatii" name="tergugatii" required value="{{ old('tergugatii') }}">
-                                    <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat II Wajib Di Isi</p>
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">* (Optional) Isi (-) Jika Tidak Ada</p>
                                 </div>
                                 <div class="col-md-6 extra-tergugat" style="display:none;">
-                                    <label for="tergugat">Tergugat III<i style="color: red;">*</i></label>
+                                    <label for="tergugat">Tergugat III</label>
                                     <input type="text" class="form-control" placeholder="Tergugat III" id="tergugatiii" name="tergugatiii" required value="{{ old('tergugatiii') }}">
-                                    <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat III Wajib Di Isi</p>
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">* (Optional) Isi (-) Jika Tidak Ada</p>
                                 </div>
                                 <div class="col-md-6 extra-tergugat" style="display:none;">
-                                    <label for="tergugat">Tergugat IV<i style="color: red;">*</i></label>
+                                    <label for="tergugat">Tergugat IV</label>
                                     <input type="text" class="form-control" placeholder="Tergugat IV" id="tergugativ" name="tergugativ" required value="{{ old('tergugativ') }}">
-                                    <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat IV Wajib Di Isi</p>
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">* (Optional) Isi (-) Jika Tidak Ada</p>
                                 </div>
 
                                 <div class="col-md-6 ">

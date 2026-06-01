@@ -60,6 +60,7 @@
                                     <option value="Kewarisan">Kewarisan</option>
                                     <option value="Harta Bersama">Harta Bersama</option>
                                     <option value="Permohonan Perwalian">Permohonan Perwalian</option>
+                                    <option value="Isbat Gugatan">Isbat Gugatan</option>
                                 </select>
                             </div>
                             <div class="col">
