@@ -47,4 +47,19 @@ class User extends Authenticatable
             'role' => UserRole::class,
         ];
     }
+
+    public function getRoleLabelAttribute()
+    {
+        return match($this->role->value){
+
+            'operator' => 'Operator',
+
+            'ketua_majelis' => 'Ketua Majelis',
+
+            'hakim_tunggal' => 'Hakim Tunggal',
+
+            'panitera' => 'Panitera',
+
+        };
+    }
 }

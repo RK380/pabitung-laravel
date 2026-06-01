@@ -55,8 +55,35 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted flex-md-shrink-0" href="/login">Login</a>
-      
+      @auth
+
+          <div class="d-flex align-items-center gap-2">
+
+              <span style="font-size:14px;">
+
+                  {{ auth()->user()->name }}
+
+                  {{ auth()->user()->role_label }}
+
+              </span>
+
+              <form action="{{ route('logout') }}" method="POST">
+
+                  @csrf
+
+                  <button type="submit"
+                          class="btn-getstarted border-0">
+
+                      Logout
+
+                  </button>
+
+              </form>
+
+          </div>
+
+      @endauth
+
     </div>
   </header>
 
