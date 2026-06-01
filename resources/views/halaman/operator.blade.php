@@ -190,10 +190,64 @@
                                     <input type="email" class="form-control" placeholder="Email Pemohon/Penggugat IV" id="emailpemohoniv" name="emailpemohoniv" value="{{ old('emailpemohoniv') }}">
                                     <p style="font-size:12px;color:grey;padding-top:5px;">* (Optional) Wajib Menggunakan @ Jika Ada Email</p>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label for="emailtergugat">Email Tergugat</label>
-                                    <input type="text" class="form-control" placeholder="Email Tergugat" id="emailtergugat" name="emailtergugat" value="{{ old('emailtergugat') }}">
-                                    <p style="font-size:12px;color:grey;padding-top:5px;">* (Optional) Wajib Menggunakan @ Jika Ada Email</p>
+                                    <input type="email"
+                                        class="form-control"
+                                        placeholder="Email Tergugat"
+                                        id="emailtergugat"
+                                        name="emailtergugat"
+                                        value="{{ old('emailtergugat') }}">
+
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">
+                                        * (Optional) Wajib Menggunakan @ Jika Ada Email
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 extra-email" style="display:none;">
+                                    <label>Email Tergugat II</label>
+
+                                    <input type="email"
+                                        class="form-control"
+                                        placeholder="Email Tergugat II"
+                                        id="emailtergugatii"
+                                        name="emailtergugatii"
+                                        value="{{ old('emailtergugatii') }}">
+
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">
+                                        * (Optional) Wajib Menggunakan @ Jika Ada Email
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 extra-email" style="display:none;">
+                                    <label>Email Tergugat III</label>
+
+                                    <input type="email"
+                                        class="form-control"
+                                        placeholder="Email Tergugat III"
+                                        id="emailtergugatiii"
+                                        name="emailtergugatiii"
+                                        value="{{ old('emailtergugatiii') }}">
+
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">
+                                        * (Optional) Wajib Menggunakan @ Jika Ada Email
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 extra-email" style="display:none;">
+                                    <label>Email Tergugat IV</label>
+
+                                    <input type="email"
+                                        class="form-control"
+                                        placeholder="Email Tergugat IV"
+                                        id="emailtergugativ"
+                                        name="emailtergugativ"
+                                        value="{{ old('emailtergugativ') }}">
+
+                                    <p style="font-size:12px;color:grey;padding-top:5px;">
+                                        * (Optional) Wajib Menggunakan @ Jika Ada Email
+                                    </p>
                                 </div>
 
                                 <div class="col-12" id="formTextarea">
@@ -291,39 +345,65 @@
         });
     </script>
     <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
     const jenisSelect = document.getElementById('jenis');
-    const extraFields = document.querySelectorAll('.extra-tergugat');
+
+    const extraTergugat = document.querySelectorAll('.extra-tergugat');
+    const extraEmail = document.querySelectorAll('.extra-email');
 
     function toggleTergugat() {
 
         if (jenisSelect.value === 'Isbat Gugatan') {
 
-            extraFields.forEach(field => {
+            // tampilkan tergugat tambahan
+            extraTergugat.forEach(field => {
                 field.style.display = 'block';
 
-                // aktifkan required
-                field.querySelector('input').required = true;
+                const input = field.querySelector('input');
+
+                if (input) {
+                    input.required = true;
+                }
+            });
+
+            // tampilkan email tambahan
+            extraEmail.forEach(field => {
+                field.style.display = 'block';
             });
 
         } else {
 
-            extraFields.forEach(field => {
+            // sembunyikan tergugat tambahan
+            extraTergugat.forEach(field => {
                 field.style.display = 'none';
 
-                // hapus required
-                field.querySelector('input').required = false;
+                const input = field.querySelector('input');
 
-                // kosongkan input
-                field.querySelector('input').value = '';
+                if (input) {
+                    input.required = false;
+                    input.value = '';
+                }
+            });
+
+            // sembunyikan email tambahan
+            extraEmail.forEach(field => {
+                field.style.display = 'none';
+
+                const input = field.querySelector('input');
+
+                if (input) {
+                    input.value = '';
+                }
             });
 
         }
     }
 
-    // jalankan saat select berubah
     jenisSelect.addEventListener('change', toggleTergugat);
 
-    // jalankan saat halaman pertama kali load
-    window.addEventListener('load', toggleTergugat);
+    toggleTergugat();
+
+    });
     </script>
 @endsection
