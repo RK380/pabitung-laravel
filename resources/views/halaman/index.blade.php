@@ -150,8 +150,6 @@
                 id="perkara"
                 role="tabpanel">
 
-                <h3>Monitoring Perkara <i class="bi bi-eye" width="20"></i></h3>
-
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
                     <div class="col-lg-12">
@@ -268,11 +266,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="col-12 text-center">
-                                <a href="/operator" type="button" class="btn btn-secondary">
-                                    <i class="fas fa-arrow-left fa-fw"></i> Kembali
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
