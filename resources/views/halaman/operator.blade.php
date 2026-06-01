@@ -79,7 +79,7 @@
 
                                 <div class="col-md-6 ">
                                     <label for="jenis">Jenis Perkara <i style="color: red">*</i></label>
-                                    <select class="form-select" name="jenis" aria-label="Default select example" required>
+                                    <select class="form-select" id="jenis" name="jenis" aria-label="Default select example" required>
                                             <option value="" @selected(old('jenis') == '')>-Pilih-</option>
                                             <option value="Cerai Talak" @selected(old('jenis') == 'Cerai Talak')>Cerai Talak</option>
                                             <option value="Cerai Gugat" @selected(old('jenis') == 'Cerai Gugat')>Cerai Gugat</option>
@@ -123,22 +123,22 @@
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <label for="tergugat">Termohon/Tergugat <i style="color: red; display:none;">*</i></label>
+                                    <label for="tergugat">Termohon/Tergugat <i style="color: red;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Termohon/Tergugat" id="tergugat" name="tergugat" required value="{{ old('tergugat') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Termohon/Tergugat Wajib Di Isi</p>
                                 </div>
-                                <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat II <i style="color: red; display:none;">*</i></label>
+                                <div class="col-md-6 extra-tergugat" style="display:none;">
+                                    <label for="tergugat">Tergugat II <i style="color: red;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat II" id="tergugatii" name="tergugatii" required value="{{ old('tergugatii') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat II Wajib Di Isi</p>
                                 </div>
-                                <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat III<i style="color: red; display:none;">*</i></label>
+                                <div class="col-md-6 extra-tergugat" style="display:none;">
+                                    <label for="tergugat">Tergugat III<i style="color: red;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat III" id="tergugatiii" name="tergugatiii" required value="{{ old('tergugatiii') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat III Wajib Di Isi</p>
                                 </div>
-                                <div class="col-md-6 ">
-                                    <label for="tergugat">Tergugat IV<i style="color: red; display:none;">*</i></label>
+                                <div class="col-md-6 extra-tergugat" style="display:none;">
+                                    <label for="tergugat">Tergugat IV<i style="color: red;">*</i></label>
                                     <input type="text" class="form-control" placeholder="Tergugat IV" id="tergugativ" name="tergugativ" required value="{{ old('tergugativ') }}">
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Tergugat IV Wajib Di Isi</p>
                                 </div>
