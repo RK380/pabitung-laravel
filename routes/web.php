@@ -72,6 +72,15 @@ Route::middleware(['auth', 'role:operator'])
         Route::get('/daftarhadir/download-pdf', [DaftarHadirController::class, 'downloadPdfHad'])
             ->name('daftarhadir.laporan.pdf');
 
+        Route::get('/daftarhadirshow/show', [DaftarHadirController::class, 'show'])
+            ->name('daftarhadir.show');
+
+        Route::post('/daftarhadir/store', [DaftarHadirController::class, 'store'])
+            ->name('daftarhadir.store');
+        
+        Route::get('/daftarhadir', [DaftarHadirController::class, 'index'])
+            ->name('daftarhadir.index');
+
     });
 
 Route::middleware(['auth', 'role:ketua_majelis'])
