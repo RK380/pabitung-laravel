@@ -48,6 +48,9 @@
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon III</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon IV</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Termohon/Tergugat</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat II</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat III</th>
+                                        <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat IV</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Kuasa Hukum</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Pemohon/Penggugat</th>
                                         <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Termohon/Tergugat</th>
@@ -181,14 +184,13 @@
                                                 </span> -->
 
                                                 <span class="badge {{ $row->status['badge'] }}">
-                                                    {{ $row->status['status'] }}
+                                                        {{ $row->status['status'] }}
+                                                    <span style="font-color:#FFFFFF;font-size:12px;">
+                                                        {{ $row->status['keterangan'] }}
+                                                    </span>
                                                 </span>
 
-                                                <br>
-
-                                                <small>
-                                                    {{ $row->status['keterangan'] }}
-                                                </small>
+                                                
 
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
