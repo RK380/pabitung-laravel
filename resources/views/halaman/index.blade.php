@@ -161,6 +161,46 @@
                 </div>
             </div>
           </div> -->
+
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active"
+                id="perkara-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#perkara"
+                type="button">
+
+            Monitoring Perkara
+
+        </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link"
+                id="berkas-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#berkas"
+                type="button">
+
+            Monitoring Pendistribusian Berkas
+
+        </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link"
+                id="mediasi-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#mediasi"
+                type="button">
+
+            Monitoring Pihak Mediasi
+
+        </button>
+    </li>
+
+</ul>
           
           <div class="tab-content" id="pills-tabContent">
 
