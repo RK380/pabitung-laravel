@@ -72,7 +72,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-red position-relative">
               <i class="bi bi-activity icon"></i>
-              <h3>KETUA MAJELIS/KETUA PENGADILAN</h3>
+              <h3>KETUA PENGADILAN/KETUA MAJELIS</h3>
               <a href="/hakim" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -152,6 +152,7 @@
                 <p><strong>Pengadilan Agama Bitung</strong></p>
                 <p><strong>Pelayanan Internal</strong></p>
                 <p class="mt-3"><strong>Phone:</strong> <span>(0438) 35566</span></p>
+                <p class="mt-3"><strong>WhatsApp:</strong> <span>0823-9343-8722</span></p>
                 <p><strong>Email:</strong> <span>pengadilanagamabitung@yahoo.co.id</span></p>
               </div>
               <div class="row">
