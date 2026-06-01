@@ -123,6 +123,7 @@
                                                     <span class="badge bg-warning text-dark">Menunggu Waktu Sidang</span>
                                                 @endif -->
                                                 @php
+
                                                     $status = '';
                                                     $badge = '';
                                                     $keterangan = '';
@@ -130,36 +131,73 @@
                                                     $tanggalSidang = \Carbon\Carbon::parse($row->jadwal);
                                                     $hariIni = \Carbon\Carbon::now();
 
+                                                    // ambil tanggal input perkara
+                                                    $tanggalInput = \Carbon\Carbon::parse($row->created_at);
+
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | PERKARA BARU
+                                                    |--------------------------------------------------------------------------
+                                                    */
+
+                                                    if($tanggalInput->isToday()){
+
+                                                        $status = "Perkara Baru";
+                                                        $badge = "bg-info";
+                                                        $keterangan = "Baru diinput hari ini";
+
+                                                    }
+
+                                                    /*
+                                                    |--------------------------------------------------------------------------
+                                                    | STATUS SIDANG
+                                                    |--------------------------------------------------------------------------
+                                                    */
+                                                    else{
+
                                                         if($tanggalSidang->isPast()){
+
                                                             $status = "Sudah Selesai Sidang";
                                                             $badge = "bg-success";
+
                                                         }
                                                         else{
 
                                                             $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
 
                                                             if($tanggalSidang->isToday()){
+
                                                                 $status = "Sedang Sidang";
                                                                 $badge = "bg-danger";
                                                                 $keterangan = "Sidang hari ini";
+
                                                             }
                                                             elseif($hari <= 1){
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-warning";
                                                                 $keterangan = "Sidang besok";
+
                                                             }
                                                             elseif($hari <= 3){
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-primary";
                                                                 $keterangan = "$hari hari lagi";
+
                                                             }
                                                             else{
+
                                                                 $status = "Menunggu Sidang";
                                                                 $badge = "bg-secondary";
                                                                 $keterangan = "$hari hari lagi";
+
                                                             }
 
                                                         }
+
+                                                    }
+
                                                 @endphp
                                                 <span class="badge {{ $badge }}">{{ $status }}
                                                     @if(!empty($keterangan))
