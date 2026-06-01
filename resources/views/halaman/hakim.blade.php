@@ -190,8 +190,6 @@
                                                     </span>
                                                 </span>
 
-                                                
-
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>

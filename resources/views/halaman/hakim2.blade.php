@@ -131,15 +131,12 @@
                                                 </span> -->
 
                                                 <span class="badge {{ $row->status['badge'] }}">
-                                                    {{ $row->status['status'] }}
+                                                        {{ $row->status['status'] }}
+                                                    <span style="font-color:#FFFFFF;font-size:12px;">
+                                                        {{ $row->status['keterangan'] }}
+                                                    </span>
                                                 </span>
 
-                                                <br>
-
-                                                <small>
-                                                    {{ $row->status['keterangan'] }}
-                                                </small>
-                                                
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
