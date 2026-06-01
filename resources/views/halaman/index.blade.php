@@ -99,13 +99,13 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-red position-relative">
               <i class="bi bi-activity icon"></i>
               <h3>KETUA PENGADILAN/KETUA MAJELIS</h3>
               <a href="/hakim" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-red position-relative">
@@ -113,7 +113,7 @@
               <h3>MAJELIS HAKIM/HAKIM TUNGGAL</h3>
               <a href="/hakim2" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item item-cyan position-relative">
@@ -121,7 +121,7 @@
               <h3>PANITERA</h3>
               <a href="/panitera" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item item-teal position-relative">
@@ -129,7 +129,7 @@
               <h3>PENDISTRIBUSIAN BERKAS PERKARA</h3>
               <a href="/pendistribusian" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item item-orange position-relative">
@@ -138,9 +138,7 @@
               <a href="/operator" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-          <!-- End Service Item -->
-
-          <!-- Kartu -->
+          
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item item-teal position-relative">
                 <i class="bi bi-chat-square-text icon"></i>
@@ -150,8 +148,6 @@
                 </a>
             </div>
             </div>
-
-          <!-- Modal -->
             <div class="modal fade" id="barcodeModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -164,7 +160,45 @@
                 </div>
                 </div>
             </div>
-            </div>
+          </div> -->
+          
+          <div class="tab-content" id="pills-tabContent">
+
+    <!-- Monitoring Perkara -->
+    <div class="tab-pane fade show active"
+         id="perkara"
+         role="tabpanel">
+
+        <h3>Monitoring Perkara</h3>
+
+        {{-- isi tabel perkara --}}
+
+    </div>
+
+    <!-- Monitoring Berkas -->
+    <div class="tab-pane fade"
+         id="berkas"
+         role="tabpanel">
+
+        <h3>Monitoring Pendistribusian Berkas</h3>
+
+        {{-- isi tabel berkas --}}
+
+    </div>
+
+    <!-- Monitoring Mediasi -->
+    <div class="tab-pane fade"
+         id="mediasi"
+         role="tabpanel">
+
+        <h3>Monitoring Pihak Mediasi</h3>
+
+        {{-- isi tabel mediasi --}}
+
+    </div>
+
+</div>
+
         </div>
       </div>
     </section><!-- /Services Section -->
