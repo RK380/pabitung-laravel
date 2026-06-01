@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/', [HalamanController::class, 'index'])->name('home');
+Route::get('/', [HalamanController::class, 'index'])->name('home');
 // Route::get('/hakim', [HalamanController::class, 'hakim'])->name('hakim');
 // Route::get('/hakim2', [HalamanController::class, 'hakim2'])->name('hakim2');
 // Route::get('/panitera', [HalamanController::class, 'panitera'])->name('panitera');
