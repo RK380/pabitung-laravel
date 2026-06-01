@@ -8,25 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     */
     public function handle(Request $request, Closure $next, ...$roles): Response
-    {   
-        dd(
-        auth()->user()->role,
-        gettype(auth()->user()->role),
-        $roles
-        );
-        // cek login
+    {
         if (!auth()->check()) {
 
             return redirect('/login');
 
         }
 
-        // cek role
-        if (!in_array(auth()->user()->role, $roles)) {
+        if (!in_array(auth()->user()->role->value, $roles)) {
 
             abort(403, 'Akses ditolak');
 
