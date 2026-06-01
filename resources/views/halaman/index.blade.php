@@ -164,80 +164,80 @@
 
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
-    <li class="nav-item" role="presentation">
-        <button class="nav-link active"
-                id="perkara-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#perkara"
-                type="button">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active"
+                        id="perkara-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#perkara"
+                        type="button">
 
-            Monitoring Perkara
+                    Monitoring Perkara
 
-        </button>
-    </li>
+                </button>
+            </li>
 
-    <li class="nav-item" role="presentation">
-        <button class="nav-link"
-                id="berkas-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#berkas"
-                type="button">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="berkas-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#berkas"
+                        type="button">
 
-            Monitoring Pendistribusian Berkas
+                    Monitoring Pendistribusian Berkas
 
-        </button>
-    </li>
+                </button>
+            </li>
 
-    <li class="nav-item" role="presentation">
-        <button class="nav-link"
-                id="mediasi-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#mediasi"
-                type="button">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="mediasi-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#mediasi"
+                        type="button">
 
-            Monitoring Pihak Mediasi
+                    Monitoring Pihak Mediasi
 
-        </button>
-    </li>
+                </button>
+            </li>
 
-</ul>
+          </ul>
           
           <div class="tab-content" id="pills-tabContent">
 
-    <!-- Monitoring Perkara -->
-    <div class="tab-pane fade show active"
-         id="perkara"
-         role="tabpanel">
+            <!-- Monitoring Perkara -->
+            <div class="tab-pane fade show active"
+                id="perkara"
+                role="tabpanel">
 
-        <h3>Monitoring Perkara</h3>
+                <h3>Monitoring Perkara <i class="bi bi-eye" width="20"></i></h3>
 
-        {{-- isi tabel perkara --}}
+                {{-- isi tabel perkara --}}
 
-    </div>
+            </div>
 
-    <!-- Monitoring Berkas -->
-    <div class="tab-pane fade"
-         id="berkas"
-         role="tabpanel">
+            <!-- Monitoring Berkas -->
+            <div class="tab-pane fade"
+                id="berkas"
+                role="tabpanel">
 
-        <h3>Monitoring Pendistribusian Berkas</h3>
+                <h3>Monitoring Pendistribusian Berkas <i class="bi bi-eye" width="20"></i></h3>
 
-        {{-- isi tabel berkas --}}
+                {{-- isi tabel berkas --}}
 
-    </div>
+            </div>
 
-    <!-- Monitoring Mediasi -->
-    <div class="tab-pane fade"
-         id="mediasi"
-         role="tabpanel">
+            <!-- Monitoring Mediasi -->
+            <div class="tab-pane fade"
+                id="mediasi"
+                role="tabpanel">
 
-        <h3>Monitoring Pihak Mediasi</h3>
+                <h3>Monitoring Pihak Mediasi <i class="bi bi-eye" width="20"></i></h3>
 
-        {{-- isi tabel mediasi --}}
+                {{-- isi tabel mediasi --}}
 
-    </div>
+            </div>
 
-</div>
+          </div>
 
         </div>
       </div>
