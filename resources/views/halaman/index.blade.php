@@ -55,16 +55,21 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted flex-md-shrink-0" href="/login">Login</a>
-      @auth
+      @guest
+          <a class="btn-getstarted flex-md-shrink-0"
+            href="{{ route('login') }}">
+              Login
+          </a>
+      @endguest
 
+      @auth
           <div class="d-flex align-items-center gap-2">
 
               <span style="font-size:14px;">
 
                   {{ auth()->user()->name }}
 
-                  {{ auth()->user()->role_label }}
+                  ({{ auth()->user()->role_label }})
 
               </span>
 
@@ -82,7 +87,6 @@
               </form>
 
           </div>
-
       @endauth
 
     </div>
@@ -98,69 +102,6 @@
       <div class="container">
 
         <div class="row gy-4">
-
-          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item item-red position-relative">
-              <i class="bi bi-activity icon"></i>
-              <h3>KETUA PENGADILAN/KETUA MAJELIS</h3>
-              <a href="/hakim" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item item-red position-relative">
-              <i class="bi bi-person-plus icon"></i>
-              <h3>MAJELIS HAKIM/HAKIM TUNGGAL</h3>
-              <a href="/hakim2" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item item-cyan position-relative">
-              <i class="bi bi-broadcast icon"></i>
-              <h3>PANITERA</h3>
-              <a href="/panitera" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item item-teal position-relative">
-              <i class="bi bi-easel icon"></i>
-              <h3>PENDISTRIBUSIAN BERKAS PERKARA</h3>
-              <a href="/pendistribusian" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item item-orange position-relative">
-              <i class="bi bi-bounding-box-circles icon"></i>
-              <h3>OPERATOR</h3>
-              <a href="/operator" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item item-teal position-relative">
-                <i class="bi bi-chat-square-text icon"></i>
-                <h3>DAFTAR HADIR MEDIASI</h3>
-                <a href="#" class="read-more stretched-link" data-bs-toggle="modal" data-bs-target="#barcodeModal">
-                <span>Lihat Barcode</span> <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
-            </div>
-            <div class="modal fade" id="barcodeModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Barcode Daftar Hadir</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="assets/img/brcnew.jpeg" alt="Barcode Daftar Hadir" class="img-fluid">
-                </div>
-                </div>
-            </div>
-          </div> -->
 
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
@@ -517,6 +458,10 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
   <script>
         $(document).ready(function() {
             $('#myDataTable').DataTable({
