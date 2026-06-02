@@ -206,11 +206,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <!-- <div class="col-12 text-center">
-                                <a href="/operator" type="button" class="btn btn-secondary">
-                                    <i class="fas fa-arrow-left fa-fw"></i> Kembali
-                                </a>
-                            </div> -->
                         </div>
                     </div>
         </div>
