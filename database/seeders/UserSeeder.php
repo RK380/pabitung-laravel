@@ -70,46 +70,6 @@ class UserSeeder extends Seeder
             'role' => UserRole::PANITERA,
         ]);
 
-        // User::create([
-        //     'name' => 'Panitera Muda Permohonan',
-        //     'email' => 'panitera_muda@gmail.com',
-        //     'password' => Hash::make('Paniteraper01#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-
-        // User::create([
-        //     'name' => 'Panitera Muda Gugatan',
-        //     'email' => 'panitera_mudagug@gmail.com',
-        //     'password' => Hash::make('Paniteragugatan01#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-
-        // User::create([
-        //     'name' => 'Panitera Muda Hukum',
-        //     'email' => 'panitera_mudahukum@gmail.com',
-        //     'password' => Hash::make('Paniterahukum01#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-
-        // User::create([
-        //     'name' => 'Panitera Pengganti',
-        //     'email' => 'panitera_pengganti@gmail.com',
-        //     'password' => Hash::make('Paniterapengganti01#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-        // User::create([
-        //     'name' => 'Panitera Pengganti 2',
-        //     'email' => 'panitera_pengganti2@gmail.com',
-        //     'password' => Hash::make('Paniterapengganti02#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-        // User::create([
-        //     'name' => 'Panitera Pengganti 3',
-        //     'email' => 'panitera_pengganti3@gmail.com',
-        //     'password' => Hash::make('Paniterapengganti03#'),
-        //     'role' => UserRole::PANITERA,
-        // ]);
-
 
     }
 }
