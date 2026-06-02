@@ -105,194 +105,67 @@
 
         <div class="row gy-4">
 
-          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-red position-relative">
+              <i class="bi bi-activity icon"></i>
+              <h3>KETUA PENGADILAN/KETUA MAJELIS</h3>
+              <a href="/hakim" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active"
-                        id="perkara-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#perkara"
-                        type="button">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-red position-relative">
+              <i class="bi bi-person-plus icon"></i>
+              <h3>MAJELIS HAKIM/HAKIM TUNGGAL</h3>
+              <a href="/hakim2" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
-                    Monitoring Perkara
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-cyan position-relative">
+              <i class="bi bi-broadcast icon"></i>
+              <h3>PANITERA</h3>
+              <a href="/panitera" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
-                </button>
-            </li>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <i class="bi bi-easel icon"></i>
+              <h3>PENDISTRIBUSIAN BERKAS PERKARA</h3>
+              <a href="/pendistribusian" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link"
-                        id="berkas-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#berkas"
-                        type="button">
-
-                    Monitoring Pendistribusian Berkas
-
-                </button>
-            </li>
-
-            <li class="nav-item" role="presentation">
-                <button class="nav-link"
-                        id="mediasi-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#mediasi"
-                        type="button">
-
-                    Monitoring Pihak Mediasi
-
-                </button>
-            </li>
-
-          </ul>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-orange position-relative">
+              <i class="bi bi-bounding-box-circles icon"></i>
+              <h3>OPERATOR</h3>
+              <a href="/operator" class="read-more stretched-link"><span></span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
           
-          <div class="tab-content" id="pills-tabContent">
-
-            <!-- Monitoring Perkara -->
-            <div class="tab-pane fade show active"
-                id="perkara"
-                role="tabpanel">
-                  <div class="row gy-4">
-                      <div class="col-lg-12">
-                          <h4>Data Perkara Terkini Pengadilan Agama Bitung</h4>
-                          <div class="table-responsive">
-                              <table id="myDataTable" class="table table-striped table-sm">
-                                  <thead>
-                                      <tr>
-                                          <th class="text-nowrap text-center"><i class="fas fa-cog"></i></th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">No</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Jenis Perkara</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Nomor</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon II</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon III</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Pemohon IV</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat II</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat III</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tergugat IV</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Kuasa Hukum</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Pemohon</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Lokasi Tergugat</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Keterangan</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Tanggal Pendaftaran</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Jenis Hakim</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Hakim</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Penetapan Tanggal Sidang</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Penunjukkan Panitera Pengganti</th>
-                                          <th class="text-nowrap" style="font-size:15px;color:green;font-weight:bold;font-family:Arial;">Penunjukkan Jurusita/Jurusita Pengganti</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      @foreach ($data as $index => $row)
-                                          
-                                          <tr>
-                                              <td class="text-nowrap">
-
-                                                  <span class="badge {{ $row->status_operator['badge'] }}">
-
-                                                      {{ $row->status_operator['status'] }}
-
-                                                      @if(!empty($row->status_operator['keterangan']))
-
-                                                          <span style="color:#FFFFFF;font-size:12px;">
-                                                              ⏳ {{ $row->status_operator['keterangan'] }}
-                                                          </span>
-
-                                                      @endif
-
-                                                  </span>
-                                              </td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
-                                              <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
-                                              <td class="text-nowrap"><span class="badge bg-secondary">{{ $row->noperkara }}</span></td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohon }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoni }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniii }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->pemohoniv }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugat }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatii }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugatiii }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->tergugativ }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->kuasa_hukum }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_pemohon }}</td>
-                                              <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $row->lokasi_tergugat }}</td>
-                                              <td style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">
-                                                  <div style="/* Kolom ke-13 = Keterangan */ #myDataTable td:nth-child(13), #myDataTable th:nth-child(13) {max-width: 800px !important;
-                                                              white-space: normal !important;
-                                                              word-wrap: break-word;
-                                                          }">
-                                                      {{ $row->keterangan }}
-                                                  </div>
-                                              </td>
-                                              <td class="text-nowrap" style="text-align:center;"
-                                                  data-order="{{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('Y-m-d') }}">
-                                                  
-                                                  <span class="badge bg-warning text-dark">
-                                                      {{ \Carbon\Carbon::parse($row->tanggal_pendaftaran)->format('d-m-Y') }}
-                                                  </span>
-                                              </td>
-                                              <td class="text-nowrap">
-                                                  @if (empty($row->jenisHakim))
-                                                      <span class="badge bg-danger">-</span>
-                                                  @elseif ($row->jenisHakim == 1)
-                                                      <span class="badge bg-danger">Majelis Hakim</span>
-                                                  @elseif ($row->jenisHakim == 2)
-                                                      <span class="badge bg-danger">Hakim Tunggal</span>
-                                                  @else
-                                                      <span class="badge bg-danger">-</span>
-                                                  @endif
-                                              </td>
-                                              <td class="text-nowrap">
-                                                  @if (empty($row->jenisHakim))
-                                                      <span class="badge bg-light text-dark">-</span>
-                                                  @elseif ($row->jenisHakim == 1)
-                                                      <span class="badge bg-light text-dark">{!! $row->majelis_hakim_name ?? '-' !!}</span>
-                                                  @elseif ($row->jenisHakim == 2)
-                                                      <span class="badge bg-light text-dark">{!! $row->hakim_tunggal_name ?? '-' !!}</span>
-                                                  @else
-                                                      <span class="badge bg-light text-dark">-</span>
-                                                  @endif
-                                              </td>
-                                              <td class="text-nowrap" style="text-align:center;"
-                                                  data-order="{{ \Carbon\Carbon::parse($row->jadwal)->format('Y-m-d') }}">
-                                                  
-                                                  <span class="badge bg-success text-white">
-                                                      {{ \Carbon\Carbon::parse($row->jadwal)->format('d-m-Y') }}
-                                                  </span>
-                                              </td>
-                                              <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
-                                              <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->juru_sita_name }}</span></td>
-                                          </tr>
-                                      @endforeach
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-teal position-relative">
+                <i class="bi bi-chat-square-text icon"></i>
+                <h3>DAFTAR HADIR MEDIASI</h3>
+                <a href="#" class="read-more stretched-link" data-bs-toggle="modal" data-bs-target="#barcodeModal">
+                <span>Lihat Barcode</span> <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
-
-            <!-- Monitoring Berkas -->
-            <div class="tab-pane fade"
-                id="berkas"
-                role="tabpanel">
-
-                <h3>Monitoring Pendistribusian Berkas <i class="bi bi-eye" width="20"></i></h3>
-
-                {{-- isi tabel berkas --}}
-
             </div>
-
-            <!-- Monitoring Mediasi -->
-            <div class="tab-pane fade"
-                id="mediasi"
-                role="tabpanel">
-
-                <h3>Monitoring Pihak Mediasi <i class="bi bi-eye" width="20"></i></h3>
-
-                {{-- isi tabel mediasi --}}
-
+            <div class="modal fade" id="barcodeModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Barcode Daftar Hadir</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="assets/img/brcnew.jpeg" alt="Barcode Daftar Hadir" class="img-fluid">
+                </div>
+                </div>
             </div>
-
           </div>
 
         </div>
