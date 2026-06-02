@@ -65,7 +65,7 @@
 
       @auth
           <div class="d-flex align-items-center gap-2">
-              <span style="font-size:14px;margin: left 20px;color: #056e4f;">
+              <span style="font-size:14px;margin-left:20px;color: #056e4f;">
                   {{ auth()->user()->name }}
                   ({{ auth()->user()->role_label }})
               </span>
