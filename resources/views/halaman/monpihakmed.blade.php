@@ -110,7 +110,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $index => $row)
+                                    @foreach ($hadir as $index => $row)
                                         <tr>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:bold;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-success">{{ $row->tanggal }}</span></td>

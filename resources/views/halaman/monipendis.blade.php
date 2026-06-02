@@ -110,7 +110,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $index => $row)
+                                    @foreach ($berkas as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
                                                 
