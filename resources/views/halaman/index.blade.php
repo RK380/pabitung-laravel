@@ -50,7 +50,9 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/">Pelayanan Internal Pengadilan Agama Bitung</a></li>
+          <li><a href="/">Monitoring Perkara</a></li>
+          <li><a href="/">Monitoring Pendistribusian Berkas</a></li>
+          <li><a href="/">Monitoring Pihak Mediasi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
