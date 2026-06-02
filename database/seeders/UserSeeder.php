@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         */
 
         User::create([
-            'name' => 'Ketua Majelis',
+            'name' => 'Husnul Maarif, S.H.I., M.H.',
             'email' => 'ketua@gmail.com',
             'password' => Hash::make('Ketua01#'),
             'role' => UserRole::KETUA_MAJELIS,
@@ -44,14 +44,14 @@ class UserSeeder extends Seeder
         */
 
         User::create([
-            'name' => 'Hakim Anggota 1',
+            'name' => 'Jasni Manoso, S.H.I.',
             'email' => 'hakim1@gmail.com',
             'password' => Hash::make('Hakim01#'),
             'role' => UserRole::HAKIM_TUNGGAL,
         ]);
 
         User::create([
-            'name' => 'Hakim Anggota 2',
+            'name' => 'Muhammad Iklil Lahilote, S.H.',
             'email' => 'hakim2@gmail.com',
             'password' => Hash::make('Hakim02#'),
             'role' => UserRole::HAKIM_TUNGGAL,

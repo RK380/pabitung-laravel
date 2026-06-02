@@ -42,7 +42,6 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="/" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="assets/img/ma.png" alt="">
         <img src="assets/img/pa.png" alt="">
         <h1 class="sitename">PA Bitung</h1>
@@ -50,9 +49,9 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/">Monitoring Perkara</a></li>
-          <li><a href="/">Monitoring Pendistribusian Berkas</a></li>
-          <li><a href="/">Monitoring Pihak Mediasi</a></li>
+          <li><a href="/monperkara">Monitoring Perkara</a></li>
+          <li><a href="/monipendis">Monitoring Pendistribusian Berkas</a></li>
+          <li><a href="/monpihakmed">Monitoring Pihak Mediasi</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -66,28 +65,17 @@
 
       @auth
           <div class="d-flex align-items-center gap-2">
-
-              <span style="font-size:14px;">
-
+              <span style="font-size:14px;margin: left 20px;color: #056e4f;">
                   {{ auth()->user()->name }}
-
                   ({{ auth()->user()->role_label }})
-
               </span>
-
               <form action="{{ route('logout') }}" method="POST">
-
                   @csrf
-
                   <button type="submit"
                           class="btn-getstarted border-0">
-
                       Logout
-
                   </button>
-
               </form>
-
           </div>
       @endauth
 
@@ -272,20 +260,6 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <link rel="stylesheet"
-        href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
-  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-  <script>
-        $(document).ready(function() {
-            $('#myDataTable').DataTable({
-                scrollX: true,
-                responsive: false,
-                autoWidth: false,
-                order: [[1, 'asc']]
-            });
-        });
-  </script>
 
 </body>
 
