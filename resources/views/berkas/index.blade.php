@@ -108,6 +108,7 @@
                                                 @if ($row->tanda_tangan)
                                                     <img src="{{ asset('storage/'.$row->tanda_tangan) }}" width="120">
                                                 @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
