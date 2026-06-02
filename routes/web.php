@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HalamanController::class, 'index'])->name('home');
 Route::get('/statistik-pengunjung', [VisitorController::class, 'index'])->name('visitors.index');
 
+Route::get('/cek-storage', function () {
+
+    return [
+        'exists' => Storage::disk('public')->exists('ttd/ttd_1763645669.png'),
+        'path'   => storage_path('app/public/ttd/ttd_1763645669.png'),
+        'url'    => asset('storage/ttd/ttd_1763645669.png'),
+    ];
+
+});
+
     //LOGIN & LOGOUT
 Route::get('/login', [AuthController::class, 'login'])
     ->name('login');
