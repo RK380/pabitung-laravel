@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HalamanController::class, 'index'])->name('home');
+Route::get('/monperkara', [HalamanController::class, 'index'])->name('monperkara');
+Route::get('/monipendis', [HalamanController::class, 'index'])->name('monipendis');
+Route::get('/monpihakmed', [HalamanController::class, 'index'])->name('monpihakmed');
 Route::get('/statistik-pengunjung', [VisitorController::class, 'index'])->name('visitors.index');
 
     //LOGIN & LOGOUT
