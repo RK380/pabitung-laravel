@@ -122,4 +122,50 @@ class HalamanController extends Controller
         return view('halaman.operator', compact('link_wa', 'today', 'thisWeek', 'thisMonth', 'thisYear', 'total'));
     }
 
+    public function monperkara(){
+        $data = Perkara::latest()->get();
+        $today = Visitor::whereDate('created_at', Carbon::today())->count();
+        $thisWeek = Visitor::whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek()
+        ])->count();
+        $thisMonth = Visitor::whereMonth('created_at', Carbon::now()->month)
+                            ->whereYear('created_at', Carbon::now()->year)
+                            ->count();
+        $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
+        $total = Visitor::count();
+        
+        return view ('halaman.monperkara', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+    }
+    public function monipedis(){
+        $data = Perkara::latest()->get();
+        $today = Visitor::whereDate('created_at', Carbon::today())->count();
+        $thisWeek = Visitor::whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek()
+        ])->count();
+        $thisMonth = Visitor::whereMonth('created_at', Carbon::now()->month)
+                            ->whereYear('created_at', Carbon::now()->year)
+                            ->count();
+        $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
+        $total = Visitor::count();
+        
+        return view ('halaman.monipedis', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+    }
+    public function monpihakmed(){
+        $data = Perkara::latest()->get();
+        $today = Visitor::whereDate('created_at', Carbon::today())->count();
+        $thisWeek = Visitor::whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek()
+        ])->count();
+        $thisMonth = Visitor::whereMonth('created_at', Carbon::now()->month)
+                            ->whereYear('created_at', Carbon::now()->year)
+                            ->count();
+        $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
+        $total = Visitor::count();
+        
+        return view ('halaman.monpihakmed', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+    }
+
 }
