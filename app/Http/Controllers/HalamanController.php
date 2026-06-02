@@ -137,7 +137,7 @@ class HalamanController extends Controller
         
         return view ('halaman.monperkara', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
     }
-    public function monipedis(){
+    public function monipendis(){
         $data = Perkara::latest()->get();
         $today = Visitor::whereDate('created_at', Carbon::today())->count();
         $thisWeek = Visitor::whereBetween('created_at', [
@@ -150,7 +150,7 @@ class HalamanController extends Controller
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
         
-        return view ('halaman.monipedis', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+        return view ('halaman.monipendis', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
     }
     public function monpihakmed(){
         $data = Perkara::latest()->get();
