@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perkara;
+use App\Models\BerkasPerkara;
+use App\Models\DaftarHadir;
 use App\Models\Visitor;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -123,6 +125,8 @@ class HalamanController extends Controller
     }
 
     public function monperkara(){
+        $hadir = DaftarHadir::all();
+        $berkas = BerkasPerkara::latest()->get();
         $data = Perkara::latest()->get();
         $today = Visitor::whereDate('created_at', Carbon::today())->count();
         $thisWeek = Visitor::whereBetween('created_at', [
@@ -135,9 +139,11 @@ class HalamanController extends Controller
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
         
-        return view ('halaman.monperkara', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+        return view ('halaman.monperkara', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data', 'berkas', 'hadir'));
     }
     public function monipendis(){
+        $hadir = DaftarHadir::all();
+        $berkas = BerkasPerkara::latest()->get();
         $data = Perkara::latest()->get();
         $today = Visitor::whereDate('created_at', Carbon::today())->count();
         $thisWeek = Visitor::whereBetween('created_at', [
@@ -150,9 +156,11 @@ class HalamanController extends Controller
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
         
-        return view ('halaman.monipendis', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+        return view ('halaman.monipendis', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data', 'berkas', 'hadir'));
     }
     public function monpihakmed(){
+        $hadir = DaftarHadir::all();
+        $berkas = BerkasPerkara::latest()->get();
         $data = Perkara::latest()->get();
         $today = Visitor::whereDate('created_at', Carbon::today())->count();
         $thisWeek = Visitor::whereBetween('created_at', [
@@ -165,7 +173,7 @@ class HalamanController extends Controller
         $thisYear = Visitor::whereYear('created_at', Carbon::now()->year)->count();
         $total = Visitor::count();
         
-        return view ('halaman.monpihakmed', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data'));
+        return view ('halaman.monpihakmed', compact('today', 'thisWeek', 'thisMonth', 'thisYear', 'total', 'data', 'berkas','hadir'));
     }
 
 }
