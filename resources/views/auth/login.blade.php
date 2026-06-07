@@ -83,37 +83,6 @@
               <button type="submit" class="btn btn-primary">Login</button>
             </form>
 
-            <form class="form  animated" method="post" action="https://siwas.mahkamahagung.go.id/login/validation_credential">
-              <div class="text-center">
-                <img width="100px" alt="Logo Mahkamah Agung Republik Indonesia" src="https://siwas.mahkamahagung.go.id/resources/frontend/img/now-logo.png">
-              </div>
-              <div class="text-center">
-                <img width="200px" class="animated flipInY" alt="Logo Aplikasi SIWAS" src="https://siwas.mahkamahagung.go.id/resources/frontend/img/logo-siwas.png">
-              </div>
-            <div class="card-body">
-              <div class="input-group no-border input-lg">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                                  <!-- <i class="fa fa-user text-white"></i> -->
-                                    <i class="fa-solid fa-user-secret text-white"></i>
-                              </span>
-                            </div>
-                            <input type="text" class="form-control" title="Isikan username atau nama pengguna anda" name="username" placeholder="Username">
-                        </div>
-                        <div class="input-group no-border input-lg">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">
-                                  <i class="fa fa-key text-white"></i>
-                              </span>
-                            </div>
-                            <input type="password" placeholder="Password" name="password" class="form-control" title="Isikan password atau kata sandi anda">
-                        </div>
-                        <div class="col-md-12 text-center m-t-20">
-                            <button type="submit" title="Tombol Login" class="btn btn-warning btn-lg btn-round p-l-20 p-r-20">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
-                        </div>
-                      </div>
-            </form>
-            </div>
       </div>
     </section><!-- /Services Section -->
 

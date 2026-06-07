@@ -15,6 +15,8 @@ Route::get('/', [HalamanController::class, 'index'])->name('home');
 Route::get('/monperkara', [HalamanController::class, 'monperkara']);
 Route::get('/monipendis', [HalamanController::class, 'monipendis']);
 Route::get('/monpihakmed', [HalamanController::class, 'monpihakmed']);
+Route::get('/pendistribusian', [HalamanController::class, 'pendistribusian']);
+Route::resource('berkas', BerkasPerkaraController::class);
 Route::get('/statistik-pengunjung', [VisitorController::class, 'index'])->name('visitors.index');
 
     //LOGIN & LOGOUT
@@ -109,7 +111,5 @@ Route::middleware(['auth', 'role:panitera'])
     });
 
     //ROLE SEMUA
-Route::middleware(['auth'])->group(function () {
-    Route::get('/pendistribusian', [HalamanController::class, 'pendistribusian']);
-    Route::resource('berkas', BerkasPerkaraController::class);
-});
+// Route::middleware(['auth'])->group(function () {
+// });
