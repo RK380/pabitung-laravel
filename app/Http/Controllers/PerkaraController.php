@@ -23,6 +23,7 @@ class PerkaraController extends Controller
                 'pemohoni' => $request->pemohoni,
                 'pemohoniii' => $request->pemohoniii,
                 'pemohoniv' => $request->pemohoniv,
+                'tergugat' => $request->tergugat,
                 'tergugatii'  => $request->filled('tergugatii') ? $request->tergugatii : '-',
                 'tergugatiii' => $request->filled('tergugatiii') ? $request->tergugatiii : '-',
                 'tergugativ'  => $request->filled('tergugativ') ? $request->tergugativ : '-',
