@@ -63,37 +63,10 @@ Route::middleware(['auth', 'role:operator'])
         Route::post('/daftarhadir/store', [DaftarHadirController::class, 'store'])
             ->name('daftarhadir.store');
 
-        Route::get('/hakim', [HalamanController::class, 'hakim'])
-            ->name('hakim');
-
-        Route::get('/hakim/edit/{id}', [PerkaraController::class, 'edit'])
-            ->name('perkara.edit');
-
-        Route::put('/hakim/update/{id}', [PerkaraController::class, 'update'])
-            ->name('perkara.update');
-
-        Route::get('/hakim2', [HalamanController::class, 'hakim2'])
-            ->name('hakim2');
-
-        Route::get('/hakim2/edit2/{id}', [PerkaraController::class, 'edit2'])
-            ->name('perkara.edit2');
-
-        Route::put('/hakim2/update2/{id}', [PerkaraController::class, 'update2'])
-            ->name('perkara.update2');
-
-        Route::get('/panitera', [HalamanController::class, 'panitera'])
-            ->name('panitera');
-
-        Route::get('/panitera/edit/{id}', [PerkaraController::class, 'editpanitera'])
-            ->name('perkara.editpanitera');
-
-        Route::put('/panitera/update/{id}', [PerkaraController::class, 'updatepanitera'])
-            ->name('perkara.updatepanitera');
-
     });
 
     //ROLE KETUA MAJELIS
-Route::middleware(['auth', 'role:ketua_majelis'])
+Route::middleware(['auth', 'role:ketua_majelis,operator'])
     ->group(function () {
 
         Route::get('/hakim', [HalamanController::class, 'hakim'])
@@ -108,7 +81,7 @@ Route::middleware(['auth', 'role:ketua_majelis'])
     });
 
     //ROLE HAKIM TUNGGAL
-Route::middleware(['auth', 'role:hakim_tunggal'])
+Route::middleware(['auth', 'role:hakim_tunggal,operator'])
     ->group(function () {
 
         Route::get('/hakim2', [HalamanController::class, 'hakim2'])
@@ -123,7 +96,7 @@ Route::middleware(['auth', 'role:hakim_tunggal'])
     });
 
     //ROLE PANITERA
-Route::middleware(['auth', 'role:panitera'])
+Route::middleware(['auth', 'role:panitera,operator'])
     ->group(function () {
 
         Route::get('/panitera', [HalamanController::class, 'panitera'])
