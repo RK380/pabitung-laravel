@@ -55,7 +55,7 @@ class Perkara extends Model
     public function getHakimTunggalNameAttribute()
     {
         return match ($this->hakimTunggal) {
-            '1' => 'Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)',
+            '1' => 'Husnul Maarif, S.HI., M.H. (Ketua Majelis)',
             '2' => 'Jasni Manoso, S.H.I (Hakim Anggota 1)',
             '3' => 'Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)',
             default => '-',
@@ -73,7 +73,7 @@ class Perkara extends Model
 
         foreach ($hakimIds as $id) {
             $name = match (trim($id)) {
-                '1' => 'Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)',
+                '1' => 'Husnul Maarif, S.HI., M.H. (Ketua Majelis)',
                 '2' => 'Jasni Manoso, S.H.I (Hakim Anggota 1)',
                 '3' => 'Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)',
                 default => null,
