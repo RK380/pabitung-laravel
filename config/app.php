@@ -123,8 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'wa_hakim' => env('WA_HAKIM', '082188983611'),
-    'wa_hakim2' => env('WA_HAKIM2', '081355312994'),
-    'wa_ketua' => env('WA_KETUA', '081333878807'),
+    'wa_hakim' => env('WA_HAKIM', '6282188983611'),
+    'wa_hakim2' => env('WA_HAKIM2', '6281355312994'),
+    'wa_ketua' => env('WA_KETUA', '6281333878807'),
 
 ];

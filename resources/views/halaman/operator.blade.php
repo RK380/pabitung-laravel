@@ -43,12 +43,18 @@
                             </div>
                             @php
                                 $wa_link = request()->query('wa_link');
+                                $wa_hakim2_link = request()->query('wa_hakim2link');
                                 $wa_ketua_link = request()->query('wa_ketua_link');
                             @endphp
                             <div class="mb-3">
                                 @if ($wa_link)
                                     <button type="button" id="btnWaHakim" class="btn btn-success me-2">
                                         Kirim WhatsApp ke Hakim
+                                    </button>
+                                @endif
+                                @if ($wa_hakim2_link)
+                                    <button type="button" id="btnWaHakim2" class="btn btn-success me-2">
+                                        Kirim WhatsApp ke Hakim 2
                                     </button>
                                 @endif
                                 @if ($wa_ketua_link)
@@ -282,6 +288,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const waLinks = {
                 btnWaHakim: urlParams.get('wa_link'),
+                btnWaHakim2: urlParams.get('wa_hakim2_link'),
                 btnWaKetua: urlParams.get('wa_ketua_link')
             };
 
@@ -299,6 +306,7 @@
             }
 
             handleWaButton('btnWaHakim', waLinks.btnWaHakim);
+            handleWaButton('btnWaHakim2', waLinks.btnWaHakim2);
             handleWaButton('btnWaKetua', waLinks.btnWaKetua);
         });
 
