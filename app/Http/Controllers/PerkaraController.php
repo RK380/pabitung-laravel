@@ -69,7 +69,7 @@ class PerkaraController extends Controller
             'wa_hakim2_link' => base64_encode($link_wa_hakim2),
             'wa_ketua_link' => base64_encode($link_wa_ketua),
         ])
-            ->with('success', 'Data berhasil disimpan & link terkirim ke WA hakim dan ketua.');
+            ->with('success', 'Data berhasil disimpan & link terkirim ke WA hakim 1 atau hakim 2 dan ketua.');
     }
 
     /**

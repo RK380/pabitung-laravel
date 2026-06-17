@@ -53,7 +53,7 @@
                                     </button>
                                 @endif
                                 @if ($wa_hakim2_link)
-                                    <button type="button" id="btnWaHakim2" class="btn btn-success me-2">
+                                    <button type="button" id="btnWaHakim2" class="btn btn-primary me-2">
                                         Kirim WhatsApp ke Hakim 2
                                     </button>
                                 @endif
