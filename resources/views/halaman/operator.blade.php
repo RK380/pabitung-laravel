@@ -43,7 +43,7 @@
                             </div>
                             @php
                                 $wa_link = request()->query('wa_link');
-                                $wa_hakim2_link = request()->query('wa_hakim2link');
+                                $wa_hakim2_link = request()->query('wa_hakim2_link');
                                 $wa_ketua_link = request()->query('wa_ketua_link');
                             @endphp
                             <div class="mb-3">
