@@ -119,7 +119,7 @@
                                 <!-- Form untuk menampilkan semua nama hakim (Majelis Hakim) -->
                                 <div class="col-md-6 mt-3" id="formMajelis" style="display:none;">
                                     <ol>
-                                        <li>Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)</li>
+                                        <li>Husnul Maarif, S.H.I., M.H. (Ketua Majelis)</li>
                                         <li>Jasni Manoso, S.H.I (Hakim Anggota 1)</li>
                                         <li>Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)</li>
                                     </ol>
@@ -129,7 +129,7 @@
                                 <div class="col-md-6 mt-3" id="formTunggal" style="display:none;">
                                     <label for="hakimTunggal">Pilih Hakim Tunggal <i style="color: red">*</i></label>
                                     <select class="form-select" id="hakimTunggal" name="hakimTunggal">
-                                        <option value="1">Harisan Upuolat, S.H.I., M.H. (Ketua Majelis)</option>
+                                        <option value="1">Husnul Maarif, S.H.I., M.H. (Ketua Majelis)</option>
                                         <option value="2">Jasni Manoso, S.H.I (Hakim Anggota 1)</option>
                                         <option value="3">Muhammad Iklil Lahilote, S.H. (Hakim Anggota 2)</option>
                                     </select>
