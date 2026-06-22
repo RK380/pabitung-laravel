@@ -235,7 +235,7 @@ class Perkara extends Model
             return [
                 'status' => StatusOperator::BARU,
                 'badge' => 'bg-info',
-                'keterangan' => 'Baru diinput hari ini'
+                'keterangan' => 'Baru di input hari ini'
             ];
 
         }
