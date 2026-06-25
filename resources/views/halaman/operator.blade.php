@@ -95,6 +95,7 @@
                                             <option value="Kewarisan" @selected(old('jenis') == 'Kewarisan')>Kewarisan</option>
                                             <option value="Harta Bersama" @selected(old('jenis') == 'Harta Bersama')>Harta Bersama</option>
                                             <option value="Permohonan Perwalian" @selected(old('jenis') == 'Permohonan Perwalian')>Permohonan Perwalian</option>
+                                            <option value="Gugatan Sederhana" @selected(old('jenis') == 'Gugatan Sederhana')>Gugatan Sederhana</option>
                                             <option value="Isbat Gugatan" @selected(old('jenis') == 'Isbat Gugatan')>Isbat Gugatan</option>
                                     </select>
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Jenis Perkara Wajib Di Isi</p>
