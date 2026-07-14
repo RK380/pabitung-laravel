@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\StatusPerkara;
 use App\Enums\StatusOperator;
+use App\Enums\JenisHakim;
+use App\Traits\PerkaraStatusTrait;
 use Carbon\Carbon;
 
 class Perkara extends Model
 {
     use HasFactory;
+    use PerkaraStatusTrait;
 
     protected $fillable = [
         'jenis',
@@ -46,9 +49,10 @@ class Perkara extends Model
     ];
 
     protected $casts = [
-        'status_perkara' => StatusPerkara::class,
+        'created_at' => 'datetime',
+        'jadwal' => 'date',
+        'jenisHakim' => JenisHakim::class,
     ];
-
     // 16 field
 
     public function getJenisHakimTextAttribute()
@@ -217,147 +221,6 @@ class Perkara extends Model
             'status' => '-',
             'badge' => 'bg-secondary',
             'keterangan' => ''
-        ];
-    }
-
-    public function getStatusOperatorAttribute()
-    {
-        $hariIni = now();
-
-        /*
-        |--------------------------------------------------------------------------
-        | PERKARA BARU
-        |--------------------------------------------------------------------------
-        */
-
-        if ($this->created_at->isToday()) {
-
-            return [
-                'status' => StatusOperator::BARU,
-                'badge' => 'bg-info',
-                'keterangan' => 'Baru diinput hari ini'
-            ];
-
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | PERKARA SUDAH SELESAI
-        |--------------------------------------------------------------------------
-        */
-
-        if (strtolower($this->status_perkara) == 'selesai') {
-
-            return [
-                'status' => StatusOperator::PERKARA_SELESAI,
-                'badge' => 'bg-success',
-                'keterangan' => ''
-            ];
-
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | MENUNGGU PENETAPAN HAKIM
-        |--------------------------------------------------------------------------
-        */
-
-        if (strtolower($this->jenisHakim) == 'tunggal') {
-
-            if (blank($this->hakimTunggal)) {
-
-                return [
-                    'status' => StatusOperator::MENUNGGU_HAKIM,
-                    'badge' => 'bg-warning',
-                    'keterangan' => ''
-                ];
-
-            }
-
-        } else {
-
-            if (blank($this->majelisHakim)) {
-
-                return [
-                    'status' => StatusOperator::MENUNGGU_HAKIM,
-                    'badge' => 'bg-warning',
-                    'keterangan' => ''
-                ];
-
-            }
-
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | MENUNGGU PENJADWALAN
-        |--------------------------------------------------------------------------
-        */
-
-        if (blank($this->jadwal)) {
-
-            return [
-                'status' => StatusOperator::MENUNGGU_JADWAL,
-                'badge' => 'bg-primary',
-                'keterangan' => ''
-            ];
-
-        }
-
-        $tanggalSidang = Carbon::parse($this->jadwal);
-
-        /*
-        |--------------------------------------------------------------------------
-        | SIDANG HARI INI
-        |--------------------------------------------------------------------------
-        */
-
-        if ($tanggalSidang->isToday()) {
-
-            return [
-                'status' => StatusOperator::SIDANG,
-                'badge' => 'bg-danger',
-                'keterangan' => 'Sidang hari ini'
-            ];
-
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | SIDANG SUDAH LEWAT
-        |--------------------------------------------------------------------------
-        */
-
-        if ($tanggalSidang->isPast()) {
-
-            return [
-                'status' => StatusOperator::SELESAI_SIDANG,
-                'badge' => 'bg-success',
-                'keterangan' => ''
-            ];
-
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | MENUNGGU SIDANG
-        |--------------------------------------------------------------------------
-        */
-
-        $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
-
-        return [
-
-            'status' => StatusOperator::MENUNGGU,
-
-            'badge' => $hari <= 1
-                ? 'bg-warning'
-                : ($hari <= 3 ? 'bg-primary' : 'bg-secondary'),
-
-            'keterangan' => $hari <= 1
-                ? 'Sidang besok'
-                : "$hari hari lagi"
-
         ];
     }
 }

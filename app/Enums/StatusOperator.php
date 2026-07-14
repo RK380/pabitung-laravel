@@ -2,19 +2,19 @@
 
 namespace App\Enums;
 
-enum StatusOperator: string
+enum StatusOperator:string
 {
-    const BARU = 'Perkara Baru';
+    case BARU = 'Perkara Baru';
 
-    const MENUNGGU_HAKIM = 'Menunggu Penetapan Hakim';
+    case MENUNGGU_HAKIM = 'Menunggu Penetapan Hakim';
 
-    const MENUNGGU_JADWAL = 'Menunggu Penjadwalan';
+    case MENUNGGU_JADWAL = 'Menunggu Penjadwalan';
 
-    const MENUNGGU = 'Menunggu Sidang';
+    case MENUNGGU_SIDANG = 'Menunggu Sidang';
 
-    const SIDANG = 'Sedang Sidang';
+    case SIDANG = 'Sedang Sidang';
 
-    const SELESAI_SIDANG = 'Sidang Selesai';
+    case SIDANG_SELESAI = 'Sidang Selesai';
 
-    const PERKARA_SELESAI = 'Perkara Selesai';
+    case PERKARA_SELESAI = 'Perkara Selesai';
 }
