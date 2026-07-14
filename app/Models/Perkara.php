@@ -45,6 +45,10 @@ class Perkara extends Model
         'juruSita',
     ];
 
+    protected $casts = [
+        'status_perkara' => StatusPerkara::class,
+    ];
+
     // 16 field
 
     public function getJenisHakimTextAttribute()
@@ -238,16 +242,32 @@ class Perkara extends Model
 
         /*
         |--------------------------------------------------------------------------
+        | PERKARA SUDAH SELESAI
+        |--------------------------------------------------------------------------
+        */
+
+        if (strtolower($this->status_perkara) == 'selesai') {
+
+            return [
+                'status' => StatusOperator::PERKARA_SELESAI,
+                'badge' => 'bg-success',
+                'keterangan' => ''
+            ];
+
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | MENUNGGU PENETAPAN HAKIM
         |--------------------------------------------------------------------------
         */
 
-        if ($this->jenisHakim == 'Tunggal') {
+        if (strtolower($this->jenisHakim) == 'tunggal') {
 
-            if (empty($this->hakimTunggal)) {
+            if (blank($this->hakimTunggal)) {
 
                 return [
-                    'status' => 'Menunggu Penetapan Hakim',
+                    'status' => StatusOperator::MENUNGGU_HAKIM,
                     'badge' => 'bg-warning',
                     'keterangan' => ''
                 ];
@@ -256,10 +276,10 @@ class Perkara extends Model
 
         } else {
 
-            if (empty($this->majelisHakim)) {
+            if (blank($this->majelisHakim)) {
 
                 return [
-                    'status' => 'Menunggu Penetapan Hakim',
+                    'status' => StatusOperator::MENUNGGU_HAKIM,
                     'badge' => 'bg-warning',
                     'keterangan' => ''
                 ];
@@ -274,10 +294,10 @@ class Perkara extends Model
         |--------------------------------------------------------------------------
         */
 
-        if (empty($this->jadwal)) {
+        if (blank($this->jadwal)) {
 
             return [
-                'status' => 'Menunggu Penjadwalan',
+                'status' => StatusOperator::MENUNGGU_JADWAL,
                 'badge' => 'bg-primary',
                 'keterangan' => ''
             ];
@@ -288,7 +308,7 @@ class Perkara extends Model
 
         /*
         |--------------------------------------------------------------------------
-        | SEDANG SIDANG
+        | SIDANG HARI INI
         |--------------------------------------------------------------------------
         */
 
@@ -304,14 +324,14 @@ class Perkara extends Model
 
         /*
         |--------------------------------------------------------------------------
-        | SUDAH SELESAI SIDANG
+        | SIDANG SUDAH LEWAT
         |--------------------------------------------------------------------------
         */
 
         if ($tanggalSidang->isPast()) {
 
             return [
-                'status' => StatusOperator::SELESAI,
+                'status' => StatusOperator::SELESAI_SIDANG,
                 'badge' => 'bg-success',
                 'keterangan' => ''
             ];
@@ -339,6 +359,5 @@ class Perkara extends Model
                 : "$hari hari lagi"
 
         ];
-
     }
 }

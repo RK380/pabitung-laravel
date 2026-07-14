@@ -2,17 +2,10 @@
 
 namespace App\Enums;
 
-class StatusPerkara
+enum StatusPerkara:string
 {
-    const BARU = 'Perkara Baru';
-
-    const MENUNGGU_HAKIM = 'Menunggu Penetapan Hakim';
-
-    const MENUNGGU_SIDANG = 'Menunggu Penetapan Tanggal Sidang';
-
-    const MENUNGGU = 'Menunggu Sidang';
-
-    const SIDANG = 'Sedang Sidang';
-
-    const SELESAI = 'Sudah Selesai Sidang';
+    case PROSES = 'proses';
+    case SIDANG = 'sidang';
+    case PUTUS = 'putusan';
+    case SELESAI = 'selesai';
 }
