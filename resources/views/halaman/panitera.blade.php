@@ -66,36 +66,19 @@
                                     @foreach ($data as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
-                                                @if (
-                                                    // Hakim sudah menetapkan
-                                                    (!empty($row->jenisHakim) &&
-                                                    (
-                                                        ($row->jenisHakim == 1 && !empty($row->majelisHakim)) || 
-                                                        ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
-                                                    ))
-                                                    &&
-                                                    // Panitera belum lengkap
-                                                    (empty($row->paniteraPengganti) || empty($row->juruSita))
-                                                )
-                                                    {{-- Panitera boleh edit --}}
-                                                    <a href="{{ route('perkara.editpanitera', $row->id) }}" class="btn btn-warning icon">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-                                                @elseif(
-                                                    // Jika Hakim sudah menetapkan dan Panitera sudah lengkap
-                                                    (!empty($row->jenisHakim) &&
-                                                    (
-                                                        ($row->jenisHakim == 1 && !empty($row->majelisHakim)) || 
-                                                        ($row->jenisHakim == 2 && !empty($row->hakimTunggal))
-                                                    ))
-                                                    &&
-                                                    (!empty($row->paniteraPengganti) && !empty($row->juruSita))
-                                                )
-                                                    <span class="badge bg-success">Sudah Di Tetapkan</span>
-                                                @else
-                                                    {{-- Hakim belum menetapkan, jadi Panitera belum boleh edit --}}
-                                                    <span class="badge bg-warning text-dark">Menunggu Ketua</span>
-                                                @endif
+                                                <span class="badge {{ $row->status_operator['badge'] }}">
+
+                                                    {{ $row->status_operator['status'] }}
+
+                                                    @if(!empty($row->status_operator['keterangan']))
+
+                                                        <span style="color:#FFFFFF;font-size:12px;">
+                                                            ⏳ {{ $row->status_operator['keterangan'] }}
+                                                        </span>
+
+                                                    @endif
+
+                                                </span>
                                             </td>
                                             <td class="text-nowrap" style="font-size:14px;color:grey;font-weight:normal;font-family:Arial;">{{ $loop->iteration }}</td>
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->jenis }}</span></td>
