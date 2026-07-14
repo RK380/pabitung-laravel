@@ -95,9 +95,6 @@
     </div>
   </header>
 
-  @extends('layouts.layout')
-  @section('content')
-
   <main class="main">
 
     <!-- Hero Section -->
