@@ -26,7 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-  <link rel="stylesheet"href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+  <link href="https://cdn.datatables.net/v/bs5/dt-2.3.4/datatables.min.css" rel="stylesheet" integrity="sha384-i0jVPhw/X00l5EPvMOBv0lcGYXlSQGOqNYpMK/406rxta9oBump0IZJIHzvtf3+H" crossorigin="anonymous">
   <!-- =======================================================
   * Template Name: FlexStart
   * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
@@ -303,8 +303,7 @@
   <!-- Vendor JS Files -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -314,6 +313,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.datatables.net/v/bs5/dt-2.3.4/datatables.min.js" integrity="sha384-jVoHjtunWKmr2zpSki5PSXfFYRsTQQm1uk4wpf45zuYxast668XkB2fJL8PjloNc" crossorigin="anonymous"></script>
   <script>
         $(document).ready(function() {
             $('#myDataTable').DataTable({
