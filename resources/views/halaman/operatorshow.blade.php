@@ -1,3 +1,6 @@
+@php
+    use App\Enums\JenisHakim;
+@endphp
 @extends('layouts.layout')
 @section('content')
     <main class="main">
