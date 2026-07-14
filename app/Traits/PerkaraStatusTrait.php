@@ -22,6 +22,10 @@ trait PerkaraStatusTrait
 
     private function hakimSudahDitentukan(): bool
     {
+        if ($this->jenisHakim === null) {
+            return false;
+        }
+
         return match ($this->jenisHakim) {
 
             JenisHakim::TUNGGAL => filled($this->hakimTunggal),
@@ -33,6 +37,15 @@ trait PerkaraStatusTrait
 
     private function statusSidang(): array
     {
+        if (!$this->jadwal) {
+
+            return $this->statusBadge(
+                StatusOperator::MENUNGGU_JADWAL,
+                'bg-primary'
+            );
+
+        }    
+    
         $jadwal = $this->jadwal;
 
         if ($jadwal->isToday()) {
