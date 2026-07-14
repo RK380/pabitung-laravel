@@ -218,11 +218,7 @@ class Perkara extends Model
 
     public function getStatusOperatorAttribute()
     {
-        $hariIni = Carbon::now();
-
-        $tanggalSidang = Carbon::parse($this->jadwal);
-
-        $tanggalInput = Carbon::parse($this->created_at);
+        $hariIni = now();
 
         /*
         |--------------------------------------------------------------------------
@@ -230,31 +226,65 @@ class Perkara extends Model
         |--------------------------------------------------------------------------
         */
 
-        if($tanggalInput->isToday()){
+        if ($this->created_at->isToday()) {
 
             return [
                 'status' => StatusOperator::BARU,
                 'badge' => 'bg-info',
-                'keterangan' => 'Baru di input hari ini'
+                'keterangan' => 'Baru diinput hari ini'
             ];
 
         }
 
         /*
         |--------------------------------------------------------------------------
-        | SUDAH SELESAI
+        | MENUNGGU PENETAPAN HAKIM
         |--------------------------------------------------------------------------
         */
 
-        if($tanggalSidang->isPast()){
+        if ($this->jenisHakim == 'Tunggal') {
+
+            if (empty($this->hakimTunggal)) {
+
+                return [
+                    'status' => 'Menunggu Penetapan Hakim',
+                    'badge' => 'bg-warning',
+                    'keterangan' => ''
+                ];
+
+            }
+
+        } else {
+
+            if (empty($this->majelisHakim)) {
+
+                return [
+                    'status' => 'Menunggu Penetapan Hakim',
+                    'badge' => 'bg-warning',
+                    'keterangan' => ''
+                ];
+
+            }
+
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | MENUNGGU PENJADWALAN
+        |--------------------------------------------------------------------------
+        */
+
+        if (empty($this->jadwal)) {
 
             return [
-                'status' => StatusOperator::SELESAI,
-                'badge' => 'bg-success',
+                'status' => 'Menunggu Penjadwalan',
+                'badge' => 'bg-primary',
                 'keterangan' => ''
             ];
 
         }
+
+        $tanggalSidang = Carbon::parse($this->jadwal);
 
         /*
         |--------------------------------------------------------------------------
@@ -262,12 +292,28 @@ class Perkara extends Model
         |--------------------------------------------------------------------------
         */
 
-        if($tanggalSidang->isToday()){
+        if ($tanggalSidang->isToday()) {
 
             return [
                 'status' => StatusOperator::SIDANG,
                 'badge' => 'bg-danger',
                 'keterangan' => 'Sidang hari ini'
+            ];
+
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | SUDAH SELESAI SIDANG
+        |--------------------------------------------------------------------------
+        */
+
+        if ($tanggalSidang->isPast()) {
+
+            return [
+                'status' => StatusOperator::SELESAI,
+                'badge' => 'bg-success',
+                'keterangan' => ''
             ];
 
         }
@@ -280,30 +326,19 @@ class Perkara extends Model
 
         $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
 
-        if($hari <= 1){
-
-            return [
-                'status' => StatusOperator::MENUNGGU,
-                'badge' => 'bg-warning',
-                'keterangan' => 'Sidang besok'
-            ];
-
-        }
-
-        if($hari <= 3){
-
-            return [
-                'status' => StatusOperator::MENUNGGU,
-                'badge' => 'bg-primary',
-                'keterangan' => "$hari hari lagi"
-            ];
-
-        }
-
         return [
+
             'status' => StatusOperator::MENUNGGU,
-            'badge' => 'bg-secondary',
-            'keterangan' => "$hari hari lagi"
+
+            'badge' => $hari <= 1
+                ? 'bg-warning'
+                : ($hari <= 3 ? 'bg-primary' : 'bg-secondary'),
+
+            'keterangan' => $hari <= 1
+                ? 'Sidang besok'
+                : "$hari hari lagi"
+
         ];
+
     }
 }
