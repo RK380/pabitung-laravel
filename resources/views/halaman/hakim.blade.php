@@ -74,7 +74,7 @@
                                                 <span class="badge {{ $row->status_operator['badge'] }}">
                                                         {{ $row->status_operator['status'] }}
                                                     <span style="font-color:#FFFFFF;font-size:12px;">
-                                                        {{ $row->status_operator['keterangan'] }}
+                                                        ⏳ {{ $row->status_operator['keterangan'] }}
                                                     </span>
                                                 </span>
 
