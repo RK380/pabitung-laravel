@@ -124,7 +124,13 @@
                                                     </span>
                                                 @endif
                                             </td>
-                                            <td class="text-nowrap" style="text-align:center;"><span class="badge bg-success">{{ $row->jadwal }}</span></td>
+                                            <td class="text-nowrap" style="text-align:center;"
+                                                data-order="{{ \Carbon\Carbon::parse($row->jadwal)->format('Y-m-d') }}">
+                                                
+                                                <span class="badge bg-success text-white">
+                                                    {{ \Carbon\Carbon::parse($row->jadwal)->format('d-m-Y') }}
+                                                </span>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
