@@ -1,6 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Traits;
+
+use App\Enums\StatusOperator;
+use App\Enums\JenisHakim;   
 
 trait PerkaraStatusTrait
 {
