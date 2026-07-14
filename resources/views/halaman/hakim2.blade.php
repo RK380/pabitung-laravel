@@ -1,5 +1,7 @@
+@php
+    use App\Enums\JenisHakim;
+@endphp
 @extends('layouts.layout')
-
 @section('content')
     <main class="main">
         <section id="contact" class="contact section" style="margin-top: 90px;">
