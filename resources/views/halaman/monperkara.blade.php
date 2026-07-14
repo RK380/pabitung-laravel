@@ -1,3 +1,6 @@
+@php
+use App\Enums\JenisHakim;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -196,14 +199,16 @@
                                                 @endif
                                             </td>
                                             <td class="text-nowrap">
-                                                @if (empty($row->jenisHakim))
+                                                @if (is_null($row->jenisHakim))
                                                     <span class="badge bg-light text-dark">-</span>
-                                                @elseif ($row->jenisHakim == 1)
-                                                    <span class="badge bg-light text-dark">{!! $row->majelis_hakim_name ?? '-' !!}</span>
-                                                @elseif ($row->jenisHakim == 2)
-                                                    <span class="badge bg-light text-dark">{!! $row->hakim_tunggal_name ?? '-' !!}</span>
-                                                @else
-                                                    <span class="badge bg-light text-dark">-</span>
+                                                @elseif ($row->jenisHakim === JenisHakim::MAJELIS)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->majelis_hakim_name ?? '-' !!}
+                                                    </span>
+                                                @elseif ($row->jenisHakim === JenisHakim::TUNGGAL)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->hakim_tunggal_name ?? '-' !!}
+                                                    </span>
                                                 @endif
                                             </td>
                                             <td class="text-nowrap" style="text-align:center;"
