@@ -68,72 +68,11 @@
                                                 <a href={{ route('perkara.edit2', $row->id) }} class="btn btn-warning icon">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                <!-- @php
-                                                    $status = '';
-                                                    $badge = '';
-                                                    $keterangan = '';
 
-                                                    $hakimAda = ($row->jenisHakim == 1 && !empty($row->majelisHakim)) ||
-                                                                ($row->jenisHakim == 2 && !empty($row->hakimTunggal));
-
-                                                    if(empty($row->jenisHakim)){
-                                                        $status = "Menunggu Penetapan Hakim";
-                                                        $badge = "bg-secondary";
-                                                    }
-                                                    elseif($hakimAda && empty($row->jadwal)){
-                                                        $status = "Menunggu Penetapan Tanggal Sidang";
-                                                        $badge = "bg-secondary";
-                                                    }
-                                                    elseif($hakimAda && !empty($row->jadwal)){
-
-                                                        $tanggalSidang = \Carbon\Carbon::parse($row->jadwal);
-                                                        $hariIni = \Carbon\Carbon::now();
-
-                                                        if($tanggalSidang->isPast()){
-                                                            $status = "Sudah Selesai Sidang";
-                                                            $badge = "bg-success";
-                                                        }
-                                                        else{
-
-                                                            $hari = ceil($hariIni->floatDiffInDays($tanggalSidang));
-
-                                                            if($tanggalSidang->isToday()){
-                                                                $status = "Sedang Sidang";
-                                                                $badge = "bg-danger";
-                                                                $keterangan = "Sidang hari ini";
-                                                            }
-                                                            elseif($hari <= 1){
-                                                                $status = "Menunggu Sidang";
-                                                                $badge = "bg-warning";
-                                                                $keterangan = "Sidang besok";
-                                                            }
-                                                            elseif($hari <= 3){
-                                                                $status = "Menunggu Sidang";
-                                                                $badge = "bg-primary";
-                                                                $keterangan = "$hari hari lagi";
-                                                            }
-                                                            else{
-                                                                $status = "Menunggu Sidang";
-                                                                $badge = "bg-secondary";
-                                                                $keterangan = "$hari hari lagi";
-                                                            }
-
-                                                        }
-                                                    }
-                                                @endphp -->
-
-                                                <!-- <span class="badge {{ $badge }}">{{ $status }}
-                                                    @if(!empty($keterangan))
-                                                            <span style="font-color:#FFFFFF;font-size:12px;">
-                                                                ⏳ {{ $keterangan }}
-                                                            </span>
-                                                    @endif
-                                                </span> -->
-
-                                                <span class="badge {{ $row->status['badge'] }}">
-                                                        {{ $row->status['status'] }}
+                                                <span class="badge {{ $row->status_operator['badge'] }}">
+                                                        {{ $row->status_operator['status'] }}
                                                     <span style="font-color:#FFFFFF;font-size:12px;">
-                                                        {{ $row->status['keterangan'] }}
+                                                        {{ $row->status_operator['keterangan'] }}
                                                     </span>
                                                 </span>
 
@@ -162,25 +101,25 @@
                                             </td>
                                             <td class="text-nowrap" style="text-align:center;"><span class="badge bg-warning text-dark">{{ $row->tanggal_pendaftaran }}</span></td>
                                             <td class="text-nowrap">
-                                                @if (empty($row->jenisHakim))
-                                                    <span class="badge bg-danger">-</span>
-                                                @elseif ($row->jenisHakim == 1)
-                                                    <span class="badge bg-danger">Majelis Hakim</span>
-                                                @elseif ($row->jenisHakim == 2)
-                                                    <span class="badge bg-danger">Hakim Tunggal</span>
-                                                @else
-                                                    <span class="badge bg-danger">-</span>
-                                                @endif
+                                                <span class="badge bg-danger">
+                                                    {{ match($row->jenisHakim?->value) {
+                                                        1 => 'Majelis Hakim',
+                                                        2 => 'Hakim Tunggal',
+                                                        default => '-'
+                                                    } }}
+                                                </span>
                                             </td>
                                             <td class="text-nowrap">
-                                                @if (empty($row->jenisHakim))
+                                                @if (is_null($row->jenisHakim))
                                                     <span class="badge bg-light text-dark">-</span>
-                                                @elseif ($row->jenisHakim == 1)
-                                                    <span class="badge bg-light text-dark">{!! $row->majelis_hakim_name ?? '-' !!}</span>
-                                                @elseif ($row->jenisHakim == 2)
-                                                    <span class="badge bg-light text-dark">{!! $row->hakim_tunggal_name ?? '-' !!}</span>
-                                                @else
-                                                    <span class="badge bg-light text-dark">-</span>
+                                                @elseif ($row->jenisHakim === JenisHakim::MAJELIS)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->majelis_hakim_name ?? '-' !!}
+                                                    </span>
+                                                @elseif ($row->jenisHakim === JenisHakim::TUNGGAL)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->hakim_tunggal_name ?? '-' !!}
+                                                    </span>
                                                 @endif
                                             </td>
                                             <td class="text-nowrap" style="text-align:center;"><span class="badge bg-success">{{ $row->jadwal }}</span></td>

@@ -1,5 +1,7 @@
+@php
+    use App\Enums\JenisHakim;
+@endphp
 @extends('layouts.layout')
-
 @section('content')
     <main class="main">
         <section id="contact" class="contact section" style="margin-top: 90px;">
@@ -101,25 +103,25 @@
                                             </td>
                                             <td class="text-nowrap" style="text-align:center;"><span class="badge bg-warning text-dark">{{ $row->tanggal_pendaftaran }}</span></td>
                                             <td class="text-nowrap">
-                                                @if (empty($row->jenisHakim))
-                                                    <span class="badge bg-danger">-</span>
-                                                @elseif ($row->jenisHakim == 1)
-                                                    <span class="badge bg-danger">Majelis Hakim</span>
-                                                @elseif ($row->jenisHakim == 2)
-                                                    <span class="badge bg-danger">Hakim Tunggal</span>
-                                                @else
-                                                    <span class="badge bg-danger">-</span>
-                                                @endif
+                                                <span class="badge bg-danger">
+                                                    {{ match($row->jenisHakim?->value) {
+                                                        1 => 'Majelis Hakim',
+                                                        2 => 'Hakim Tunggal',
+                                                        default => '-'
+                                                    } }}
+                                                </span>
                                             </td>
                                             <td class="text-nowrap">
-                                                @if (empty($row->jenisHakim))
+                                                @if (is_null($row->jenisHakim))
                                                     <span class="badge bg-light text-dark">-</span>
-                                                @elseif ($row->jenisHakim == 1)
-                                                    <span class="badge bg-light text-dark">{!! $row->majelis_hakim_name ?? '-' !!}</span>
-                                                @elseif ($row->jenisHakim == 2)
-                                                    <span class="badge bg-light text-dark">{!! $row->hakim_tunggal_name ?? '-' !!}</span>
-                                                @else
-                                                    <span class="badge bg-light text-dark">-</span>
+                                                @elseif ($row->jenisHakim === JenisHakim::MAJELIS)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->majelis_hakim_name ?? '-' !!}
+                                                    </span>
+                                                @elseif ($row->jenisHakim === JenisHakim::TUNGGAL)
+                                                    <span class="badge bg-light text-dark">
+                                                        {!! $row->hakim_tunggal_name ?? '-' !!}
+                                                    </span>
                                                 @endif
                                             </td>
                                             <td class="text-nowrap" style="text-align:center;"><span class="badge bg-success">{{ $row->jadwal }}</span></td>
