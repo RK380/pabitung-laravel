@@ -66,6 +66,10 @@
                                     @foreach ($data as $index => $row)
                                         <tr>
                                             <td class="text-nowrap">
+                                                <a href={{ route('perkara.edit', $row->id) }} class="btn btn-warning icon">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+
                                                 <span class="badge {{ $row->status_operator['badge'] }}">
 
                                                     {{ $row->status_operator['status'] }}
