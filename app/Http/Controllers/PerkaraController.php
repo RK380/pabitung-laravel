@@ -83,26 +83,20 @@ class PerkaraController extends Controller
         return view('halaman.operatorshow', compact('data'));
     }
 
-    public function edit(string $id)
+    public function edit(Request $request, $id)
     {
-        $data = Perkara::findorfail($id);
+        $data = Perkara::findOrFail($id);
 
-        return view('halaman.hakimedit', compact('data'));
+        $view = match (true) {
+            $request->routeIs('perkara.edit') => 'halaman.hakimedit',
+            $request->routeIs('perkara.edit2') => 'halaman.hakimedit2',
+            $request->routeIs('perkara.editpanitera') => 'halaman.paniteraedit',
+            default => abort(404),
+        };
+
+        return view($view, compact('data'));
     }
 
-    public function edit2(string $id)
-    {
-        $data = Perkara::findorfail($id);
-
-        return view('halaman.hakimedit2', compact('data'));
-    }
-    
-    public function editpanitera(string $id)
-    {
-        $data = Perkara::findorfail($id);
-
-        return view('halaman.paniteraedit', compact('data'));
-    }
 
     public function update(Request $request, $id)
     {

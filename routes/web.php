@@ -102,7 +102,7 @@ Route::middleware(['auth', 'role:panitera,operator'])
         Route::get('/panitera', [HalamanController::class, 'panitera'])
             ->name('panitera');
 
-        Route::get('/panitera/edit/{id}', [PerkaraController::class, 'editpanitera'])
+        Route::get('/panitera/edit/{id}', [PerkaraController::class, 'edit'])
             ->name('perkara.editpanitera');
 
         Route::put('/panitera/update/{id}', [PerkaraController::class, 'updatepanitera'])
