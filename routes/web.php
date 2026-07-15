@@ -87,7 +87,7 @@ Route::middleware(['auth', 'role:hakim_tunggal,operator'])
         Route::get('/hakim2', [HalamanController::class, 'hakim2'])
             ->name('hakim2');
 
-        Route::get('/hakim2/edit2/{id}', [PerkaraController::class, 'edit2'])
+        Route::get('/hakim2/edit/{id}', [PerkaraController::class, 'edit'])
             ->name('perkara.edit2');
 
         Route::put('/hakim2/update2/{id}', [PerkaraController::class, 'update2'])
