@@ -109,7 +109,7 @@
                                         <option value="5">Lutfiah Mamonto, S.Ag (Panitera Pengganti)</option>
                                         <option value="6">Riska Poli (Panitera Pengganti)</option>
                                         {{-- Firdha sementara tidak ditampilkan --}}
-                                        {{-- <option value="7">Firdha Djubedi, S.H., M.H.</option> --}}
+                                        <option value="7">Firdha Djubedi, S.H., M.H.</option>
                                         <option value="8">Purwanto, S.H. (Panitera Muda Permohonan)</option>
 
                                     </select>
