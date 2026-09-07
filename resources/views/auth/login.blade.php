@@ -38,53 +38,333 @@
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <header class="login-header">
 
-      <a href="/" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/ma.png" alt="">
-        <img src="assets/img/pa.png" alt="">
-        <h1 class="sitename">PA Bitung</h1>
-      </a>
+    <div class="container">
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="/">Pelayanan Internal Pengadilan Agama Bitung</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+        <a href="/"
+           class="login-brand">
 
-      <a class="btn-getstarted flex-md-shrink-0" href="/login">Login</a>
-      
+            <img src="assets/img/ma.png"
+                 alt="Mahkamah Agung">
+
+            <img src="assets/img/pa.png"
+                 alt="PA Bitung">
+
+            <span>PA Bitung</span>
+
+        </a>
+
+        <div class="login-header-text">
+
+            <i class="bi bi-shield-check"></i>
+
+            Sistem Pelayanan Internal
+
+        </div>
+
     </div>
+
   </header>
 
-  <main class="main">
+  <main class="main login-main">
 
-    <!-- Hero Section -->
+    <section class="login-section">
 
-    <!-- Services Section -->
-    <section id="services" class="services section" style="margin-top: 100px;">
-      <div class="container">
-        <div class="row gy-4">
+        <!-- Background Decoration -->
+        <div class="login-shape shape-1"></div>
+        <div class="login-shape shape-2"></div>
+        <div class="login-shape shape-3"></div>
 
-            <form method="POST" action="{{ route('login.authenticate') }}">
-              @csrf
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-              </div>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+        <div class="container">
 
-      </div>
-    </section><!-- /Services Section -->
+            <div class="row justify-content-center align-items-center min-vh-100">
+
+                <div class="col-lg-10 col-xl-9">
+
+                    <div class="login-wrapper">
+
+                        <!-- BAGIAN KIRI -->
+                        <div class="login-info">
+
+                            <div class="login-info-content">
+
+                                <div class="institution-logo">
+
+                                    <img src="assets/img/ma.png"
+                                        alt="Mahkamah Agung">
+
+                                    <img src="assets/img/pa.png"
+                                        alt="Pengadilan Agama Bitung">
+
+                                </div>
+
+                                <span class="welcome-badge">
+                                    <i class="bi bi-shield-check"></i>
+                                    Sistem Internal
+                                </span>
+
+                                <h1>
+                                    Pelayanan Internal
+                                    <span>PA Bitung</span>
+                                </h1>
+
+                                <p>
+                                    Sistem pelayanan internal Pengadilan Agama
+                                    Bitung untuk mendukung pengelolaan informasi
+                                    dan pelayanan secara efektif, cepat dan aman.
+                                </p>
+
+                                <div class="login-features">
+
+                                    <div class="feature-item">
+
+                                        <div class="feature-icon">
+                                            <i class="bi bi-shield-lock"></i>
+                                        </div>
+
+                                        <div>
+                                            <h5>Aman & Terpercaya</h5>
+                                            <p>Data dan informasi terlindungi dengan baik.</p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="feature-item">
+
+                                        <div class="feature-icon">
+                                            <i class="bi bi-lightning-charge"></i>
+                                        </div>
+
+                                        <div>
+                                            <h5>Cepat & Efisien</h5>
+                                            <p>Mempermudah pelayanan internal.</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BAGIAN KANAN LOGIN -->
+                        <div class="login-card-area">
+
+                            <div class="login-card">
+
+                                <div class="login-card-header">
+
+                                    <div class="login-icon">
+
+                                        <i class="bi bi-person-lock"></i>
+
+                                    </div>
+
+                                    <h2>Selamat Datang</h2>
+
+                                    <p>
+                                        Silakan masuk menggunakan akun Anda
+                                    </p>
+
+                                </div>
+
+
+                                <!-- ERROR LOGIN -->
+                                @if(session('error'))
+
+                                    <div class="alert alert-danger">
+
+                                        <i class="bi bi-exclamation-circle"></i>
+
+                                        {{ session('error') }}
+
+                                    </div>
+
+                                @endif
+
+
+                                <!-- VALIDATION ERROR -->
+                                @if ($errors->any())
+
+                                    <div class="alert alert-danger">
+
+                                        <ul class="mb-0">
+
+                                            @foreach ($errors->all() as $error)
+
+                                                <li>{{ $error }}</li>
+
+                                            @endforeach
+
+                                        </ul>
+
+                                    </div>
+
+                                @endif
+
+
+                                <form method="POST"
+                                    action="{{ route('login.authenticate') }}">
+
+                                    @csrf
+
+
+                                    <!-- EMAIL -->
+
+                                    <div class="login-form-group">
+
+                                        <label for="email">
+
+                                            Email Address
+
+                                        </label>
+
+
+                                        <div class="input-group-modern">
+
+                                            <span class="input-icon">
+
+                                                <i class="bi bi-envelope"></i>
+
+                                            </span>
+
+
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                value="{{ old('email') }}"
+                                                placeholder="Masukkan email Anda"
+                                                required
+                                                autofocus
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- PASSWORD -->
+
+                                    <div class="login-form-group">
+
+                                        <label for="password">
+
+                                            Password
+
+                                        </label>
+
+
+                                        <div class="input-group-modern">
+
+                                            <span class="input-icon">
+
+                                                <i class="bi bi-lock"></i>
+
+                                            </span>
+
+
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                id="password"
+                                                placeholder="Masukkan password"
+                                                required
+                                            >
+
+
+                                            <button
+                                                type="button"
+                                                class="password-toggle"
+                                                id="togglePassword">
+
+                                                <i class="bi bi-eye"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- REMEMBER -->
+
+                                    <div class="login-options">
+
+                                        <div class="form-check">
+
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="remember"
+                                                id="remember"
+                                            >
+
+                                            <label
+                                                class="form-check-label"
+                                                for="remember">
+
+                                                Ingat saya
+
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- BUTTON LOGIN -->
+
+                                    <button
+                                        type="submit"
+                                        class="login-btn">
+
+                                        <span>
+
+                                            <i class="bi bi-box-arrow-in-right"></i>
+
+                                            Masuk ke Sistem
+
+                                        </span>
+
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </button>
+
+
+                                </form>
+
+
+                                <div class="login-footer">
+
+                                    <p>
+
+                                        <i class="bi bi-shield-check"></i>
+
+                                        Sistem Pelayanan Internal
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
   </main>
 
@@ -103,6 +383,44 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+
+    const togglePassword =
+        document.getElementById('togglePassword');
+
+    const password =
+        document.getElementById('password');
+
+
+    togglePassword.addEventListener(
+        'click',
+        function () {
+
+            const type =
+                password.getAttribute('type') === 'password'
+                    ? 'text'
+                    : 'password';
+
+
+            password.setAttribute(
+                'type',
+                type
+            );
+
+
+            this.querySelector('i')
+                .classList
+                .toggle('bi-eye');
+
+
+            this.querySelector('i')
+                .classList
+                .toggle('bi-eye-slash');
+
+        }
+    );
+
+  </script>
 
 </body>
 
