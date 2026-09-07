@@ -100,7 +100,7 @@
 
                                 <div class="col-md-6">
                                     <label for="panitera">Penunjukkan Panitera Pengganti <i style="color: red">*</i></label>
-                                    <select name="paniteraPengganti">
+                                    <select class="form-select" id="paniteraPengganti" name="paniteraPengganti">
                                         <option value="">-- Pilih Panitera --</option>
                                         <option value="1">Hasna Bin Nurdin Harun, S.H. (Panitera)</option>
                                         <option value="2">Jane, S.H. (Panitera Muda Permohonan)</option>
