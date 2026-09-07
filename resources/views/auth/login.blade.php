@@ -24,8 +24,11 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Main CSS -->
+  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+  <!-- Login CSS -->
+  <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -382,7 +385,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- <script src="assets/js/main.js"></script> -->
   <script>
 
     const togglePassword =
