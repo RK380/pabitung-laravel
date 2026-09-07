@@ -2,8 +2,8 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="/" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/ma.png" alt="">
-        <img src="assets/img/pa.png" alt="">
+        <img src="{{ asset('assets/img/ma.png') }}" alt="">
+        <img src="{{ asset('assets/img/pa.png') }}" alt="">
         <h1 class="sitename">PA Bitung</h1>
       </a>
 
