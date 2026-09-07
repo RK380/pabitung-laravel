@@ -69,13 +69,13 @@
 
                                             <div class="col-md-6 ">
                                                 <label for="lokasipemohon">Lokasi Pemohon/Penggugat</label>
-                                                <textarea class="form-control" name="lokasipemohon"
-                                                    value="{{ old('lokasi_pemohon', $data->lokasi_pemohon) }}" disabled></textarea>
+                                                <input type="text" class="form-control" name="lokasipemohon"
+                                                    value="{{ old('lokasi_pemohon', $data->lokasi_pemohon) }}" disabled>
                                             </div>
                                             <div class="col-md-6 ">
                                                 <label for="lokasitergugat">Lokasi Tergugat</label>
-                                                <textarea class="form-control" name="lokasitergugat"
-                                                    value="{{ old('lokasi_tergugat', $data->lokasi_tergugat) }}" disabled></textarea>
+                                                <input type="text" class="form-control" name="lokasitergugat"
+                                                    value="{{ old('lokasi_tergugat', $data->lokasi_tergugat) }}" disabled>
                                             </div>
                                             <div class="col-md-6 ">
                                                 <label for="lokasitergugat">Keterangan</label>
