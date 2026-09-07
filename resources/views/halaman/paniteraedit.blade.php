@@ -100,17 +100,18 @@
 
                                 <div class="col-md-6">
                                     <label for="panitera">Penunjukkan Panitera Pengganti <i style="color: red">*</i></label>
-                                    <select class="form-select" id="paniteraPengganti" name="paniteraPengganti"
-                                        aria-label="Default select example">
-                                        <option selected>-Pilih-</option>
-                                        <option value="1" @selected($data->paniteraPengganti == 1)>1. HASNA BIN NURDIN HARUN, S.H. (Panitera)</option>
-                                        <option value="2" @selected($data->paniteraPengganti == 2)>2. JANE, S.H. (Panitera Muda Permohonan)</option>
-                                        <option value="3" @selected($data->paniteraPengganti == 3)>3. MUHAMMAD SHABRI HAKIM, S.H.I., M.H. (Panitera Muda
-                                            Gugatan)</option>
-                                        <option value="4" @selected($data->paniteraPengganti == 4)>4. SITTI AISA HALIDU, S.H. (Panitera Muda Hukum)</option>
-                                        <option value="5" @selected($data->paniteraPengganti == 5)>5. LUTFIAH MAMONTO, S.Ag (Panitera Pengganti)</option>
-                                        <option value="6" @selected($data->paniteraPengganti == 6)>6. RISKA POLI (Panitera Pengganti)</option>
-                                        <option value="7" @selected($data->paniteraPengganti == 7)>7. FIRDHA DJUBEDI, S.H., M.H. (Panitera Pengganti)</option>
+                                    <select name="paniteraPengganti">
+                                        <option value="">-- Pilih Panitera --</option>
+                                        <option value="1">Hasna Bin Nurdin Harun, S.H. (Panitera)</option>
+                                        <option value="2">Jane, S.H. (Panitera Muda Permohonan)</option>
+                                        <option value="3">Muhammad Shabri Hakim, S.H.I., M.H. (Panitera Muda Gugatan)</option>
+                                        <option value="4">Sitti Aisa Halidu, S.H. (Panitera Muda Hukum)</option>
+                                        <option value="5">Lutfiah Mamonto, S.Ag (Panitera Pengganti)</option>
+                                        <option value="6">Riska Poli (Panitera Pengganti)</option>
+                                        {{-- Firdha sementara tidak ditampilkan --}}
+                                        {{-- <option value="7">Firdha Djubedi, S.H., M.H.</option> --}}
+                                        <option value="8">Purwanto, S.H. (Panitera Muda Permohonan)</option>
+
                                     </select>
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Penunjukkan Panitera Pengganti Wajib Di Isi</p>
                                 </div>

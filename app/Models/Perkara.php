@@ -98,13 +98,17 @@ class Perkara extends Model
     public function getPaniteraPenggantiNameAttribute()
     {
         return match ($this->paniteraPengganti) {
+
             '1' => 'Hasna Bin Nurdin Harun, S.H. (Panitera)',
             '2' => 'Jane, S.H. (Panitera Muda Permohonan)',
             '3' => 'Muhammad Shabri Hakim, S.H.I., M.H. (Panitera Muda Gugatan)',
             '4' => 'Sitti Aisa Halidu, S.H. (Panitera Muda Hukum)',
             '5' => 'Lutfiah Mamonto, S.Ag (Panitera Pengganti)',
             '6' => 'Riska Poli (Panitera Pengganti)',
+            // Firdha jangan dihapus dulu
             '7' => 'Firdha Djubedi, S.H., M.H. (Panitera Pengganti)',
+            // TAMBAHAN BARU
+            '8' => 'Purwanto, S.H. (Panitera Muda Permohonan)',
             default => '-',
         };
     }
