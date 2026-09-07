@@ -21,41 +21,30 @@ trait PerkaraStatusTrait
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | CEK HAKIM
-    |--------------------------------------------------------------------------
-    */
-
+    /**
+     * CEK APAKAH HAKIM SUDAH DITENTUKAN
+     */
     private function hakimSudahDitentukan(): bool
     {
         if ($this->jenisHakim === null) {
-
             return false;
-
         }
 
         return match ($this->jenisHakim) {
 
-            JenisHakim::TUNGGAL
-                => filled($this->hakimTunggal),
+            JenisHakim::TUNGGAL =>
+                filled($this->hakimTunggal),
 
-            JenisHakim::MAJELIS
-                => filled($this->majelisHakim),
-
-            default
-                => false,
+            JenisHakim::MAJELIS =>
+                filled($this->majelisHakim),
 
         };
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | STATUS SIDANG
-    |--------------------------------------------------------------------------
-    */
-
+    /**
+     * STATUS SIDANG
+     */
     private function statusSidang(): array
     {
         if (!$this->jadwal) {
@@ -68,15 +57,7 @@ trait PerkaraStatusTrait
 
         }
 
-
         $jadwal = $this->jadwal;
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | SIDANG HARI INI
-        |--------------------------------------------------------------------------
-        */
 
         if ($jadwal->isToday()) {
 
@@ -88,13 +69,6 @@ trait PerkaraStatusTrait
 
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | SIDANG SELESAI
-        |--------------------------------------------------------------------------
-        */
-
         if ($jadwal->isPast()) {
 
             return $this->statusBadge(
@@ -105,89 +79,51 @@ trait PerkaraStatusTrait
 
         }
 
+        $hari = ceil(now()->floatDiffInDays($jadwal));
 
-        /*
-        |--------------------------------------------------------------------------
-        | HITUNG HARI
-        |--------------------------------------------------------------------------
-        */
+        return match (true) {
 
-        $hari = now()->diffInDays($jadwal);
+            $hari <= 1 =>
 
+                $this->statusBadge(
+                    StatusOperator::MENUNGGU_SIDANG,
+                    'bg-warning',
+                    'Sidang besok'
+                ),
 
-        if ($hari <= 1) {
+            $hari <= 3 =>
 
-            return $this->statusBadge(
-                StatusOperator::MENUNGGU_SIDANG,
-                'bg-warning',
-                'Sidang besok'
-            );
+                $this->statusBadge(
+                    StatusOperator::MENUNGGU_SIDANG,
+                    'bg-primary',
+                    "$hari hari lagi"
+                ),
 
-        }
+            default =>
 
+                $this->statusBadge(
+                    StatusOperator::MENUNGGU_SIDANG,
+                    'bg-secondary',
+                    "$hari hari lagi"
+                ),
 
-        if ($hari <= 3) {
-
-            return $this->statusBadge(
-                StatusOperator::MENUNGGU_SIDANG,
-                'bg-primary',
-                $hari . ' hari lagi'
-            );
-
-        }
-
-
-        return $this->statusBadge(
-            StatusOperator::MENUNGGU_SIDANG,
-            'bg-secondary',
-            $hari . ' hari lagi'
-        );
+        };
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | STATUS UTAMA PERKARA
-    |--------------------------------------------------------------------------
-    */
-
+    /**
+     * STATUS UTAMA OPERATOR
+     */
     public function getStatusOperatorAttribute(): array
     {
 
         /*
         |--------------------------------------------------------------------------
-        | 1. PERKARA SELESAI
-        |--------------------------------------------------------------------------
-        */
-
-        if ($this->status_perkara == 'selesai') {
-
-            return $this->statusBadge(
-                StatusOperator::PERKARA_SELESAI,
-                'bg-success',
-                'Perkara selesai'
-            );
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | 2. HAKIM BELUM DITENTUKAN
+        | 1. CEK HAKIM
         |--------------------------------------------------------------------------
         */
 
         if (!$this->hakimSudahDitentukan()) {
-
-            if ($this->created_at && $this->created_at->isToday()) {
-
-                return $this->statusBadge(
-                    StatusOperator::BARU,
-                    'bg-info',
-                    'Baru diinput hari ini'
-                );
-
-            }
 
             return $this->statusBadge(
                 StatusOperator::MENUNGGU_HAKIM,
@@ -200,24 +136,7 @@ trait PerkaraStatusTrait
 
         /*
         |--------------------------------------------------------------------------
-        | 3. HAKIM SUDAH DITENTUKAN
-        |--------------------------------------------------------------------------
-        */
-
-        if ($this->hakimSudahDitentukan() && blank($this->jadwal)) {
-
-            return $this->statusBadge(
-                StatusOperator::MENUNGGU_JADWAL,
-                'bg-primary',
-                'Hakim telah ditetapkan, menunggu penjadwalan'
-            );
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | 4. PANITERA BELUM DITENTUKAN
+        | 2. CEK PANITERA
         |--------------------------------------------------------------------------
         */
 
@@ -234,32 +153,48 @@ trait PerkaraStatusTrait
 
         /*
         |--------------------------------------------------------------------------
-        | 5. PANITERA SUDAH MENETAPKAN
+        | 3. PANITERA SUDAH DITETAPKAN
         |--------------------------------------------------------------------------
         */
 
-        if (filled($this->paniteraPengganti)) {
+        if (
+            filled($this->paniteraPengganti)
+            && blank($this->jadwal)
+        ) {
 
-            if (!$this->jadwal) {
-
-                return $this->statusBadge(
-                    StatusOperator::PANITERA_MENETAPKAN,
-                    'bg-success',
-                    'Panitera telah menetapkan'
-                );
-
-            }
+            return $this->statusBadge(
+                StatusOperator::PANITERA_TELAH_MENETAPKAN,
+                'bg-info',
+                'Panitera telah menetapkan'
+            );
 
         }
 
 
         /*
         |--------------------------------------------------------------------------
-        | 6. STATUS SIDANG
+        | 4. PERKARA SELESAI
         |--------------------------------------------------------------------------
         */
 
-        if (filled($this->jadwal)) {
+        if ($this->status_perkara == 'selesai') {
+
+            return $this->statusBadge(
+                StatusOperator::PERKARA_SELESAI,
+                'bg-success',
+                'Perkara selesai'
+            );
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | 5. CEK SIDANG
+        |--------------------------------------------------------------------------
+        */
+
+        if ($this->jadwal) {
 
             return $this->statusSidang();
 
@@ -268,13 +203,24 @@ trait PerkaraStatusTrait
 
         /*
         |--------------------------------------------------------------------------
-        | DEFAULT
+        | 6. BARU DIINPUT
         |--------------------------------------------------------------------------
         */
 
+        if ($this->created_at->isToday()) {
+
+            return $this->statusBadge(
+                StatusOperator::BARU,
+                'bg-info',
+                'Baru diinput hari ini'
+            );
+
+        }
+
+
         return $this->statusBadge(
             StatusOperator::BARU,
-            'bg-info'
+            'bg-secondary'
         );
     }
 }
