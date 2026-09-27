@@ -105,10 +105,15 @@
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->nomor }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-success">{{ $row->tanggal }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
+                                            <td class="text-nowrap">
+                                                @if ($row->tanda_tangan)
+                                                    <img src="{{ asset('storage/' . $row->tanda_tangan) }}" width="120">
+                                                @endif
+                                            </td>
                                             <td class="text-center align-middle signature-column">
     @if (!empty($row->tanda_tangan))
         <img
-            src="{{ asset('storage/' . ltrim($row->tanda_tangan, '/')) }}"
+            src="{{ asset('storage/' . ltrim($row->tanda_tangan, '/')) }}" width="120"
             alt="Paraf {{ $row->panitera_pengganti_name }}"
             class="signature-image"
             loading="lazy"
