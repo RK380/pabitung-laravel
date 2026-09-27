@@ -23,7 +23,7 @@ class BerkasPerkara extends Model
             '5' => "Lutfiah Mamonto, S.Ag (Panitera Pengganti)",
             '6' => "Riska Poli (Panitera Pengganti)",
             '7' => "Firdha Djubedi, S.H., M.H. (Panitera Pengganti)",
-            '8' => "Purwanto, S.H. (Panitera Pengganti)",
+            '8' => "Purwanto, S.H. (Panitera Muda Permohonan)",
             default => "-",
         };
     }

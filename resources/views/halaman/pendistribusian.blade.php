@@ -64,7 +64,7 @@
                                         <option value="5">5. LUTFIAH MAMONTO, S.Ag (Panitera Pengganti)</option>
                                         <option value="6">6. RISKA POLI (Panitera Pengganti)</option>
                                         <option value="7">7. FIRDHA DJUBEDI, S.H., M.H. (Panitera Pengganti)</option>
-                                        <option value="8">8. PURWANTO, S.H. (Panitera Pengganti)</option>
+                                        <option value="8">8. PURWANTO, S.H. (Panitera Muda Permohonan)</option>
                                     </select>
                                     <p style="font-size:12px;color:red;padding-top:5px;">* Panitera/Panitera Muda/Panitera Pengganti Wajib Di Isi</p>
                                 </div>
