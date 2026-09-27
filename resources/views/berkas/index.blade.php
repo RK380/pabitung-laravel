@@ -105,11 +105,23 @@
                                             <td class="text-nowrap"><span class="badge bg-info text-dark">{{ $row->nomor }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-success">{{ $row->tanggal }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
-                                            <td class="text-nowrap">
-                                                @if ($row->tanda_tangan)
-                                                    <img src="{{ asset('storage/' . $row->tanda_tangan) }}" width="120">
-                                                @endif
-                                            </td>
+                                            <td class="text-center align-middle signature-column">
+    @if (!empty($row->tanda_tangan))
+        <img
+            src="{{ asset('storage/' . ltrim($row->tanda_tangan, '/')) }}"
+            alt="Paraf {{ $row->panitera_pengganti_name }}"
+            class="signature-image"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
+        >
+
+        <span class="text-danger signature-error" style="display:none;">
+            Gambar tidak ditemukan
+        </span>
+    @else
+        <span class="text-muted">Belum ada paraf</span>
+    @endif
+</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
