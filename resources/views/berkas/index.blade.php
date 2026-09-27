@@ -106,11 +106,6 @@
                                             <td class="text-nowrap"><span class="badge bg-success">{{ $row->tanggal }}</span></td>
                                             <td class="text-nowrap"><span class="badge bg-light text-dark">{{ $row->panitera_pengganti_name }}</span></td>
                                             <td class="text-nowrap">
-                                                @if ($row->tanda_tangan)
-                                                    <img src="{{ asset('storage/' . $row->tanda_tangan) }}" width="120">
-                                                @endif
-                                            </td>
-                                            <td class="text-nowrap">
     @if (!empty($row->tanda_tangan))
         <img
             src="{{ asset('storage/' . ltrim($row->tanda_tangan, '/')) }}" width="120"
