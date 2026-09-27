@@ -110,7 +110,7 @@
                                                     <img src="{{ asset('storage/' . $row->tanda_tangan) }}" width="120">
                                                 @endif
                                             </td>
-                                            <td class="text-center align-middle signature-column">
+                                            <td class="text-nowrap">
     @if (!empty($row->tanda_tangan))
         <img
             src="{{ asset('storage/' . ltrim($row->tanda_tangan, '/')) }}" width="120"
